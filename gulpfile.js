@@ -15,7 +15,11 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    del = require('del');
+    del = require('del'),
+    svgSprite = require('gulp-svg-sprites'),
+    svgmin = require('gulp-svgmin'),
+    cheerio = require('gulp-cheerio'),
+    replace = require('gulp-replace');
 
 // Styles
 gulp.task('styles', function() {
@@ -29,7 +33,56 @@ gulp.task('styles', function() {
 });
 
 
+// svg
 
+gulp.task('svgSpriteBuild', function () {
+    return gulp.src('assets/svg/*.svg')
+        // minify svg
+        .pipe(svgmin({
+            js2svg: {
+                pretty: true
+            }
+        }))
+        // remove all fill and style declarations in out shapes
+        .pipe(cheerio({
+            run: function ($) {
+                $('[fill]').removeAttr('fill');
+                $('[style]').removeAttr('style');
+            },
+            parserOptions: { xmlMode: true }
+        }))
+        // cheerio plugin create unnecessary string '>', so replace it.
+        .pipe(replace('&gt;', '>'))
+        // build svg sprite
+        .pipe(svgSprite({
+                mode: "symbols",
+                preview: false,
+                selector: "icon-%f",
+                svg: {
+                    symbols: 'symbol_sprite.html'
+                }
+            }
+        ))
+        .pipe(gulp.dest('assets/svg'));
+});
+
+
+gulp.task('svgSpriteSass', function () {
+    return gulp.src('assets/svg/*.svg')
+        .pipe(svgSprite({
+                preview: false,
+                selector: "icon-%f",
+                svg: {
+                    sprite: 'svg_sprite.html'
+                },
+                cssFile: 'sass/_svg_sprite.scss',
+                templates: {
+                    css: require("fs").readFileSync('sass/_sprite-template.scss', "utf-8")
+                }
+            }
+        ))
+        .pipe(gulp.dest('assets/svg'));
+});
 
 
 // Scripts
@@ -60,6 +113,8 @@ gulp.task('clean', function() {
 gulp.task('default', ['clean'], function() {
     gulp.start('styles', 'scripts', 'images');
 });
+
+gulp.task('svgSprite', ['svgSpriteBuild', 'svgSpriteSass']);
 
 // Watch
 gulp.task('watch', function() {
