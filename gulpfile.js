@@ -77,7 +77,7 @@ gulp.task('svgSpriteSass', function () {
                 },
                 cssFile: 'sass/_svg_sprite.scss',
                 templates: {
-                    css: require("fs").readFileSync('sass/_svg_sprite.scss', "utf-8")
+                    css: require("fs").readFileSync('sass/_sprite_template.scss', "utf-8")
                 }
             }
         ))
@@ -127,6 +127,8 @@ gulp.task('watch', function() {
 
     // Watch image files
     gulp.watch('assets/images/**/*', ['images']);
+
+    gulp.watch('assets/svg/**/*', ['svgSprite']);
 
 
     // Create LiveReload server
