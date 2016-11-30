@@ -75,9 +75,9 @@ gulp.task('svgSpriteSass', function () {
                 svg: {
                     sprite: 'svg_sprite.html'
                 },
-                cssFile: '../sass/_svg_sprite.scss',
+                cssFile: 'sass/_svg_sprite.scss',
                 templates: {
-                    css: require("fs").readFileSync('sass/_sprite-template.scss', "utf-8")
+                    css: require("fs").readFileSync('sass/_svg_sprite.scss', "utf-8")
                 }
             }
         ))
