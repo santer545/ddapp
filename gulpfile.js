@@ -5,7 +5,7 @@
 
 // Load plugins
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     cssnano = require('gulp-cssnano'),
     uglify = require('gulp-uglify'),
@@ -14,17 +14,21 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
-    livereload = require('gulp-livereload'),
+    browserSync = require('browser-sync');
     del = require('del'),
     svgSprite = require('gulp-svg-sprites'),
     svgmin = require('gulp-svgmin'),
     cheerio = require('gulp-cheerio'),
     replace = require('gulp-replace');
+    sourcemaps = require('gulp-sourcemaps');
 
 // Styles
 gulp.task('styles', function() {
-    return sass('sass/style.scss', { style: 'expanded' })
+    return gulp.src('sass/style.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass({ style: 'expanded' }))
         .pipe(autoprefixer('last 4 version'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/css'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(cssnano())
@@ -32,6 +36,19 @@ gulp.task('styles', function() {
         .pipe(notify({ message: 'Styles task complete' }));
 });
 
+gulp.task('html', function() {
+  return gulp.src('./*.html')
+        .pipe(gulp.dest('./dist/'));
+});
+
+// Local server
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./dist"
+        }
+    });
+});
 
 // svg
 
@@ -110,8 +127,12 @@ gulp.task('clean', function() {
 });
 
 // Default task
-gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'scripts', 'images');
+gulp.task('default', function() {
+    gulp.start('html', 'styles', 'scripts', 'images', 'svgSprite');
+});
+
+gulp.task('server', function() {
+    gulp.start('default', 'watch', 'browser-sync');
 });
 
 gulp.task('svgSprite', ['svgSpriteBuild', 'svgSpriteSass']);
@@ -120,21 +141,15 @@ gulp.task('svgSprite', ['svgSpriteBuild', 'svgSpriteSass']);
 gulp.task('watch', function() {
 
     // Watch .scss files
-    gulp.watch('sass/**/*.scss', ['styles']);
+    gulp.watch('sass/**/*.scss', ['styles', browserSync.reload]);
 
     // Watch .js files
-    gulp.watch('js/**/*.js', ['scripts']);
+    gulp.watch('js/**/*.js', ['scripts', browserSync.reload]);
 
     // Watch image files
-    gulp.watch('assets/images/**/*', ['images']);
+    gulp.watch('assets/images/**/*', ['images', browserSync.reload]);
 
-    gulp.watch('assets/svg/**/*', ['svgSprite']);
-
-
-    // Create LiveReload server
-    livereload.listen();
-
-    // Watch any files in dist/, reload on change
-    gulp.watch(['dist/**']).on('change', livereload.changed);
+    gulp.watch('assets/svg/**/*', ['svgSprite', browserSync.reload]);
+    gulp.watch('./*.html', ['html', browserSync.reload]);
 
 });
