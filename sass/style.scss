@@ -1,3 +1,9 @@
+@import "_variables.scss";
 @import "_bootstrap.scss";
-@import "_sprite_template.scss";
-@import "_svg_sprite.scss";
+
+
+@import "my-components/_global.scss";
+@import "my-components/_nav.scss";
+@import "my-components/_icons.scss";
+@import "my-components/_forms.scss";
+@import "my-components/_typography.scss";

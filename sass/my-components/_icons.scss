@@ -1,0 +1,25 @@
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    color: $brand-primary;
+    fill: $brand-primary;
+    &-info {
+        width: 40px;
+        height: 40px;
+    }
+    &-search {
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: 19px;
+        height: 23px;
+    }
+    &-big-home {
+        width: 50px;
+        height: 45px;
+    }
+}
+

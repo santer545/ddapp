@@ -14,12 +14,12 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
     del = require('del'),
     svgSprite = require('gulp-svg-sprites'),
     svgmin = require('gulp-svgmin'),
     cheerio = require('gulp-cheerio'),
-    replace = require('gulp-replace');
+    replace = require('gulp-replace'),
     sourcemaps = require('gulp-sourcemaps');
 
 // Styles
@@ -37,7 +37,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('html', function() {
-  return gulp.src('./*.html')
+    return gulp.src('./*.html')
         .pipe(gulp.dest('./dist/'));
 });
 
@@ -52,7 +52,7 @@ gulp.task('browser-sync', function() {
 
 // svg
 
-gulp.task('svgSpriteBuild', function () {
+gulp.task('svgSpriteBuild', function() {
     return gulp.src('assets/svg/*.svg')
         // minify svg
         .pipe(svgmin({
@@ -62,7 +62,7 @@ gulp.task('svgSpriteBuild', function () {
         }))
         // remove all fill and style declarations in out shapes
         .pipe(cheerio({
-            run: function ($) {
+            run: function($) {
                 $('[fill]').removeAttr('fill');
                 $('[style]').removeAttr('style');
             },
@@ -72,19 +72,18 @@ gulp.task('svgSpriteBuild', function () {
         .pipe(replace('&gt;', '>'))
         // build svg sprite
         .pipe(svgSprite({
-                mode: "symbols",
-                preview: false,
-                selector: "icon-%f",
-                svg: {
-                    symbols: 'symbol_sprite.html'
-                }
+            mode: "symbols",
+            preview: false,
+            selector: "icon-%f",
+            svg: {
+                symbols: 'symbol_sprite.html'
             }
-        ))
+        }))
         .pipe(gulp.dest('assets/svg'));
 });
 
 
-gulp.task('svgSpriteSass', function () {
+/*gulp.task('svgSpriteSass', function () {
     return gulp.src('assets/svg/*.svg')
         .pipe(svgSprite({
                 preview: false,
@@ -99,13 +98,13 @@ gulp.task('svgSpriteSass', function () {
             }
         ))
         .pipe(gulp.dest('assets/svg'));
-});
+});*/
 
 
 // Scripts
 gulp.task('scripts', function() {
     return gulp.src('js/**/*.js')
-        .pipe(concat('all.js'))
+        //.pipe(concat('all.js'))
         .pipe(gulp.dest('dist/js'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(uglify())
@@ -115,9 +114,9 @@ gulp.task('scripts', function() {
 
 // Images
 gulp.task('images', function() {
-    return gulp.src('assets/images/**/*')
+    return gulp.src('assets/**/*')
         .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-        .pipe(gulp.dest('dist/images'))
+        .pipe(gulp.dest('dist/assets/'))
         .pipe(notify({ message: 'Images task complete' }));
 });
 
@@ -128,14 +127,14 @@ gulp.task('clean', function() {
 
 // Default task
 gulp.task('default', function() {
-    gulp.start('html', 'styles', 'scripts', 'images', 'svgSprite');
+    gulp.start('html', 'styles', 'scripts', 'images');
 });
 
 gulp.task('server', function() {
     gulp.start('default', 'watch', 'browser-sync');
 });
 
-gulp.task('svgSprite', ['svgSpriteBuild', 'svgSpriteSass']);
+gulp.task('svgSprite', ['svgSpriteBuild']);
 
 // Watch
 gulp.task('watch', function() {
@@ -149,7 +148,7 @@ gulp.task('watch', function() {
     // Watch image files
     gulp.watch('assets/images/**/*', ['images', browserSync.reload]);
 
-    gulp.watch('assets/svg/**/*', ['svgSprite', browserSync.reload]);
+    //gulp.watch('assets/svg/**/*', ['svgSprite', browserSync.reload]);
     gulp.watch('./*.html', ['html', browserSync.reload]);
 
 });
