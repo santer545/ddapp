@@ -30,9 +30,10 @@
     }
     &__item {
         position: relative;
-        padding: 30px 25px;
+        padding: 10px 25px;
+        line-height: 70px;
         z-index: 1;
-        max-height: 90px;
+        white-space: nowrap;
         &:before {
             content: "";
             position: absolute;
@@ -76,18 +77,18 @@
         position: relative;
         display: inline-block;
         vertical-align: middle;
-        max-width: 0;
         overflow: hidden;
-        max-height: 0;
         font-size: 25px;
         font-weight: 300;
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s, visibility 0.3s, max-width 0.3s, max-height 0.3s;
         z-index: 1;
+        line-height: 30px;
+        white-space: normal;
     }
     &.active {
-        width: 19%;
+        width: 350px;
         text-align: left;
         .sidebar__item {
             &.active,
@@ -111,7 +112,6 @@
             visibility: visible;
             max-width: 300px;
             margin-left: 20px;
-            max-height: 90px;
         }
         .menu__arrow {
             transform: rotate(180deg);
