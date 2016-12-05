@@ -9,6 +9,9 @@
         width: 40px;
         height: 40px;
     }
+    &__gray {
+        fill: $gray-light;
+    }
     &-search {
         position: absolute;
         left: 5px;

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Catalog</title>
+    <title>Редактирование маршрута</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700,800&amp;subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="css/style.min.css">
 </head>
@@ -274,6 +274,11 @@
                 <path d="M29.742 7.887V2.775c0-1.24-.875-2.251-1.95-2.251h-1.913L2.192.418C1.644.587.502 2.522.172 3.086c-.178.36 0 10.285 0 10.285V21.6c0 1.029 0 2.057 2.057 3.086 2.057 0 25.562-.142 25.562-.142 1.076 0 1.95-1.01 1.95-2.251v-4.96h-9.218a.637.637 0 0 1-.637-.636V8.524a.638.638 0 0 1 .637-.637h9.219z"></path>
             </g>
         </symbol>
+        <symbol id="icon-russia" viewBox="0 0 512 512">
+            <circle cx="256" cy="256" r="256"></circle>
+            <path d="M496.077 345.043C506.368 317.31 512 287.314 512 256s-5.632-61.31-15.923-89.043H15.923C5.633 194.69 0 224.686 0 256s5.633 61.31 15.923 89.043L256 367.304l240.077-22.261z"></path>
+            <path d="M256 512c110.071 0 203.906-69.472 240.077-166.957H15.923C52.094 442.528 145.929 512 256 512z"></path>
+        </symbol>
         <symbol id="icon-search-icon" viewBox="0 0 20 20">
             <title>Group</title>
             <path d="M13.889 12.222h-.878l-.311-.3a7.19 7.19 0 0 0 1.744-4.7 7.222 7.222 0 1 0-7.222 7.222 7.19 7.19 0 0 0 4.7-1.744l.3.311v.878l5.556 5.544 1.655-1.655-5.544-5.556zm-6.667 0c-2.766 0-5-2.233-5-5 0-2.766 2.234-5 5-5 2.767 0 5 2.234 5 5 0 2.767-2.233 5-5 5z" fill-rule="evenodd"></path>
@@ -298,7 +303,7 @@
                     </div>
                 </div>
                 <ul class="sidebar__list">
-                    <li class="sidebar__item active">
+                    <li class="sidebar__item">
                         <a href="" class="sidebar__link">
                             <svg class="icon icon-markers">
                                 <use xlink:href="#icon-markers"></use>
@@ -338,7 +343,7 @@
                             <span class="sidebar__name">аналитика</span>
                         </a>
                     </li>
-                    <li class="sidebar__item">
+                    <li class="sidebar__item active">
                         <a href="" class="sidebar__link">
                             <svg class="icon icon-boook">
                                 <use xlink:href="#icon-boook"></use>
@@ -392,232 +397,140 @@
                         </div>
                     </div>
                 </header>
-                <section class="catalog">
-                    <p class="heading-h2">Справочники</p>
-                    <div>
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#my-directory" aria-controls="my-directory" role="tab" data-toggle="tab">Мои справочники</a></li>
-                            <li role="presentation"><a href="#dapp-directory" aria-controls="dapp-directory" role="tab" data-toggle="tab">Справочники dapp</a></li>
-                        </ul>
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active fade in" id="my-directory">
-                                <ul class="directory__list">
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
+                <section class="personal">
+                    <p class="heading-h2">Красный светлячек</p>
+                    <div class="settings__holder">
+                        <div>
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">
+                                Общая информация</a></li>
+                                <li role="presentation"><a href="#target" aria-controls="target" role="tab" data-toggle="tab">Торговые точки</a></li>
+                                <li role="presentation"><a href="#documents" aria-controls="documents" role="tab" data-toggle="tab">Документы</a></li>
+                                <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Контакты</a></li>
+                                <li role="presentation"><a href="#property" aria-controls="property" role="tab" data-toggle="tab">Доп.  свойства</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active fade in" id="info">
+                                    <div class="tools-panel">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <ul class="tools__panel">
+                                                    <li class="tools__item">
+                                                        <a href="">
+                                                            <svg class="icon icon-grid icon__gray">
+                                                                <use xlink:href="#icon-grid"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li class="tools__item">
+                                                        <a href="">
+                                                            <svg class="icon icon-marker">
+                                                                <use xlink:href="#icon-marker"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li class="tools__item">
+                                                        <a href="">
+                                                            <svg class="icon icon-plus">
+                                                                <use xlink:href="#icon-plus"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li class="tools__item">
+                                                        <a href="">
+                                                            <svg class="icon icon-user">
+                                                                <use xlink:href="#icon-user"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li class="tools__item">
+                                                        <a href="">
+                                                            <svg class="icon icon-home">
+                                                                <use xlink:href="#icon-home"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                    <li class="tools__item">
+                                                        <a href="">
+                                                            <svg class="icon icon-delete">
+                                                                <use xlink:href="#icon-delete"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6 text-right">
+                                                <div class="tools-pagination">
+                                                    <span class="pagination__info">24-96 из 960</span>
+                                                    <svg class="icon icon-arrow-blue-left">
+                                                        <use xlink:href="#icon-arrow-blue-left"></use>
+                                                    </svg>
+                                                    <ul class="pagination__list">
+                                                        <li class="pagination__item">
+                                                            <span>1</span>
+                                                        </li>
+                                                        <li class="pagination__item active">
+                                                            <a class="pagination__link" href="">2</a>
+                                                        </li>
+                                                        <li class="pagination__item">
+                                                            <span>...</span>
+                                                        </li>
+                                                        <li class="pagination__item">
+                                                            <a class="pagination__link" href="">48</a>
+                                                        </li>
+                                                    </ul>
+                                                    <svg class="icon icon-arrow-blue-right">
+                                                        <use xlink:href="#icon-arrow-blue-right"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="dapp-directory">
-                                <ul class="directory__list">
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                    <li class="directory__item">
-                                        <div class="directory__holder">
-                                            <figure class="directory__img">
-                                                <svg class="icon icon-big-home">
-                                                    <use xlink:href="#icon-big-home"></use>
-                                                </svg>
-                                            </figure>
-                                            <p>Группы линеек брендов</p>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    </div>
+                                    <div class="admin__wr">
+                                        <table class="admin__table">
+                                            <tr>
+                                                <th class="admin__th">
+                                                    <input type="checkbox">
+                                                </th>
+                                                <th class="admin__th">
+                                                    <svg class="icon icon-blue-gamburger">
+                                                        <use xlink:href="#icon-blue-gamburger"></use>
+                                                    </svg>
+                                                </th>
+                                                <th class="admin__th">Название</th>
+                                                <th class="admin__th">
+                                                    <svg class="icon icon-order-icon">
+                                                        <use xlink:href="#icon-order-icon"></use>
+                                                    </svg>
+                                                    Категория</th>
+                                                <th class="admin__th">Формат</th>
+                                                <th class="admin__th">Населенный
+                                                    <br> пункт</th>
+                                                <th class="admin__th">Адрес</th>
+                                                <th class="admin__th">Отдел
+                                                    <br> продаж</th>
+                                                <th class="admin__th">Маршрут</th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="target">...</div>
+                                <div role="tabpanel" class="tab-pane fade" id="documents">...</div>
+                                <div role="tabpanel" class="tab-pane fade" id="contact">...</div>
+                                <div role="tabpanel" class="tab-pane fade" id="property">...</div>
                             </div>
                         </div>
                     </div>
+                    <div class="save">Сохранить</div>
                 </section>
             </main>
         </div>
     </div>
     <script src="js/jquery-2.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 

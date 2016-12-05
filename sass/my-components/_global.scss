@@ -5,6 +5,7 @@
 html,
 body {
     height: 100%;
+    margin: 0;
 }
 
 body {
@@ -17,19 +18,19 @@ img {
 }
 
 .container-fluid {
+    height: 100%;
 }
 
 .content {
-    width: calc(100% - 90px - 17px);
+    padding-left: 75px;
     height: 100%;
-    margin-left: 90px;
 }
 
 .wrapper {
-    @include clearfix;
     min-width: 1280px;
     max-width: 1920px;
     margin: 0 auto;
+    height: 100%;
 }
 
 
@@ -92,7 +93,6 @@ img {
         font-size: 24px;
         text-align: center;
         margin-bottom: 30px;
-
     }
     &__holder {
         padding: 30px 50px;
@@ -137,4 +137,68 @@ img {
     &__email {
         color: $text-color;
     }
+}
+
+
+/**
+ * Edit
+ */
+
+.edit {
+    &__holder {
+        padding-left: 50px;
+    }
+}
+
+
+/**
+ * Settings
+ */
+
+.settings {
+    &__holder {
+        position: relative;
+        height: 100%;
+    }
+}
+
+/**
+ * Tools panel
+ */
+
+.tools {
+    &__panel {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+    &__item {
+        display: inline-block;
+        padding: 10px 20px;
+        &:hover {
+            background-color: $hover-bg;
+        }
+    }
+}
+
+/**
+ * admin table
+ */
+
+.admin{
+    &__wr {
+        margin-left: -50px;
+    }
+    &__table {
+        width: 100%;
+    }
+    &__th {
+        vertical-align: middle;
+        padding: 5px 20px;
+        background-color: $hover-bg;
+        font-size: 24px;
+        font-weight: 400;
+        color: $second-color;
+    }
+
 }
