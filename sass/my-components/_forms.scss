@@ -4,13 +4,16 @@
         box-shadow: none;
         border-bottom: 1px solid #333;
         height: 40px;
-        padding: 15px 15px 15px 30px;
+        padding: 15px 35px 15px 15px;
         font-size: 20px;
         border-radius: 0;
         &:focus {
             box-shadow: none;
             outline: none;
             border-color: inherit;
+        }
+        &--search {
+            padding: 15px 0 15px 30px;
         }
         &--inline {
             display: inline-block;
@@ -21,6 +24,18 @@
             width: 140px;
             border-bottom: 1px solid $gray-light;
         }
+        &--wr {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        &--icon {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+    }
+    &__list {
+        padding-right: 80px;
     }
     &-label {
         display: inline-block;
@@ -34,9 +49,21 @@
             margin-right: 20px;
             width: auto;
         }
+        &--full {
+            width: auto;
+        }
     }
 }
 
+.form-horizontal {
+    .control-label{
+        padding-top: 10px;
+        text-align: left;
+        font-size: 20px;
+        font-weight: 300;
+        color: $gray-light;
+    }
+}
 
 /**
  * Bootstrap slider
@@ -44,6 +71,7 @@
 
 .bootstrap-select {
     margin-right: 20px;
+
     .caret {
         border: none;
         width: 14px;
@@ -52,17 +80,47 @@
         background-repeat: no-repeat;
         background-size: 14px 8px;
     }
+    .dropdown-toggle {
+        &:focus {
+            outline: none;
+
+    outline: 0 dotted #333!important;
+    outline: 0 auto -webkit-focus-ring-color!important;
+    outline-offset: 0;
+
+        }
+    }
 }
 
 .dropdown-toggle {
     border: none;
     border-bottom: 1px solid #eaeaea;
     border-radius: 0;
+
+}
+
+.dropdown-menu {
+    >li {
+        >a {
+            padding: 10px 20px;
+            font-size: 18px;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
 }
 
 .filter-option {
     color: $text-color;
     font-size: 18px;
+}
+
+.wide-select {
+    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        width: 100%;
+        display: block;
+    }
 }
 
 .custom__option {
