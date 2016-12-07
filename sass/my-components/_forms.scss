@@ -33,7 +33,22 @@
             right: 5px;
             top: 5px;
         }
+        &--inverse {
+            color: $second-color;
+        }
+        &[disabled="disabled"] {
+            border: none;
+            background-color: #fff;
+            cursor: default;
+        }
+
     }
+    &-divider {
+            height: 1px;
+            border-bottom: 1px solid #eaeaea;
+            padding: 20px 0 0;
+            margin: 0 0 20px -50px;
+        }
     &__list {
         padding-right: 80px;
     }
@@ -96,6 +111,13 @@
     border: none;
     border-bottom: 1px solid #eaeaea;
     border-radius: 0;
+    &[disabled="disabled"] {
+        border: none;
+        cursor: default;
+        .caret {
+            display: none;
+        }
+    }
 
 }
 

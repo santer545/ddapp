@@ -17,6 +17,26 @@ img {
     height: auto;
 }
 
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+textarea {
+    width: 100%;
+    height: 90px;
+    resize: none;
+    &[disabled="disabled"] {
+        border: none;
+        background-color: #fff;
+    }
+}
+
 .container-fluid {
     height: 100%;
 }
@@ -317,8 +337,9 @@ img {
 .steps {
     &__list {
         counter-reset: list 0;
-        text-align: justify;
-        padding: 0 50px;
+        font-size: 0;
+        padding: 0;
+        margin-bottom: 50px;
         &:after {
             display: inline-block;
             width: 100%;
@@ -328,28 +349,32 @@ img {
     &__item {
         position: relative;
         display: inline-block;
+        width: 33.3%;
         font-size: 24px;
         padding-top: 70px;
         color: #fff;
+        overflow: hidden;
         &.active {
             color: $text-color;
             &:before {
                 opacity: 1;
             }
             .circle__dot {
-                display: inline-block;
+                visibility: visible;
+                opacity: 1;
             }
         }
-        &:after {
-
+        &.done {
+            .circle__dot {
+                animation: none;
+            }
         }
         &:before {
             counter-increment: list;
             content: counter(list) "";
             position: absolute;
             top: 0;
-            left: 50%;
-            transform: translate(-50%, 0);
+            left: 0;
             width: 55px;
             height: 55px;
             line-height: 55px;
@@ -370,19 +395,39 @@ img {
 .circle__wr {
     position: absolute;
     top: 8px;
-    left: 75%;
-    white-space: nowrap;
+    left: 55px;
+    width: calc(100% - 55px);
+
+    text-align: justify;
+    &:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+    }
+    &--block {
+        left: 4px;
+        top: 37px;
+        width: auto;
+        height: 100%;
+    }
 }
 .circle__dot {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 15px;
-    width: 7px;
-    height: 7px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background-color: $step-bg;
     animation: bounce 2s infinite ease-in-out both;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    &--block {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        margin-bottom: 20px;
+        animation: none;
+    }
     &:nth-child(2) {
       animation-delay: .2s;
     }
@@ -408,6 +453,152 @@ img {
       animation-delay: 1.4s;
     }
 }
+
+/**
+ * Order
+ */
+
+.detail {
+    text-transform: uppercase;
+    font-size: 16px;
+    color: $brand-primary;
+    .icon {
+        width: 14px;
+    }
+}
+
+.order {
+    position: relative;
+    &__status_list {
+        list-style-type: none;
+        padding: 0 0 0 115px;
+        margin: 0;
+    }
+    &__status_item {
+        position: relative;
+        padding-bottom: 50px;
+        font-size: 20px;
+        font-weight: 400;
+        padding-left: 30px;
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: $step-bg;
+            z-index: 2;
+        }
+        &:before {
+            top: 13px;
+            left: 4px;
+        }
+        &:after {
+            width: 13px;
+            height: 13px;
+            background-color: #fff;
+            border: 1px solid $step-bg;
+            z-index: 1;
+        }
+        span {
+            display: block;
+            color: $gray-light;
+        }
+    }
+    &__status_date {
+        position: absolute;
+        text-align: right;
+        top: 0;
+        right: calc(100% + 20px);
+    }
+    &-section {
+        padding-bottom: 40px;
+    }
+    &__tools {
+        position: absolute;
+        right: 0;
+        top: 0;
+        &_list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        &_item {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid #eaeaea;
+            cursor: pointer;
+        }
+    }
+    &__table {
+        width: 100%;
+        &_wr {
+            margin-left: -50px;
+        }
+        &_th {
+            background-color: #F1F1F1;
+            color: #AEAEAE;
+            padding: 30px 0;
+            font-size: 25px;
+            font-weight: 300;
+        }
+        &_name {
+            width: 50%;
+            padding-left: 50px;
+            span {
+                margin-left: 45px;
+            }
+        }
+        &_plus {
+            color: $step-bg;
+        }
+        &_money {
+            color: #AEAEAE;
+        }
+        &_minus {
+            color: #FE5252;
+        }
+        &_minus,
+        &_plus,
+        &_money,
+        &_count,
+        &_name {
+            font-size: 23px;
+        }
+        &_heading {
+            color: $step-bg;
+            padding: 20px 0 20px 50px;
+            font-size: 24px;
+        }
+        &_footer {
+            background-color: #F1F1F1;
+            color: #AEAEAE;
+            padding: 20px 0;
+            font-size: 27px;
+            font-weight: 400;
+        }
+        th, td {
+            vertical-align: middle;
+            text-align: center;
+        }
+        th:first-child {
+            text-align: left;
+        }
+        td {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        tr td:first-child {
+            padding-left: 50px;
+            text-align: left;
+        }
+    }
+}
+
 
 @keyframes bounce {
   0%, 20%, 100% {

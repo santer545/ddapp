@@ -5,4 +5,14 @@ $(document).ready(function() {
     });
     $('.selectpicker').selectpicker();
 
+
+    var a = $('.js-detail').attr('aria-expanded');
+    if (a == 'true') {
+        $('.js-detail').html('Скрыть');
+    }
+
+    $('.js-editing input, .js-editing button, .js-editing textarea').attr('disabled', 'disabled');
+    $('.js-edit').click(function() {
+        $('.js-editing input, .js-editing button, .js-editing textarea').removeAttr('disabled');
+    });
 });
