@@ -7,6 +7,7 @@
     padding: 40px 0;
     background-color: $brand-primary;
     transition: width 0.3s;
+    overflow-y: auto;
     &__fake {
         height: 100%;
         width: 90px;
