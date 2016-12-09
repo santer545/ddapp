@@ -75,6 +75,7 @@ textarea {
     margin-bottom: 50px;
 }
 
+
 /**
  * header
  */
@@ -202,7 +203,22 @@ textarea {
             background-color: #f1f1f1;
         }
     }
+    &__block {
+        padding: 5px 20px;
+        border: 1px solid #eaeaea;
+        display: inline-block;
+        transition: background-color 0.3s;
+        cursor: pointer;
+        &:hover {
+            background-color: #f1f1f1;
+        }
+    }
+    &__wr {
+        padding: 30px 0;
+    }
 }
+
+
 
 
 /**
@@ -215,6 +231,7 @@ textarea {
         height: 100%;
     }
 }
+
 
 /**
  * Tools panel
@@ -268,18 +285,18 @@ textarea {
     }
 }
 
+
 /**
  * admin table
  */
 
-.admin{
+.admin {
     &__wr {
         margin-left: -50px;
     }
     &__table {
         width: 100%;
     }
-
     &__td {
         padding: 15px 20px;
         font-size: 20px;
@@ -360,7 +377,6 @@ textarea {
             opacity: 0;
         }
     }
-
 }
 
 
@@ -374,7 +390,6 @@ textarea {
         font-size: 0;
         padding: 0;
         margin-bottom: 50px;
-
         &:after {
             display: inline-block;
             width: 100%;
@@ -428,7 +443,6 @@ textarea {
             background-color: $step-bg;
             font-size: 24px;
             list-style-type: none;
-
         }
     }
 }
@@ -436,12 +450,13 @@ textarea {
 .form__data {
     padding-left: 50px;
 }
+
 .circle__wr {
     position: absolute;
-  top: 10px;
-  left: calc(50% + 35px);
-  width: calc(100% - 70px);
-  text-align: justify;
+    top: 10px;
+    left: calc(50% + 35px);
+    width: calc(100% - 70px);
+    text-align: justify;
     &:after {
         content: '';
         display: inline-block;
@@ -454,6 +469,7 @@ textarea {
         height: 100%;
     }
 }
+
 .circle__dot {
     display: inline-block;
     vertical-align: middle;
@@ -472,30 +488,28 @@ textarea {
         animation: none;
     }
     &:nth-child(2) {
-      animation-delay: .2s;
+        animation-delay: .2s;
     }
-
     &:nth-child(3) {
-      animation-delay: .4s;
+        animation-delay: .4s;
     }
-
     &:nth-child(4) {
-      animation-delay: .6s;
+        animation-delay: .6s;
     }
-
     &:nth-child(5) {
-      animation-delay: .8s;
+        animation-delay: .8s;
     }
     &:nth-child(6) {
-      animation-delay: 1s;
+        animation-delay: 1s;
     }
     &:nth-child(7) {
-      animation-delay: 1.2s;
+        animation-delay: 1.2s;
     }
     &:nth-child(8) {
-      animation-delay: 1.4s;
+        animation-delay: 1.4s;
     }
 }
+
 
 /**
  * Order
@@ -623,7 +637,8 @@ textarea {
             font-size: 27px;
             font-weight: 400;
         }
-        th, td {
+        th,
+        td {
             vertical-align: middle;
             text-align: center;
         }
@@ -645,17 +660,16 @@ textarea {
     }
 }
 
-
-
-
 @keyframes bounce {
-  0%, 80%, 100% {
-    transform: scale(0);
-  } 40% {
-    transform: scale(1);
-  }
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
 }
-
 
 
 /**
@@ -722,18 +736,26 @@ textarea {
     &__place {
         color: $text-color;
         display: block;
+        font-size: 20px;
     }
     &__adress {
         font-size: 22px;
+        color: $gray-middle;
     }
     &__all {
+        color: $gray-middle;
+        font-size: 21px;
         &_wr {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            font-size: 21px;
+            color: $gray-middle;
+            height: 30px;
+            &--first {
+                padding-top: 10px;
+            }
         }
     }
-    &__item {
-
-    }
+    &__item {}
     &__footer {
         .icon {
             width: 20px;
@@ -743,10 +765,11 @@ textarea {
     }
 }
 
+
+
 /**
  * Add product
  */
-
 
 .load {
     &__img {
@@ -829,7 +852,6 @@ textarea {
     }
     &__table {
         width: 100%;
-
         &_th {
             font-size: 18px;
             color: $gray-middle;
@@ -949,6 +971,7 @@ textarea {
     }
 }
 
+
 /**
  * Diagramm
  */
@@ -962,11 +985,9 @@ textarea {
 .diagramm {
     &__data {
         font-size: 30px;
-
         display: inline-block;
         vertical-align: middle;
         margin-right: 40px;
-
     }
     &__digital {
         font-size: 50px;
@@ -977,6 +998,7 @@ textarea {
     padding: 20px 30px;
     color: $brand-primary;
     text-align: center;
+    margin-bottom: 10px;
     background-color: #fafafa;
     transition: background-color 0.3s;
     &.active,
@@ -991,4 +1013,130 @@ textarea {
         width: 35px;
         height: 45px;
     }
+}
+
+.drop__area {
+    padding-left: 30px;
+}
+
+.drop__top {
+    padding-top: 20px;
+    height: 135px;
+    background-color: #f1f1f1;
+    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        margin: 0;
+        width: 80%;
+        min-width: 80%;
+        &.btn-group .dropdown-toggle .filter-option {
+            text-overflow: ellipsis;
+        }
+        .dropdown-toggle {
+            background-color: #f1f1f1;
+            border-bottom: 2px solid #fff;
+        }
+    }
+    &--first {
+        padding-left: 30px;
+        margin: 0 -30px;
+        padding-top: 0;
+        line-height: 135px;
+    }
+}
+
+.drop__day {
+    width: 20%;
+    float: left;
+    font-size: 24px;
+    color: $gray-middle;
+}
+
+.drop__wr {
+    @include clearfix;
+    padding-top: 50px;
+}
+
+.drop__weakend {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: $gray-middle;
+}
+
+.ui-widget-header {
+    background-color: #fff;
+}
+
+.column {
+    width: 20%;
+    float: left;
+    padding-bottom: 100px;
+}
+
+.column--wide {
+    width: 100%;
+    .portlet {
+        margin-right: 0;
+    }
+}
+
+.portlet {
+    margin: 0 1em 1em 0;
+    padding: 0.3em;
+}
+
+.portlet-header {
+    padding: 0.2em 0.3em;
+    margin-bottom: 0.5em;
+    position: relative;
+    cursor: pointer;
+}
+
+.portlet-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+}
+
+.portlet-content {
+    padding: 0.4em;
+}
+
+.portlet-placeholder {
+    border: 1px dotted black;
+    margin: 0 1em 1em 0;
+    height: 50px;
+}
+
+.portlet__number_wr {
+    @include clearfix;
+}
+.portlet__number_item {
+    padding-top: 10px;
+    padding-left: 10px;
+    float: left;
+    width: 20%;
+    color: #9f9f9f;
+    font-size: 21px;
+}
+
+.ui-widget.ui-widget-content {
+    border: none;
+}
+
+.owl-nav {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: $brand-primary;
+}
+
+.owl-prev {
+    float: left;
+}
+
+.owl-next {
+    float: right;
 }
