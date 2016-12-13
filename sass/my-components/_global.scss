@@ -401,7 +401,6 @@ div.ui-selecting {background-color: #f1f1f1;}
     }
     &__checkbox {
         margin: 0;
-        padding-top: 5px;
         input[type="checkbox"] {
             display: none;
             &:checked {
@@ -421,7 +420,7 @@ div.ui-selecting {background-color: #f1f1f1;}
     &__checkbox_emulator {
         position: relative;
         display: inline-block;
-        vertical-align: middle;
+        vertical-align: top;
         width: 26px;
         height: 26px;
         padding: 0;
@@ -430,6 +429,10 @@ div.ui-selecting {background-color: #f1f1f1;}
         border-radius: 3px;
         cursor: pointer;
         transition: border 0.3s, background-color 0.3s;
+        @media (max-width: 1600px) {
+            width: 20px;
+            height: 20px;
+        }
         &:before {
             content: '';
             width: 16px;
@@ -442,6 +445,10 @@ div.ui-selecting {background-color: #f1f1f1;}
             border-right: none;
             transform: rotate(-45deg);
             opacity: 0;
+            @media (max-width: 1600px) {
+                width: 11px;
+                height: 5px;
+            }
         }
     }
 }
@@ -834,19 +841,36 @@ div.ui-selecting {background-color: #f1f1f1;}
         display: block;
         font-size: 23px;
         margin-bottom: 10px;
+        @media (max-width: 1600px) {
+            font-size: 19px;
+        }
+        @media (max-width: 1400px) {
+            font-size: 17px;
+        }
     }
     &__adress {
         font-size: 22px;
         color: $gray-middle;
+        @media (max-width: 1600px) {
+            font-size: 18px;
+        }
+        @media (max-width: 1400px) {
+            font-size: 16px;
+        }
     }
     &__all {
         color: $gray-middle;
         font-size: 29px;
+        @media (max-width: 1600px) {
+            font-size: 20px;
+        }
+        @media (max-width: 1400px) {
+            font-size: 15px;
+        }
         &_wr {
             margin-bottom: 10px;
             font-size: 21px;
             color: $gray-middle;
-            height: 30px;
             &--first {
                 padding-top: 10px;
             }
@@ -935,6 +959,9 @@ div.ui-selecting {background-color: #f1f1f1;}
         }
         .bootstrap-select.btn-group .dropdown-toggle .filter-option {
             font-size: 29px;
+            @media (max-width: 1600px) {
+                font-size: 24px;
+            }
         }
     }
     &__block {
@@ -1134,6 +1161,9 @@ div.ui-selecting {background-color: #f1f1f1;}
             text-overflow: ellipsis;
             font-size: 28px;
             width: 80%;
+            @media (max-width: 1600px) {
+                font-size: 20px;
+            }
         }
         .dropdown-toggle {
             background-color: #f1f1f1;
@@ -1155,9 +1185,18 @@ div.ui-selecting {background-color: #f1f1f1;}
     color: $gray-middle;
     text-align: left;
     padding-left: 25px;
+    @media (max-width: 1600px) {
+        font-size: 20px;
+    }
+    @media (max-width: 1400px) {
+        font-size: 16px;
+    }
     span {
         display: inline-block;
         margin-right: 20px;
+        @media (max-width: 1600px) {
+            margin-right: 10px;
+        }
     }
 }
 
@@ -1181,8 +1220,14 @@ div.ui-selecting {background-color: #f1f1f1;}
     float: left;
     font-size: 30px;
     color: $second-color;
+    @media (max-width: 1600px) {
+        font-size: 20px;
+    }
     .icon {
         width: 22px;
+        @media (max-width: 1600px) {
+            width: 15px;
+        }
     }
 }
 
@@ -1245,6 +1290,12 @@ div.ui-selecting {background-color: #f1f1f1;}
     width: 20%;
     color: #9f9f9f;
     font-size: 29px;
+    @media (max-width: 1600px) {
+        font-size: 20px;
+    }
+    @media (max-width: 1400px) {
+        font-size: 16px;
+    }
 }
 
 .ui-widget.ui-widget-content {
@@ -1259,6 +1310,12 @@ div.ui-selecting {background-color: #f1f1f1;}
     font-size: 25px;
     text-transform: uppercase;
     color: $brand-primary;
+    @media (max-width: 1600px) {
+        font-size: 20px;
+    }
+    @media (max-width: 1400px) {
+        font-size: 16px;
+    }
     span {
         display: inline-block;
         vertical-align: baseline;

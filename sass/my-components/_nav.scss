@@ -7,7 +7,9 @@
     padding: 40px 0;
     background-color: $brand-primary;
     transition: width 0.3s;
-
+    overflow: visible !important;
+    max-height: 100%;
+    
     &__fake {
         height: 100%;
         width: 90px;
@@ -35,6 +37,10 @@
         line-height: 70px;
         z-index: 1;
         white-space: nowrap;
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
         &:before {
             content: "";
             position: absolute;
@@ -89,8 +95,12 @@
         white-space: normal;
     }
     &.active {
-        width: 350px;
+        width: 350px!important;
         text-align: left;
+        .jspContainer,
+        .jspPane {
+            width: 350px !important;
+        }
         .sidebar__item {
 
             &:after {
@@ -156,6 +166,9 @@
             font-weight: 300;
             color: #333;
             padding: 2px 30px;
+            @media (max-width: 1600px) {
+                font-size: 24px;
+            }
         }
     }
 }

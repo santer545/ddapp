@@ -50,4 +50,7 @@ $(document).ready(function() {
         console.log(prod_name);
         $('.add__name').html(prod_name);
     });
+
+
+    $('.scroll-pane').jScrollPane();
 });

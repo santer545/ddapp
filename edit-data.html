@@ -268,7 +268,7 @@
         </symbol>
     </svg>
     <div class="wrapper">
-        <aside class="sidebar">
+        <aside class="sidebar scroll-pane">
             <div class="menu__arrow_holder">
                 <div class="menu__arrow js__arrow">
                     <svg class="icon icon-menu-arrow">
@@ -684,25 +684,72 @@
     <script src="js/jquery-2.2.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
+    /*$(function() {
+                $(".column").sortable({
+                    connectWith: ".column",
+                    handle: ".handle",
+                    cancel: ".cls",
+                    placeholder: "portlet-placeholder ui-corner-all",
+                    start: function(event, ui) {
+                        console.log('Start!!!!');
+                    },
+                    update: function(event, ui) {
+                        console.log('Stop!!!!');
+                    }
+                });
+                $('.column').selectable({
+                        filter: ".portlet-header",
+                        cancel: ".handle, .portlet-remove"
+                    })
+                    .find(".portlet")
+                    .prepend("<div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>");
+        */
+
+
+
+
+
     $(function() {
-        $(".column").sortable({
-            connectWith: ".column",
-            handle: ".handle",
-            cancel: ".cls",
-            placeholder: "portlet-placeholder ui-corner-all",
-            start: function(event, ui) {
-                console.log('Start!!!!');
-            },
-            update: function(event, ui) {
-                console.log('Stop!!!!');
-            }
-        });
+
         $('.column').selectable({
-                filter: ".portlet-header",
-                cancel: ".handle, .portlet-remove"
-            })
-            .find(".portlet")
-            .prepend("<div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>");
+            cancel: '.handle, .route-footer, .portlet-remove',
+            filter: ".portlet",
+            //tolerance: "fit"
+        }).find(".portlet").prepend("<div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>");
+
+
+
+        $('.column').sortable({
+            cursorAt: {
+                top: 10,
+                left: 25
+            },
+            placeholder: "li-placeHolder",
+            connectWith: ".column",
+            items: ".portlet",
+            handle: '.handle',
+            helper: function(e, item) {
+                if (!item.hasClass('ui-selected')) {
+                    $('.column').find('.ui-selected').removeClass('ui-selected');
+                    item.addClass('ui-selected');
+                }
+
+                var selected = $('.ui-selected').clone();
+                item.data('multidrag', selected);
+                $('.ui-selected').not(item).remove();
+                return $('<div class="transporter"></div>').append(selected);
+            },
+            stop: function(e, ui) {
+                var selected = ui.item.data('multidrag');
+                ui.item.after(selected);
+                ui.item.remove();
+                $('.portlet-remove').on("click", function() {
+                    var start = $(this).closest('.column .portlet').remove();
+                    $('.start-column').append(start);
+                    console.log('YO!!!');
+                });
+            }
+        }).disableSelection();
 
 
 
@@ -721,40 +768,14 @@
 
 
 
-        /*$(function() {
-
-            $('.portlet')
-                .bind("mousedown", function(e) {
-                    e.metaKey = true;
-                })
-                .selectable();
-        });*/
-
-        /*$(".portlet")
-            .addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
-            .find(".portlet-header")
-            .addClass("route__item_holder");*/
-
-
-        /*var cancel = $(".column").sortable("option", "cancel");
-
-
-        $(".column").sortable("option", "cancel", "svg");*/
-
-        /*$(".portlet-toggle").on("click", function() {
-            var icon = $(this);
-            icon.toggleClass("ui-icon-minusthick ui-icon-plusthick");
-            icon.closest(".portlet").find(".portlet-content").toggle();
-        });*/
-        $('.portlet-remove').on("click", function() {
-            var start = $(this).closest('.column .portlet').remove();
-            $('.start-column').append(start);
-        });
     });
+    
     </script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/jquery.jscrollpane.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 
