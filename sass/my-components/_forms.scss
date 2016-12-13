@@ -48,6 +48,12 @@
             cursor: default;
         }
     }
+    &-group {
+        margin-bottom: 20px;
+        &--modal {
+            margin-bottom: 14px;
+        }
+    }
     &-divider {
         height: 1px;
         border-bottom: 1px solid #eaeaea;
@@ -60,13 +66,13 @@
     &-label {
         display: inline-block;
         vertical-align: middle;
-        font-size: 18px;
+        font-size: 22px;
         font-weight: 300;
         color: $gray-light;
         width: 10%;
         margin-bottom: 0;
         &--auto {
-            margin-right: 20px;
+            margin-right: 95px;
             width: auto;
         }
         &--full {
@@ -79,27 +85,34 @@
     &--inline {
         display: inline-block;
         vertical-align: middle;
+        .control-label {
+            vertical-align: middle;
+            padding-top: 0;
+            margin-right: 30px;
+        }
     }
     .control-label {
-        padding-top: 12px;
+        padding-top: 5px;
         text-align: left;
         font-size: 24px;
         font-weight: 400;
         color: $gray-middle;
         &--big {
             font-size: 25px;
+            padding-top: 12px;
         }
     }
 }
 
 .control-label {
-        padding-top: 12px;
+        padding-top: 5px;
         text-align: left;
         font-size: 24px;
         font-weight: 400;
         color: $gray-middle;
         &--big {
             font-size: 27px;
+            padding-top: 12px;
         }
     }
 

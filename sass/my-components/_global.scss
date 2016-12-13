@@ -90,6 +90,9 @@ textarea {
         &:hover {
             background-color: #f1f1f1;
         }
+        &--modal {
+            margin: 0;
+        }
     }
 }
 
@@ -111,12 +114,22 @@ textarea {
 .logo {
     display: block;
     padding: 7px 0 13px 32px;
+    img {
+        width: 230px;
+    }
 }
 
 .search {
     position: relative;
     margin-top: 30px;
 }
+
+.selected {
+    background-color: #000;
+}
+
+div.ui-selected {background-color: #f1f1f1;}
+div.ui-selecting {background-color: #f1f1f1;}
 
 .user {
     margin-top: 10px;
@@ -127,12 +140,14 @@ textarea {
         width: 80px;
         height: 80px;
         margin-right: 35px;
+        cursor: pointer;
         img {
             width: 100%;
             height: 100%;
         }
     }
     &__info {
+        cursor: pointer;
         display: inline-block;
         vertical-align: middle;
     }
@@ -174,6 +189,7 @@ textarea {
  */
 
 .personal {
+    padding-bottom: 60px;
     position: relative;
     &__functions {
         position: absolute;
@@ -185,7 +201,7 @@ textarea {
         }
     }
     &__img {
-        padding-left: 50px;
+        padding-left: 30px;
         img {
             width: 100%;
         }
@@ -259,6 +275,18 @@ textarea {
  * Tools panel
  */
 
+.map {
+    padding-bottom: 60px;
+}
+
+.settings__distance {
+    font-size: 21px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 30px;
+    color: $gray-light;
+}
+
 .tools {
     &__panel {
         padding: 0;
@@ -268,12 +296,17 @@ textarea {
             display: inline-block;
             vertical-align: middle;
             margin-bottom: 0;
+            margin-right: 45px;
         }
     }
     &__item {
         display: inline-block;
-        padding: 10px 30px;
+
         cursor: pointer;
+        a {
+            padding: 10px 30px;
+            display: block;
+        }
         &:hover,
         &.active {
             background-color: $hover-bg;
@@ -358,8 +391,17 @@ textarea {
             height: 17px;
         }
     }
+    &__text {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 23px;
+        font-weight: 300;
+        color: $gray-light;
+        margin-left: 30px;
+    }
     &__checkbox {
         margin: 0;
+        padding-top: 5px;
         input[type="checkbox"] {
             display: none;
             &:checked {
@@ -372,13 +414,16 @@ textarea {
                 }
             }
         }
+        &--modal {
+            margin-bottom: 18px;
+        }
     }
     &__checkbox_emulator {
         position: relative;
         display: inline-block;
         vertical-align: middle;
-        width: 20px;
-        height: 20px;
+        width: 26px;
+        height: 26px;
         padding: 0;
         border: 2px solid $gray-light;
         background-color: #fff;
@@ -387,11 +432,11 @@ textarea {
         transition: border 0.3s, background-color 0.3s;
         &:before {
             content: '';
-            width: 11px;
-            height: 7px;
+            width: 16px;
+            height: 8px;
             position: absolute;
             left: 3px;
-            top: 3px;
+            top: 5px;
             border: 2px solid #fff;
             border-top: none;
             border-right: none;
@@ -422,11 +467,16 @@ textarea {
         position: relative;
         display: inline-block;
         width: 33.3%;
-        font-size: 24px;
-        padding-top: 70px;
+        font-size: 28px;
+        padding-top: 110px;
         color: #fff;
         text-align: center;
         opacity: 0.3;
+        &--inverse {
+            &:before {
+                display: none;
+            }
+        }
         &--large {
             width: 20%;
         }
@@ -456,16 +506,36 @@ textarea {
             top: 0;
             left: 50%;
             transform: translate(-50%, 0);
-            width: 55px;
-            height: 55px;
-            line-height: 55px;
+             width: 82px;
+            height: 82px;
+            line-height: 80px;
             text-align: center;
             color: #fff;
             border-radius: 50%;
             background-color: $step-bg;
-            font-size: 24px;
+            font-size: 36px;
             list-style-type: none;
         }
+    }
+    &__circle {
+        position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 82px;
+            height: 82px;
+            line-height: 80px;
+            text-align: center;
+            color: #fff;
+            border-radius: 50%;
+            background-color: $step-bg;
+            font-size: 36px;
+            list-style-type: none;
+            .icon {
+                fill: #ffffff;
+                width: 35px;
+                height: 35px;
+            }
     }
 }
 
@@ -475,16 +545,18 @@ textarea {
 
 .circle__wr {
     position: absolute;
-    top: 10px;
+    top: 24px;
     left: calc(50% + 35px);
     width: calc(100% - 70px);
     text-align: justify;
+    padding: 0 20px;
     &:after {
         content: '';
         display: inline-block;
         width: 100%;
     }
     &--block {
+        padding: 0;
         left: 4px;
         top: 37px;
         width: auto;
@@ -555,8 +627,8 @@ textarea {
     }
     &__status_item {
         position: relative;
-        padding-bottom: 50px;
-        font-size: 20px;
+        padding-bottom: 44px;
+        font-size: 22px;
         font-weight: 400;
         padding-left: 30px;
         &:before,
@@ -679,6 +751,8 @@ textarea {
     }
     &__time {
         color: $gray-light;
+        display: inline-block;
+        font-size: 24px;
     }
 }
 
@@ -758,7 +832,8 @@ textarea {
     &__place {
         color: $text-color;
         display: block;
-        font-size: 20px;
+        font-size: 23px;
+        margin-bottom: 10px;
     }
     &__adress {
         font-size: 22px;
@@ -766,7 +841,7 @@ textarea {
     }
     &__all {
         color: $gray-middle;
-        font-size: 21px;
+        font-size: 29px;
         &_wr {
             margin-bottom: 10px;
             font-size: 21px;
@@ -1051,12 +1126,14 @@ textarea {
     padding-top: 20px;
     height: 135px;
     background-color: #f1f1f1;
+    @include clearfix;
     .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
         margin: 0;
-        width: 80%;
-        min-width: 80%;
+        width: 100%;
         &.btn-group .dropdown-toggle .filter-option {
             text-overflow: ellipsis;
+            font-size: 28px;
+            width: 80%;
         }
         .dropdown-toggle {
             background-color: #f1f1f1;
@@ -1064,29 +1141,49 @@ textarea {
         }
     }
     &--first {
-        padding-left: 30px;
+        padding-left: 35px;
         margin: 0 -30px;
         padding-top: 0;
-        line-height: 135px;
+        line-height: 125px;
     }
 }
 
 .drop__day {
     width: 20%;
     float: left;
-    font-size: 24px;
+    font-size: 29px;
     color: $gray-middle;
+    text-align: left;
+    padding-left: 25px;
+    span {
+        display: inline-block;
+        margin-right: 20px;
+    }
 }
 
 .drop__wr {
     @include clearfix;
-    padding-top: 50px;
+    padding-top: 25px;
 }
 
 .drop__weakend {
-    font-size: 18px;
+    font-size: 25px;
     text-transform: uppercase;
     color: $gray-middle;
+}
+
+.merch__wr {
+    @include clearfix;
+}
+
+.merch__item {
+    width: 20%;
+    float: left;
+    font-size: 30px;
+    color: $second-color;
+    .icon {
+        width: 22px;
+    }
 }
 
 .ui-widget-header {
@@ -1109,6 +1206,9 @@ textarea {
 .portlet {
     margin: 0 1em 1em 0;
     padding: 0.3em;
+    &-remove {
+        display: inline-block;
+    }
 }
 
 .portlet-header {
@@ -1140,11 +1240,11 @@ textarea {
 }
 .portlet__number_item {
     padding-top: 10px;
-    padding-left: 10px;
+    padding-left: 25px;
     float: left;
     width: 20%;
     color: #9f9f9f;
-    font-size: 21px;
+    font-size: 29px;
 }
 
 .ui-widget.ui-widget-content {
@@ -1153,18 +1253,60 @@ textarea {
 
 .owl-nav {
     position: absolute;
-    top: 20px;
+    top: 14px;
     left: 0;
     right: 0;
-    font-size: 18px;
+    font-size: 25px;
     text-transform: uppercase;
     color: $brand-primary;
+    span {
+        display: inline-block;
+        vertical-align: baseline;
+    }
+    .icon {
+        vertical-align: baseline;
+    }
 }
 
 .owl-prev {
     float: left;
+    padding-left: 21px;
 }
 
 .owl-next {
     float: right;
+    padding-right: 21px;
+}
+
+
+.modal-header {
+    padding: 39px 37px 0;
+    font-size: 24px;
+    border-bottom: none;
+    &--inverse {
+        padding-top: 11px;
+    }
+}
+
+.modal-dialog {
+    width: 690px;
+}
+
+.modal-body {
+    padding: 20px 37px 0;
+    &--inverse {
+        padding-bottom: 28px;
+    }
+    .wide-select {
+        .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+            width: 87%;
+            display: block;
+        }
+    }
+}
+
+.modal-content {
+    display: table;
+    width: 100%;
+    border-radius: 0;
 }

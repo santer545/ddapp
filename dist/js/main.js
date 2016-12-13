@@ -20,7 +20,7 @@ $(document).ready(function() {
             items: 1,
             mouseDrag: false,
             nav: true,
-            navText: ['<svg class="icon icon-ico35"><use xlink:href="#icon-ico35"></use></svg> предыдущая неделя', 'следующая неделя <svg class="icon icon-ico36"><use xlink:href="#icon-ico36"></use></svg>']
+            navText: ['<svg class="icon icon-ico35"><use xlink:href="#icon-ico35"></use></svg> <span>предыдущая неделя</a>', '<span>следующая неделя</span> <svg class="icon icon-ico36"><use xlink:href="#icon-ico36"></use></svg>']
         });
     });
 
