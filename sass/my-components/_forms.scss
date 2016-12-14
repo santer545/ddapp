@@ -243,6 +243,12 @@
     overflow: visible !important;
     position: relative;
     transition: width 0.3s;
+    &:focus {
+        outline: none;
+        *, .sidebar__item {
+            outline: none;
+        }
+    }
 }
 
 .jspPane
@@ -250,6 +256,21 @@
     padding-top: 40px!important;
     position: absolute;
     transition: width 0.3s;
+    &:focus {
+        outline: none;
+        *,.sidebar__item {
+            outline: none;
+        }
+    }
+}
+
+.jspScrollable {
+    &:focus {
+        outline: none;
+        *, .sidebar__item {
+            outline: none;
+        }
+    }
 }
 
 .jspVerticalBar

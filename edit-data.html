@@ -410,8 +410,8 @@
                     </form>
                 </div>
                 <section class="drop__area">
-                    <div class="row">
-                        <div class="col-md-2">
+                    <div class="column__row">
+                        <div class="column__left">
                             <div class="drop__top drop__top--first">
                                 <select name="" id="" class="selectpicker">
                                     <option value="">Нераспределенные</option>
@@ -621,9 +621,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-10">
+                        <div class="column__right">
                             <div class="owl-carousel">
-                                <div>
+                                <div class="owl__wr">
                                     <div class="drop__top text-center">
                                         <div class="drop__weakend">Неделя 1</div>
                                         <div class="drop__wr">
@@ -631,6 +631,7 @@
                                             <div class="drop__day"><span>ВТ</span> 21.01.01</div>
                                             <div class="drop__day"><span>Ср</span> 21.01.01</div>
                                             <div class="drop__day"><span>Чт</span> 21.01.01</div>
+                                            <div class="drop__day"><span>Пт</span> 21.01.01</div>
                                             <div class="drop__day"><span>Пт</span> 21.01.01</div>
                                         </div>
                                     </div>
@@ -640,19 +641,24 @@
                                         <div class="portlet__number_item">12</div>
                                         <div class="portlet__number_item">11</div>
                                         <div class="portlet__number_item">23</div>
+                                        <div class="portlet__number_item">23</div>
                                     </div>
-                                    <div class="column">
-                                    </div>
-                                    <div class="column">
-                                    </div>
-                                    <div class="column">
-                                    </div>
-                                    <div class="column">
-                                    </div>
-                                    <div class="column">
+                                    <div class="column__wr">
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                        </div>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="owl__wr">
                                     <div class="drop__top text-center">
                                         <div class="drop__weakend">Неделя 2</div>
                                         <div class="drop__wr">
@@ -661,17 +667,23 @@
                                             <div class="drop__day"><span>Ср</span> 21.01.01</div>
                                             <div class="drop__day"><span>Чт</span> 21.01.01</div>
                                             <div class="drop__day"><span>Пт</span> 21.01.01</div>
+                                            <div class="drop__day"><span>Пт</span> 21.01.01</div>
                                         </div>
                                     </div>
-                                    <div class="column">
-                                    </div>
-                                    <div class="column">
-                                    </div>
-                                    <div class="column">
-                                    </div>
-                                    <div class="column">
-                                    </div>
-                                    <div class="column">
+
+                                    <div class="column__wr">
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                        </div>
+                                        <div class="column">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -715,7 +727,7 @@
             cancel: '.handle, .route-footer, .portlet-remove',
             filter: ".portlet",
             //tolerance: "fit"
-        }).find(".portlet").prepend("<div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>");
+        }).find(".portlet").prepend("<div class='handle'></div>");
 
 
 
