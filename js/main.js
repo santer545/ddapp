@@ -53,4 +53,5 @@ $(document).ready(function() {
 
 
     $('.scroll-pane').jScrollPane();
+    $('.route__info').dotdotdot();
 });

@@ -399,7 +399,7 @@ div.ui-selecting {background-color: #f1f1f1;}
         margin-left: 30px;
     }
     &__checkbox {
-        margin: 0;
+        margin: 8px 0 0 0;
         input[type="checkbox"] {
             display: none;
             &:checked {
@@ -414,6 +414,9 @@ div.ui-selecting {background-color: #f1f1f1;}
         }
         &--modal {
             margin-bottom: 18px;
+        }
+        @media (max-width: 1600px) {
+            margin-top: 0;
         }
     }
     &__checkbox_emulator {
@@ -832,9 +835,11 @@ div.ui-selecting {background-color: #f1f1f1;}
         text-align: center;
     }
     &__info {
-        padding: 10px 15px;
-        border: 1px solid #eaeaea;
+
         background-color: #fff;
+        height: 125px;
+        max-height: 125px;
+        overflow: hidden;
     }
     &__place {
         color: $text-color;
@@ -878,7 +883,10 @@ div.ui-selecting {background-color: #f1f1f1;}
             }
         }
     }
-    &__item {}
+    &__item {
+        padding: 10px 15px;
+        border: 1px solid #eaeaea;
+    }
     &__footer {
         .icon {
             width: 20px;
@@ -1186,14 +1194,13 @@ div.ui-selecting {background-color: #f1f1f1;}
 }
 
 .drop__day {
-    width: 20%;
-    min-width: 210px;
+    width: 275px;
     display: inline-block;
     vertical-align: top;
     font-size: 29px;
     color: $gray-middle;
     text-align: left;
-    padding: 100px 0 0 0;
+    padding: 90px 0 0 0;
     margin: 0 10px 0 0;
     height: 135px;
     background-color: #f1f1f1;
@@ -1230,17 +1237,18 @@ div.ui-selecting {background-color: #f1f1f1;}
 
 .merch__wr {
     font-size: 0;
-    padding-top: 20px;
+    padding-top: 12px;
     white-space: nowrap;
     text-align: left;
 }
 
 .merch__item {
-    width: 20%;
-    min-width: 210px;
+    width: 275px;
     display: inline-block;
     vertical-align: top;
     font-size: 30px;
+    margin-right: 10px;
+    background-color: #f1f1f1;
     color: $second-color;
     @media (max-width: 1600px) {
         font-size: 20px;
@@ -1270,8 +1278,7 @@ div.ui-selecting {background-color: #f1f1f1;}
 }
 
 .column {
-    width: 20%;
-    min-width: 210px;
+    width: 275px;
     margin-right: 10px;
     display: inline-block;
     vertical-align: top;
@@ -1284,7 +1291,7 @@ div.ui-selecting {background-color: #f1f1f1;}
         @include clearfix;
     }
     &__left {
-        width: 265px;
+        width: 335px;
         float: left;
         padding-left: 45px;
         padding-right: 11px;
@@ -1293,18 +1300,14 @@ div.ui-selecting {background-color: #f1f1f1;}
     &__right {
         padding-left: 11px;
         overflow: hidden;
+        &--scrollable {
+            overflow-x: auto;
+        }
     }
 }
 
 .owl__wr {
     overflow-x: auto;
-}
-
-.column--wide {
-    width: 100%;
-    .portlet {
-        margin-right: 0;
-    }
 }
 
 .portlet {
@@ -1345,8 +1348,7 @@ div.ui-selecting {background-color: #f1f1f1;}
     margin-right: 10px;
     display: inline-block;
     vertical-align: top;
-    min-width: 210px;
-    width: 20%;
+    width: 275px;
     color: #9f9f9f;
     font-size: 29px;
     @media (max-width: 1600px) {
@@ -1368,6 +1370,10 @@ div.ui-selecting {background-color: #f1f1f1;}
 
 .copy {
     padding-top: 5px;
+    img {
+        width: 23px;
+        height: 26px;
+    }
 }
 
 .owl-nav {
@@ -1434,4 +1440,30 @@ div.ui-selecting {background-color: #f1f1f1;}
     display: table;
     width: 100%;
     border-radius: 0;
+    .control-label {
+        padding-top: 10px;
+    }
+    .admin__checkbox_emulator{
+        vertical-align: middle;
+    }
+}
+
+.modal__table {
+    width: 100%;
+    th,
+    td {
+        font-size: 23px;
+        font-weight: 300;
+        color: $gray-middle;
+        padding: 15px 0;
+    }
+    td {
+        color: $text-color;
+        font-weight: 400;
+    }
+
+
+    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        width: 115px;
+    }
 }
