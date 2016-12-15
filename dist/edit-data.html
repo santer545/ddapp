@@ -82,9 +82,7 @@
         </symbol>
         <symbol id="icon-copy" viewBox="0 0 17 18">
             <title>copy</title>
-            <g id="icomoon-ignore">
-            </g>
-            <path fill="#9f9f9f" opacity="0.3" d="M287.136 32.002h523.638c48 0 87.271 39.271 87.271 87.271v610.909h-87.271v-610.909h-523.638v-87.271zM156.228 206.547h480.001c48 0 87.271 39.271 87.271 87.271v610.909c0 48-39.271 87.271-87.271 87.271h-480.001c-48 0-87.271-39.271-87.271-87.271v-610.909c0-48 39.271-87.271 87.271-87.271v0zM156.228 904.73h480.001v-610.909h-480.001v610.909z"></path>
+            <path d="M274.043 0h558.549c51.2 0 93.089 41.889 93.089 93.089v651.639h-93.089V93.089H274.043V0zM134.407 186.182H646.41c51.2 0 93.089 41.889 93.089 93.089V930.91c0 51.2-41.889 93.089-93.089 93.089H134.407c-51.2 0-93.089-41.889-93.089-93.089V279.271c0-51.2 41.889-93.089 93.089-93.089zm0 744.732H646.41V279.275H134.407v651.639z"></path>
         </symbol>
         <symbol id="icon-delete" viewBox="0 0 20 25">
             <title>delete copy</title>
@@ -438,11 +436,19 @@
                                             <div class="route__info">
                                                 <span class="route__place">ТОВ "Наливайка1"</span>
                                                 <span class="route__adress">г. Киев <br> ул. Хрещатик</span>
-                                                <div class="route__footer text-right">
-                                                    <div class="portlet-remove">
-                                                        <svg class="icon icon-ico33">
-                                                            <use xlink:href="#icon-ico33"></use>
-                                                        </svg>
+                                                <div class="route__footer text-right row">
+                                                    <div class="col-md-4 text-center"></div>
+                                                    <div class="col-md-4 text-center">
+                                                        <div class="copy">
+                                                            <img src="assets/svg/copy.svg" width="20" height="20" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 text-center">
+                                                        <div class="portlet-remove">
+                                                            <svg class="icon icon-ico33">
+                                                                <use xlink:href="#icon-ico33"></use>
+                                                            </svg>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -685,25 +691,25 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
     /*$(function() {
-                $(".column").sortable({
-                    connectWith: ".column",
-                    handle: ".handle",
-                    cancel: ".cls",
-                    placeholder: "portlet-placeholder ui-corner-all",
-                    start: function(event, ui) {
-                        console.log('Start!!!!');
-                    },
-                    update: function(event, ui) {
-                        console.log('Stop!!!!');
-                    }
-                });
-                $('.column').selectable({
-                        filter: ".portlet-header",
-                        cancel: ".handle, .portlet-remove"
-                    })
-                    .find(".portlet")
-                    .prepend("<div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>");
-        */
+                                $(".column").sortable({
+                                    connectWith: ".column",
+                                    handle: ".handle",
+                                    cancel: ".cls",
+                                    placeholder: "portlet-placeholder ui-corner-all",
+                                    start: function(event, ui) {
+                                        console.log('Start!!!!');
+                                    },
+                                    update: function(event, ui) {
+                                        console.log('Stop!!!!');
+                                    }
+                                });
+                                $('.column').selectable({
+                                        filter: ".portlet-header",
+                                        cancel: ".handle, .portlet-remove"
+                                    })
+                                    .find(".portlet")
+                                    .prepend("<div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>");
+                        */
 
 
 
@@ -715,7 +721,7 @@
             cancel: '.handle, .route-footer, .portlet-remove',
             filter: ".portlet",
             //tolerance: "fit"
-        }).find(".portlet").prepend("<div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>");
+        }).find(".portlet").prepend("<div class='handle'></div>");
 
 
 
@@ -769,7 +775,6 @@
 
 
     });
-    
     </script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
