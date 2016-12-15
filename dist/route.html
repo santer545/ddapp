@@ -581,9 +581,9 @@
                     </div>
                 </div>
                 <section class="drop__area">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="drop__top drop__top--first">
+                    <div class="column__row">
+                        <div class="column__left">
+                            <div class="drop__top drop__top--first drop__top--small">
                                 <select name="" id="" class="selectpicker">
                                     <option value="">Нераспределенные</option>
                                     <option value="">Все</option>
@@ -792,8 +792,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-10">
-                            <div class="drop__top text-center">
+                        <div class="column__right">
+                            <div class="drop__top drop__top--small text-center">
                                 <div class="merch__wr">
                                     <div class="merch__item">
                                         <div>
@@ -869,7 +869,7 @@
             cancel: '.handle, .route-footer, .portlet-remove',
             filter: ".portlet",
             //tolerance: "fit"
-        }).find(".portlet").prepend("<div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>");
+        }).find(".portlet").prepend("<div class='handle'></div>");
 
 
 

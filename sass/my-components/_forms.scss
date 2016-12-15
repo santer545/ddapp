@@ -245,27 +245,12 @@
     transition: width 0.3s;
     &:focus {
         outline: none;
-        box-shadow: none;
-        *,
-        .sidebar__item,
-        a {
+        *, .sidebar__item {
             outline: none;
-            box-shadow: none;
         }
     }
 }
-.jspScrollable {
-    &:focus {
-        outline: none;
-        box-shadow: none;
-        *,
-        .sidebar__item,
-        a {
-            outline: none;
-            box-shadow: none;
-        }
-    }
-}
+
 .jspPane
 {
     padding-top: 40px!important;
@@ -273,12 +258,17 @@
     transition: width 0.3s;
     &:focus {
         outline: none;
-        box-shadow: none;
-        *,
-        .sidebar__item,
-        a {
+        *,.sidebar__item {
             outline: none;
-            box-shadow: none;
+        }
+    }
+}
+
+.jspScrollable {
+    &:focus {
+        outline: none;
+        *, .sidebar__item {
+            outline: none;
         }
     }
 }
