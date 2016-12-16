@@ -50,6 +50,7 @@
             width: calc(100% - 15px);
             background-color: #58BFE8;
             transform: translate(-350px, 0);
+            opacity: 0;
             transition: transform 0.3s;
         }
         &:after {
@@ -64,12 +65,14 @@
             border-width: 45px 0 45px 30px;
             border-color: transparent transparent transparent #58BFE8;
             transform: translate(-370px, 0);
-            transition: transform 0.3s;
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0;
         }
         &.active {
             &:after,
             &:before {
                 transform: translate(0, 0);
+                opacity: 1;
             }
         }
         &.active,
@@ -77,6 +80,7 @@
             &:after,
             &:before {
                 transform: translate(0, 0);
+                opacity: 1;
             }
         }
     }
