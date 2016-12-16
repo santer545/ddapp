@@ -59,6 +59,7 @@ textarea {
     table-layout: fixed;
     width: 100%;
     min-height: 100%;
+    height: 100%;
 }
 
 .wrapper {
@@ -66,6 +67,7 @@ textarea {
     max-width: 1920px;
     margin: 0 auto;
     min-height: 100%;
+    height: 100%;
     padding: 0 15px;
     position: relative;
 }
@@ -171,6 +173,7 @@ div.ui-selecting {background-color: #f1f1f1;}
         font-size: 24px;
         text-align: center;
         margin-bottom: 30px;
+        cursor: pointer;
     }
     &__holder {
         padding: 30px 50px;
@@ -488,8 +491,20 @@ div.ui-selecting {background-color: #f1f1f1;}
         text-align: center;
 
         &--inverse {
+            color: #f1f1f1;
             &:before {
                 display: none;
+            }
+            .order__time {
+                color: #f1f1f1;
+            }
+            &.active {
+                .steps__circle {
+                    background-color: $step-bg;
+                }
+                .order__time {
+                    color: $gray-middle;
+                }
             }
         }
         &--large {
@@ -567,7 +582,7 @@ div.ui-selecting {background-color: #f1f1f1;}
             text-align: center;
             color: #fff;
             border-radius: 50%;
-            background-color: $step-bg;
+            background-color: #f1f1f1;
             font-size: 36px;
             list-style-type: none;
             .icon {
@@ -600,6 +615,9 @@ div.ui-selecting {background-color: #f1f1f1;}
         top: 37px;
         width: auto;
         height: 100%;
+        .circle__dot {
+            background-color: $step-bg;
+        }
     }
 }
 
