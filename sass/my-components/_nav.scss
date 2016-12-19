@@ -214,6 +214,9 @@
     &__info {
         margin-right: 60px;
         color: $gray-light;
+        @media (max-width: 1400px) {
+            margin-right: 20px;
+        }
     }
     &__link, &__arrow {
         padding: 5px 20px;
