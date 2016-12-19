@@ -210,6 +210,9 @@ div.ui-selecting {background-color: #f1f1f1;}
     }
 }
 
+.arrow-holder {
+    cursor: pointer;
+}
 
 /**
  * Personal
@@ -362,7 +365,7 @@ div.ui-selecting {background-color: #f1f1f1;}
     }
     &__item {
         display: inline-block;
-
+        border: 1px solid #f9f9f9;
         cursor: pointer;
         a {
             padding: 10px 30px;
@@ -382,7 +385,7 @@ div.ui-selecting {background-color: #f1f1f1;}
         top: 50%;
         transform: translate(0, -50%);
         font-style: normal;
-        font-size: 14px;
+        font-size: 19px;
     }
     &__editing {
         color: $gray-light;
@@ -391,9 +394,9 @@ div.ui-selecting {background-color: #f1f1f1;}
             position: relative;
             display: inline-block;
             vertical-align: top;
-            padding: 5px 20px 5px 10px;
+            padding: 5px 30px 5px 10px;
             border: 1px solid #eaeaea;
-            font-size: 18px;
+            font-size: 23px;
             &:not(:last-child) {
                 margin-right: 10px;
             }
