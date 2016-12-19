@@ -1094,6 +1094,7 @@ div.ui-selecting {background-color: #f1f1f1;}
     }
     &__table {
         width: 100%;
+        max-width: 100%;
         &_th {
             font-size: 21px;
             color: $gray-middle;
