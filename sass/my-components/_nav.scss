@@ -88,7 +88,7 @@
         display: none;
         vertical-align: middle;
         overflow: hidden;
-        font-size: 25px;
+        font-size: 33px;
         font-weight: 300;
         opacity: 0;
         visibility: hidden;
@@ -102,7 +102,7 @@
         text-align: left;
         .jspContainer,
         .jspPane {
-            width: 350px !important;
+            width: 340px !important;
         }
         /* .sidebar__item {
 
@@ -115,7 +115,7 @@
             opacity: 1;
             visibility: visible;
             max-width: 300px;
-            margin-left: 20px;
+            margin-left: 40px;
         }
         .menu__arrow {
             transform: rotate(180deg);
