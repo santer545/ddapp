@@ -36,6 +36,7 @@
         line-height: 80px;
         z-index: 1;
         white-space: nowrap;
+        background-color: $brand-primary;
         &:focus {
             outline: none;
             box-shadow: none;
