@@ -371,9 +371,17 @@ div.ui-selecting {background-color: #f1f1f1;}
             padding: 10px 30px;
             display: block;
         }
+        .icon {
+            fill: #9f9f9f;
+            width: 35px;
+            height: 35px;
+        }
         &:hover,
         &.active {
             background-color: $hover-bg;
+            .icon {
+                fill: $brand-primary;
+            }
         }
     }
     &__holder {
