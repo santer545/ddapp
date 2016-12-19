@@ -52,6 +52,6 @@ $(document).ready(function() {
     });
 
 
-    $('.scroll-pane').jScrollPane();
+    /*$('.scroll-pane').jScrollPane();*/
     $('.route__info').dotdotdot();
 });
