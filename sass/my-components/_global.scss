@@ -655,8 +655,14 @@ div.ui-selecting {background-color: #f1f1f1;}
             list-style-type: none;
             .icon {
                 fill: #ffffff;
-                width: 35px;
-                height: 35px;
+                width: 40px;
+                height: 37px;
+            }
+            &--car {
+                .icon {
+                    width: 72px;
+                }
+
             }
     }
 }
