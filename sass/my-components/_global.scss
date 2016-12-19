@@ -220,6 +220,11 @@ div.ui-selecting {background-color: #f1f1f1;}
         p {
             margin-bottom: 20px;
         }
+        a[href^="tel"] {
+            display: inline-block;
+            color: $text-color;
+            margin-bottom: 20px;
+        }
     }
     &__date {
         color: #ccc;
