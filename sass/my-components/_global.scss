@@ -386,6 +386,7 @@ div.ui-selecting {background-color: #f1f1f1;}
         transform: translate(0, -50%);
         font-style: normal;
         font-size: 19px;
+        cursor: pointer;
     }
     &__editing {
         color: $gray-light;
