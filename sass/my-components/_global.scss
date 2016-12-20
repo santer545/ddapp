@@ -1636,3 +1636,10 @@ div.ui-selecting {background-color: #f1f1f1;}
         color: $second-color;
     }
 }
+
+.grafik {
+    padding-left: 30px;
+    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        width: 115px;
+    }
+}
