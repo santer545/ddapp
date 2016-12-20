@@ -11,6 +11,7 @@ body {
 
 body {
     color: $text-color;
+    font: #{$body-font-size} / #{$line-height-base} $font-family-sans-serif;
 }
 
 img {
@@ -66,7 +67,7 @@ textarea {
     min-width: 1280px;
     max-width: 1920px;
     margin: 0 auto;
-
+    min-height: 100%;
     height: 100%;
     padding: 0 15px;
     position: relative;
@@ -192,10 +193,13 @@ div.ui-selecting {background-color: #f1f1f1;}
         display: inline-block;
         vertical-align: top;
         padding: 0 8px;
-        font-size: 24px;
+        font-size: 20px;
         text-align: center;
         margin-bottom: 17px;
         cursor: pointer;
+        @media (max-width: 1500px) {
+            width: 25%;
+        }
     }
     &__holder {
         padding: 30px 50px;
@@ -268,14 +272,14 @@ div.ui-selecting {background-color: #f1f1f1;}
         margin-left: 0;
     }
     &--big {
-        padding: 5px 25px;
+        padding: 6px 21px;
         border: 1px solid #f9f9f9;
-        @media (max-width: 1600px) {
-            padding: 5px 10px;
+        &:hover {
+            background-color: rgba(241,241,241,100);
         }
         .icon {
-            width: 38px;
-            height: 38px;
+            width: 25px;
+            height: 25px;
         }
     }
 }
@@ -338,6 +342,7 @@ div.ui-selecting {background-color: #f1f1f1;}
 .map {
     padding-bottom: 60px;
     &__wrapper {
+        margin-top: 30px;   
         padding: 15px;
         border: 1px solid #eaeaea;
     }
@@ -352,10 +357,25 @@ div.ui-selecting {background-color: #f1f1f1;}
 }
 
 .tools {
+    &__wr {
+        @include clearfix;
+        .form-horizontal {
+            display: none;
+        }
+    }
     &__panel {
         padding: 0;
-        margin: 0 0 30px;
+        margin: 0;
         list-style-type: none;
+        float: left;
+        font-size: 0;
+        margin-right: 30px; 
+        &--right {
+            margin-right: 0;
+            .tools__item {
+                margin-right: 10px; 
+            }
+        }
         &--inline {
             display: inline-block;
             vertical-align: middle;
@@ -377,8 +397,8 @@ div.ui-selecting {background-color: #f1f1f1;}
         .icon,
         svg g{
             fill: #9f9f9f!important;
-            width: 35px;
-            height: 35px;
+            width: 25px;
+            height: 25px;
         }
         &:hover,
         &.active {
@@ -404,6 +424,7 @@ div.ui-selecting {background-color: #f1f1f1;}
     &__editing {
         color: $gray-light;
         margin-bottom: 10px;
+        margin-top: 30px;   
         &_item {
             position: relative;
             display: inline-block;
@@ -415,6 +436,9 @@ div.ui-selecting {background-color: #f1f1f1;}
                 margin-right: 10px;
             }
         }
+    }
+    &-pagination {
+        float: right;
     }
 }
 
@@ -555,7 +579,7 @@ div.ui-selecting {background-color: #f1f1f1;}
         position: relative;
         display: inline-block;
         width: 33.3%;
-        font-size: 28px;
+        font-size: 20px;
         padding-top: 110px;
         color: #f1f1f1;
         text-align: center;
@@ -943,9 +967,7 @@ div.ui-selecting {background-color: #f1f1f1;}
         text-align: center;
     }
     &__info {
-
-        background-color: #fff;
-        height: 125px;
+        height: 95px;
         max-height: 125px;
         overflow: hidden;
     }
@@ -993,7 +1015,7 @@ div.ui-selecting {background-color: #f1f1f1;}
     }
     &__item {
         padding: 10px 15px;
-        border: 1px solid #eaeaea;
+        
     }
     &__footer {
         .icon {
@@ -1067,7 +1089,7 @@ div.ui-selecting {background-color: #f1f1f1;}
     }
     &__heading {
         margin-bottom: 15px;
-        font-size: 25px;
+        font-size: 22px;
         font-weight: 400;
         color: $gray-light;
     }
@@ -1080,10 +1102,7 @@ div.ui-selecting {background-color: #f1f1f1;}
             margin: 0;
         }
         .bootstrap-select.btn-group .dropdown-toggle .filter-option {
-            font-size: 29px;
-            @media (max-width: 1600px) {
-                font-size: 24px;
-            }
+            font-size: 22px;
         }
     }
     &__block {
@@ -1099,7 +1118,7 @@ div.ui-selecting {background-color: #f1f1f1;}
     }
     &__table {
         width: 100%;
-        max-width: 100%;
+        max-width: none;
         &_th {
             font-size: 21px;
             color: $gray-middle;
@@ -1453,6 +1472,9 @@ div.ui-selecting {background-color: #f1f1f1;}
 
 .portlet {
     min-width: 210px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border: 1px solid #eaeaea;
     &-remove {
         display: inline-block;
     }
@@ -1559,7 +1581,13 @@ div.ui-selecting {background-color: #f1f1f1;}
         padding-top: 11px;
     }
 }
-
+.table-responsive {
+    overflow: visible; 
+    overflow-y: visible; 
+    @media (max-width: 1500px) {
+        overflow-x: scroll;
+    }
+}
 .modal-dialog {
     width: 690px;
     .save {
@@ -1635,7 +1663,7 @@ div.ui-selecting {background-color: #f1f1f1;}
 }
 
 .order__value {
-    font-size: 23px;
+    font-size: 20px;
     padding-left: 15px;
     margin-bottom: 0;
     &--inverse {

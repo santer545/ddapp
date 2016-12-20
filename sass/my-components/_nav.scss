@@ -1,7 +1,6 @@
 .sidebar {
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     width: 90px;
     padding: 40px 0;
@@ -19,9 +18,12 @@
         list-style-type: none;
     }
     &__link {
+        position: relative;
+        z-index: 2;
         color: #fff;
         display: inline-block;
         transition: color 0.3s;
+        font-size: 0;
         .icon {
             position: relative;
             color: inherit;
@@ -52,6 +54,7 @@
             transform: translate(-350px, 0);
             opacity: 0;
             transition: transform 0.3s;
+            z-index: 1;
         }
         &:after {
             content: "";
@@ -62,11 +65,12 @@
             width: 0;
             height: 0;
             border-style: solid;
-            border-width: 50px 0 50px 30px;
+            border-width: 53px 0 53px 30px;
             border-color: transparent transparent transparent #58BFE8;
             transform: translate(-370px, 0);
             transition: transform 0.3s, opacity 0.3s;
             opacity: 0;
+            z-index: 1;
         }
         &.active {
             &:after,
@@ -95,7 +99,7 @@
         visibility: hidden;
         transition: opacity 0.3s, visibility 0.3s, max-width 0.3s, max-height 0.3s;
         z-index: 1;
-        line-height: 30px;
+        line-height: 40px;
         white-space: normal;
     }
     &.active {
@@ -147,6 +151,10 @@
  * Tabs
  */
 
+ .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    border-bottom: 1px solid #fff;
+ }
+
 .nav-tabs {
     border-bottom: 1px solid #9f9f9f;
     >li {
@@ -168,13 +176,10 @@
             }
                     }
         >a {
-            font-size: 32px;
+            font-size: 22px;
             font-weight: 300;
             color: #333;
             padding: 2px 30px;
-            @media (max-width: 1600px) {
-                font-size: 24px;
-            }
         }
     }
 }
@@ -182,6 +187,9 @@
 .tab-content {
     padding-top: 30px;
     padding-left: 40px;
+    .tab-content {
+        padding: 0; 
+    }
 }
 
 

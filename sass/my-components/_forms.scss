@@ -5,7 +5,7 @@
         border-bottom: 1px solid #333;
         height: 40px;
         padding: 8px 35px 15px 15px;
-        font-size: 23px;
+        font-size: 20px;
         border-radius: 0;
         &:focus {
             box-shadow: none;
@@ -71,7 +71,7 @@
     &-label {
         display: inline-block;
         vertical-align: middle;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 300;
         color: $gray-light;
         width: 10%;
@@ -102,8 +102,7 @@
 
 .form-horizontal {
     &--inline {
-        display: inline-block;
-        vertical-align: middle;
+        float: left;
         .control-label {
             vertical-align: middle;
             padding-top: 0;
@@ -111,19 +110,15 @@
         }
     }
     .control-label {
-        padding-top: 0;
+        padding-top: 10px;
         text-align: left;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 400;
         color: $gray-middle;
-        @media (max-width: 1600px) {
-            font-size: 20px;
-        }
         &--big {
-            font-size: 25px;
+            font-size: 20px;
             padding-top: 12px;
             @media (max-width: 1600px) {
-                font-size: 24px;
                 padding-top: 7px;
             }
         }
@@ -136,16 +131,13 @@
 .control-label {
         padding-top: 0;
         text-align: left;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 400;
+        margin: 0;
         color: $gray-middle;
         &--big {
-            font-size: 27px;
-            padding-top: 12px;
-            @media (max-width: 1600px) {
-                font-size: 24px;
-                padding-top: 7px;
-            }
+            font-size: 22px;
+            padding-top: 10px;
         }
     }
 
@@ -154,7 +146,7 @@
  */
 
 .bootstrap-select {
-    margin-right: 20px;
+    margin-right: 18px;
     .caret {
         border: none;
         width: 20px;
@@ -201,12 +193,9 @@
 
 .filter-option {
     color: $text-color;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 400;
     text-overflow: ellipsis;
-    @media (max-width: 1600px) {
-        font-size: 17px;
-    }
 }
 
 .wide-select {
