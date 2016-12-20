@@ -1256,6 +1256,9 @@ div.ui-selecting {background-color: #f1f1f1;}
     margin-bottom: 10px;
     background-color: #fafafa;
     transition: background-color 0.3s;
+    @media (max-width: 1400px) {
+        padding: 20px 25px;
+    }
     &.active,
     &:hover {
         color: #fff;
@@ -1644,5 +1647,9 @@ div.ui-selecting {background-color: #f1f1f1;}
     padding-left: 30px;
     .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
         width: 115px;
+        .filter-option {
+            font-size: 20px;
+            font-weight: 400;
+        }
     }
 }
