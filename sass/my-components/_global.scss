@@ -374,16 +374,18 @@ div.ui-selecting {background-color: #f1f1f1;}
                 padding: 10px 20px;
             }
         }
-        .icon {
-            fill: #9f9f9f;
+        .icon,
+        svg g{
+            fill: #9f9f9f!important;
             width: 35px;
             height: 35px;
         }
         &:hover,
         &.active {
             background-color: $hover-bg;
-            .icon {
-                fill: $brand-primary;
+            .icon,
+            svg g{
+                fill: $brand-primary!important;
             }
         }
     }
