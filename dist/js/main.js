@@ -262,11 +262,8 @@ $(function() {
         cancel: '.handle, .route-footer, .portlet-remove',
         filter: ".portlet",
         selected: function(event, ui) {
-            if (!window.event.ctrlKey) {
+            if (!(window.event.ctrlKey) && !(window.event.shiftKey)) {
                 $('.portlet').removeClass('ui-selected');
-            }
-            if (event.shiftKey) {
-                $('.portlet').addClass('ui-selected');
             }
         }
     }).find(".portlet").prepend("<div class='handle'></div>");
