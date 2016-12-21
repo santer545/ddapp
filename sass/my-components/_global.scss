@@ -515,7 +515,7 @@ div.ui-selecting {
         margin-left: 30px;
     }
     &__checkbox {
-        margin: 8px 0 0 0;
+        vertical-align: middle;
         input[type="checkbox"] {
             display: none;
             &:checked {
@@ -538,7 +538,7 @@ div.ui-selecting {
     &__checkbox_emulator {
         position: relative;
         display: inline-block;
-        vertical-align: top;
+        vertical-align: middle;
         width: 20px;
         height: 20px;
         padding: 0;
@@ -593,7 +593,7 @@ div.ui-selecting {
         display: inline-block;
         width: 33.3%;
         font-size: 20px;
-        padding-top: 110px;
+        padding-top: 75px;
         color: #f1f1f1;
         text-align: center;
 
@@ -632,25 +632,25 @@ div.ui-selecting {
                 background-color: $step-bg;
                 &:nth-child(2) {
         animation-delay: .2s;
-    }
-    &:nth-child(3) {
-        animation-delay: .4s;
-    }
-    &:nth-child(4) {
-        animation-delay: .6s;
-    }
-    &:nth-child(5) {
-        animation-delay: .8s;
-    }
-    &:nth-child(6) {
-        animation-delay: 1s;
-    }
-    &:nth-child(7) {
-        animation-delay: 1.2s;
-    }
-    &:nth-child(8) {
-        animation-delay: 1.4s;
-    }
+        }
+        &:nth-child(3) {
+            animation-delay: .4s;
+        }
+        &:nth-child(4) {
+            animation-delay: .6s;
+        }
+        &:nth-child(5) {
+            animation-delay: .8s;
+        }
+        &:nth-child(6) {
+            animation-delay: 1s;
+        }
+        &:nth-child(7) {
+            animation-delay: 1.2s;
+        }
+        &:nth-child(8) {
+            animation-delay: 1.4s;
+        }
             }
         }
         &.done {
@@ -668,14 +668,14 @@ div.ui-selecting {
             top: 0;
             left: 50%;
             transform: translate(-50%, 0);
-             width: 82px;
-            height: 82px;
-            line-height: 80px;
+             width: 57px;
+            height: 57px;
+            line-height: 57px;
             text-align: center;
             color: #fff;
             border-radius: 50%;
             background-color: #f1f1f1;
-            font-size: 36px;
+            font-size: 28px;
             list-style-type: none;
         }
     }
@@ -684,28 +684,29 @@ div.ui-selecting {
             top: 0;
             left: 50%;
             transform: translate(-50%, 0);
-            width: 82px;
-            height: 82px;
-            line-height: 80px;
+            width: 57px;
+            height: 57px;
+            line-height: 57px;
             text-align: center;
             color: #fff;
             border-radius: 50%;
             background-color: #f1f1f1;
-            font-size: 36px;
+            font-size: 28px;
             list-style-type: none;
             .icon, svg {
                 fill: #ffffff;
-                width: 40px;
-                height: 37px;
+                width: 25px;
+                height: 25px;
             }
             &--car {
                 .icon, svg {
-                    width: 72px;
+                    width: 46px;
+                    height: 23px;
                 }
 
             }
             &--flash {
-                line-height: 90px;
+                line-height: 57px;
             }
     }
 }
@@ -716,7 +717,7 @@ div.ui-selecting {
 
 .circle__wr {
     position: absolute;
-    top: 24px;
+    top: 13px;
     left: calc(50% + 35px);
     width: calc(100% - 70px);
     text-align: justify;
@@ -973,7 +974,7 @@ div.ui-selecting {
         }
     }
     &__add {
-        padding: 10px 30px;
+        padding: 6px 21px;
         border: 1px solid #eaeaea;
         cursor: pointer;
         margin: 20px 0;
@@ -998,12 +999,7 @@ div.ui-selecting {
     &__all {
         color: $gray-middle;
         font-size: 20px;
-        @media (max-width: 1600px) {
-            font-size: 20px;
-        }
-        @media (max-width: 1400px) {
-            font-size: 15px;
-        }
+        padding-right: 12px;
         &_wr {
             margin-bottom: 10px;
             font-size: 21px;
@@ -1318,9 +1314,9 @@ div.ui-selecting {
         line-height: 125px;
     }
     &--small {
-        height: 105px;
+        height: 80px;
         &.drop__top--first {
-            line-height: 105px;
+            line-height: 80px;
         }
     }
 }
@@ -1392,7 +1388,7 @@ div.ui-selecting {
     display: inline-block;
     vertical-align: top;
     font-size: 20px;
-    height: 105px;
+    height: 80px;
     padding-top: 12px;
     margin-right: 10px;
     background-color: #f1f1f1;
@@ -1449,7 +1445,7 @@ div.ui-selecting {
     &__left {
         width: 335px;
         float: left;
-        padding-left: 45px;
+        padding-left: 35px;
         padding-right: 11px;
         background-color: #fafafa;
     }
@@ -1505,6 +1501,7 @@ div.ui-selecting {
 .portlet__number_item {
     padding-top: 10px;
     margin-right: 10px;
+    padding-bottom: 6px;
     display: inline-block;
     vertical-align: top;
     width: 275px;
