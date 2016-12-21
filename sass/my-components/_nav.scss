@@ -2,7 +2,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 90px;
+    width: 64px;
     padding: 40px 0;
     background-color: $brand-primary;
     transition: width 0.3s;
@@ -28,13 +28,13 @@
             position: relative;
             color: inherit;
             fill: #fff;
-            width: 40px;
+            width: 30px;
             height: 50px;
         }
     }
     &__item {
         position: relative;
-        padding: 10px 25px;
+        padding: 10px 17px;
         line-height: 80px;
         z-index: 1;
         white-space: nowrap;
