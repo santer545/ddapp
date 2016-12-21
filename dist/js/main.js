@@ -3,6 +3,7 @@ $(document).ready(function() {
         $(".sidebar").toggleClass("active");
         $(this).toggleClass("active");
     });
+    // Bootstrap select
     $('.selectpicker').selectpicker();
 
 
@@ -11,10 +12,7 @@ $(document).ready(function() {
         $('.js-detail').html('Скрыть');
     }
 
-    $('.js-editing input, .js-editing button, .js-editing textarea').attr('disabled', 'disabled');
-    $('.js-edit').click(function() {
-        $('.js-editing input, .js-editing button, .js-editing textarea').removeAttr('disabled');
-    });
+
     $(document).ready(function() {
         $(".owl-carousel").owlCarousel({
             items: 1,
@@ -85,7 +83,7 @@ $(document).ready(function() {
 
 
 
-
+// Same height blocks
 
 jQuery(function() {
     initSameHeight();
@@ -250,7 +248,7 @@ jQuery.onFontResize = (function($) {
 
 
 
-
+// Routes
 
 $(function() {
 
@@ -267,7 +265,9 @@ $(function() {
             if (!window.event.ctrlKey) {
                 $('.portlet').removeClass('ui-selected');
             }
-
+            if (event.shiftKey) {
+                $('.portlet').addClass('ui-selected');
+            }
         }
     }).find(".portlet").prepend("<div class='handle'></div>");
 
