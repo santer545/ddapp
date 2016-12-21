@@ -546,14 +546,15 @@ div.ui-selected {
         }
         &:before {
             content: '';
-            width: 16px;
-            height: 8px;
+            width: 12px;
+            height: 7px;
             position: absolute;
-            left: 3px;
-            top: 5px;
+            left: 2px;
+            top: 3px;
             border: 2px solid #fff;
             border-top: none;
             border-right: none;
+            -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
             opacity: 0;
             @media (max-width: 1600px) {
