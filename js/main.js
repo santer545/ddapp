@@ -55,16 +55,17 @@ $(document).ready(function() {
     /*$('.scroll-pane').jScrollPane();*/
     $('.route__info').dotdotdot();
 
-    // tools panel 
+    // tools panel
     $('#tools_map').on('show.bs.tab', function(e) {
-        $('.form-horizontal').show();
-        $('.tools-pagination').hide();
-        $('.tools__panel--right').hide();
-    });
-    $('#tools_table').on('show.bs.tab', function(e) {
-        $('.form-horizontal').hide();
+        $('.form-horizontal--inline').hide();
         $('.tools-pagination').show();
         $('.tools__panel--right').show();
+
+    });
+    $('#tools_table').on('show.bs.tab', function(e) {
+        $('.form-horizontal--inline').show();
+        $('.tools-pagination').hide();
+        $('.tools__panel--right').hide();
     });
 
 
@@ -72,7 +73,7 @@ $(document).ready(function() {
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
         initSameHeight();
     });
-    
+
     $('#collapseExample').on('hidden.bs.collapse', function () {
         initSameHeight();
     });

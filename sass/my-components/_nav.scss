@@ -93,7 +93,7 @@
         display: none;
         vertical-align: middle;
         overflow: hidden;
-        font-size: 33px;
+        font-size: 22px;
         font-weight: 300;
         opacity: 0;
         visibility: hidden;
@@ -188,7 +188,7 @@
     padding-top: 30px;
     padding-left: 40px;
     .tab-content {
-        padding: 0; 
+        padding: 0;
     }
 }
 
@@ -222,6 +222,7 @@
     &__info {
         margin-right: 60px;
         color: $gray-light;
+        font-size: 16px;
         @media (max-width: 1400px) {
             margin-right: 20px;
         }
@@ -230,6 +231,9 @@
         padding: 5px 20px;
         display: block;
         color: $second-color;
+    }
+    &__link {
+        font-size: 20px;
     }
 
     &__list {
