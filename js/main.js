@@ -3,6 +3,7 @@ $(document).ready(function() {
         $(".sidebar").toggleClass("active");
         $(this).toggleClass("active");
     });
+    // Bootstrap select
     $('.selectpicker').selectpicker();
 
 
@@ -11,10 +12,7 @@ $(document).ready(function() {
         $('.js-detail').html('Скрыть');
     }
 
-    $('.js-editing input, .js-editing button, .js-editing textarea').attr('disabled', 'disabled');
-    $('.js-edit').click(function() {
-        $('.js-editing input, .js-editing button, .js-editing textarea').removeAttr('disabled');
-    });
+
     $(document).ready(function() {
         $(".owl-carousel").owlCarousel({
             items: 1,
@@ -55,16 +53,17 @@ $(document).ready(function() {
     /*$('.scroll-pane').jScrollPane();*/
     $('.route__info').dotdotdot();
 
-    // tools panel 
+    // tools panel
     $('#tools_map').on('show.bs.tab', function(e) {
-        $('.form-horizontal').show();
-        $('.tools-pagination').hide();
-        $('.tools__panel--right').hide();
-    });
-    $('#tools_table').on('show.bs.tab', function(e) {
-        $('.form-horizontal').hide();
+        $('.form-horizontal--inline').hide();
         $('.tools-pagination').show();
         $('.tools__panel--right').show();
+
+    });
+    $('#tools_table').on('show.bs.tab', function(e) {
+        $('.form-horizontal--inline').show();
+        $('.tools-pagination').hide();
+        $('.tools__panel--right').hide();
     });
 
 
@@ -72,17 +71,19 @@ $(document).ready(function() {
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
         initSameHeight();
     });
-    
-    $('#collapseExample').on('hidden.bs.collapse', function () {
+
+    $('#collapseExample').on('hidden.bs.collapse', function() {
         initSameHeight();
     });
-    $('#collapseExample').on('shown.bs.collapse', function () {
+    $('#collapseExample').on('shown.bs.collapse', function() {
         initSameHeight();
     });
 
 });
 
 
+
+// Same height blocks
 
 jQuery(function() {
     initSameHeight();
@@ -243,3 +244,100 @@ jQuery.onFontResize = (function($) {
         }
     };
 }(jQuery));
+
+
+
+
+// Routes
+
+$(function() {
+
+
+
+
+
+    $('.column').bind("mousedown", function(e) {
+        e.metaKey = false;
+    }).selectable({
+        cancel: '.handle, .route-footer, .portlet-remove',
+        filter: ".portlet",
+        selected: function(event, ui) {
+            if (!(window.event.ctrlKey) && !(window.event.shiftKey)) {
+                $('.portlet').removeClass('ui-selected');
+            }
+        }
+    }).find(".portlet").prepend("<div class='handle'></div>");
+
+
+
+
+    $('.column').sortable({
+        cursorAt: {
+            top: 0,
+            left: 0
+        },
+        placeholder: "li-placeHolder",
+        connectWith: ".column",
+        items: ".portlet",
+        handle: '.handle',
+        helper: function(e, item) {
+            if (!item.hasClass('ui-selected')) {
+                $('.column').find('.ui-selected').removeClass('ui-selected');
+                item.addClass('ui-selected');
+            }
+
+            var selected = $('.ui-selected').clone();
+            item.data('multidrag', selected);
+            $('.ui-selected').not(item).remove();
+            return $('<div class="transporter"></div>').append(selected);
+        },
+        stop: function(e, ui) {
+            var selected = ui.item.data('multidrag');
+            ui.item.after(selected);
+            ui.item.remove();
+            $('.portlet-remove').on("click", function() {
+                var start = $(this).closest('.column .portlet').remove();
+                $('.start-column').append(start);
+
+            });
+        },
+        change: function(e, ui) {
+            $('.portlet').removeClass('ui-selected');
+        },
+        start: function(e, ui) {
+            $('.portlet').removeClass('ui-selected');
+        }
+    }).disableSelection();
+
+
+
+    $('#check-2').on('change', function() {
+        if ($(this).is(':checked')) {
+            $('.column__left .portlet').each(function() {
+                $(this).addClass('ui-selected');
+            });
+        } else {
+            $('.column__left .portlet').each(function() {
+                $(this).removeClass('ui-selected');
+            });
+        }
+    });
+
+    $('.portlet').click(function() {
+
+        $('.portlet').removeClass('ui-selected');
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+});

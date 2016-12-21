@@ -4,8 +4,8 @@
         box-shadow: none;
         border-bottom: 1px solid #333;
         height: 40px;
-        padding: 8px 35px 15px 15px;
-        font-size: 20px;
+        padding: 5px 35px 5px 15px;
+        font-size: 16px;
         border-radius: 0;
         &:focus {
             box-shadow: none;
@@ -112,7 +112,7 @@
     .control-label {
         padding-top: 10px;
         text-align: left;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 400;
         color: $gray-middle;
         &--big {
@@ -131,7 +131,7 @@
 .control-label {
         padding-top: 0;
         text-align: left;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 400;
         margin: 0;
         color: $gray-middle;
@@ -182,8 +182,8 @@
 .dropdown-menu {
     >li {
         >a {
-            padding: 10px 20px;
-            font-size: 18px;
+            padding: 6px 20px;
+            font-size: 16px;
             &:focus {
                 outline: none;
             }
@@ -193,7 +193,7 @@
 
 .filter-option {
     color: $text-color;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     text-overflow: ellipsis;
 }
