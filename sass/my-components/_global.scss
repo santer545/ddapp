@@ -153,14 +153,7 @@ textarea {
 div.ui-selected {
     background-image: url("../assets/svg/checked_blue.svg");
     background-repeat: no-repeat;
-    background-size: 27px 27px;
-    background-position: 15px 92%;
-}
-div.ui-selecting {
-
-    background-image: url("../assets/svg/checked_blue.svg");
-    background-repeat: no-repeat;
-    background-size: 27px 27px;
+    background-size: 20px 20px;
     background-position: 15px 92%;
 }
 
@@ -1291,7 +1284,7 @@ div.ui-selecting {
 }
 
 .drop__top {
-    height: 135px;
+    height: 105px;
     background-color: #f1f1f1;
     @include clearfix;
     .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
@@ -1311,7 +1304,7 @@ div.ui-selecting {
         padding-left: 35px;
         margin: 0 -30px 0 -45px;
         padding-top: 0;
-        line-height: 125px;
+        line-height: 105px;
     }
     &--small {
         height: 80px;
@@ -1329,9 +1322,9 @@ div.ui-selecting {
     font-size: 16px;
     color: $gray-middle;
     text-align: left;
-    padding: 90px 0 0 0;
+    padding: 65px 0 0 0;
     margin: 0 10px 0 0;
-    height: 135px;
+    height: 105px;
     background-color: #f1f1f1;
     @media (max-width: 1600px) {
         font-size: 20px;
@@ -1551,7 +1544,6 @@ div.ui-selecting {
 
 .owl-prev {
     float: left;
-    padding-left: 21px;
 }
 
 .owl-next {

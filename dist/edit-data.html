@@ -416,7 +416,7 @@
                                     <option value="">Все</option>
                                 </select>
                             </div>
-                            <div class="route__all_wr route__all_wr--first">
+                            <div class="route__all_wr route__all_wr--first row">
                                 <div class="col-md-4 col-sm-4 col-xs-4">
                                     <label for="check-2" class="admin__checkbox">
                                         <input type="checkbox" id="check-2" name="check-2">
@@ -580,93 +580,7 @@
     </div>
     <script src="js/jquery-2.2.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-    /*$(function() {
-                                    $(".column").sortable({
-                                        connectWith: ".column",
-                                        handle: ".handle",
-                                        cancel: ".cls",
-                                        placeholder: "portlet-placeholder ui-corner-all",
-                                        start: function(event, ui) {
-                                            console.log('Start!!!!');
-                                        },
-                                        update: function(event, ui) {
-                                            console.log('Stop!!!!');
-                                        }
-                                    });
-                                    $('.column').selectable({
-                                            filter: ".portlet-header",
-                                            cancel: ".handle, .portlet-remove"
-                                        })
-                                        .find(".portlet")
-                                        .prepend("<div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>");
-                            */
 
-
-
-
-
-    $(function() {
-
-        $('.column').selectable({
-            cancel: '.handle, .route-footer, .portlet-remove',
-            filter: ".portlet",
-            tolerance: "touch"
-        }).find(".portlet").prepend("<div class='handle'></div>");
-
-
-
-        $('.column').sortable({
-            cursorAt: {
-                top: 10,
-                left: 25
-            },
-            placeholder: "li-placeHolder",
-            connectWith: ".column",
-            items: ".portlet",
-            handle: '.handle',
-            helper: function(e, item) {
-                if (!item.hasClass('ui-selected')) {
-                    $('.column').find('.ui-selected').removeClass('ui-selected');
-                    item.addClass('ui-selected');
-                }
-
-                var selected = $('.ui-selected').clone();
-                item.data('multidrag', selected);
-                $('.ui-selected').not(item).remove();
-                return $('<div class="transporter"></div>').append(selected);
-            },
-            stop: function(e, ui) {
-                var selected = ui.item.data('multidrag');
-                ui.item.after(selected);
-                ui.item.remove();
-                $('.portlet-remove').on("click", function() {
-                    var start = $(this).closest('.column .portlet').remove();
-                    $('.start-column').append(start);
-                    console.log('YO!!!');
-                });
-            }
-        }).disableSelection();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    });
-    </script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>

@@ -613,7 +613,6 @@
                                             <div class="route__footer text-right row">
                                                 <div class="col-md-4 text-center"></div>
                                                 <div class="col-md-4 text-center">
-
                                                 </div>
                                                 <div class="col-md-4 text-right">
                                                     <div class="portlet-remove">
@@ -636,7 +635,6 @@
                                             <div class="route__footer text-right row">
                                                 <div class="col-md-4 text-center"></div>
                                                 <div class="col-md-4 text-center">
-
                                                 </div>
                                                 <div class="col-md-4 text-right">
                                                     <div class="portlet-remove">
@@ -659,7 +657,6 @@
                                             <div class="route__footer text-right row">
                                                 <div class="col-md-4 text-center"></div>
                                                 <div class="col-md-4 text-center">
-
                                                 </div>
                                                 <div class="col-md-4 text-right">
                                                     <div class="portlet-remove">
@@ -746,68 +743,7 @@
     </div>
     <script src="js/jquery-2.2.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-    $(function() {
 
-        $('.column').selectable({
-            cancel: '.handle, .route-footer, .portlet-remove',
-            filter: ".portlet",
-            //tolerance: "fit"
-        }).find(".portlet").prepend("<div class='handle'></div>");
-
-
-
-        $('.column').sortable({
-            cursorAt: {
-                top: 0,
-                left: 0
-            },
-            placeholder: "li-placeHolder",
-            connectWith: ".column",
-            items: ".portlet",
-            handle: '.handle',
-            helper: function(e, item) {
-                if (!item.hasClass('ui-selected')) {
-                    $('.column').find('.ui-selected').removeClass('ui-selected');
-                    item.addClass('ui-selected');
-                }
-
-                var selected = $('.ui-selected').clone();
-                item.data('multidrag', selected);
-                $('.ui-selected').not(item).remove();
-                return $('<div class="transporter"></div>').append(selected);
-            },
-            stop: function(e, ui) {
-                var selected = ui.item.data('multidrag');
-                ui.item.after(selected);
-                ui.item.remove();
-                $('.portlet-remove').on("click", function() {
-                    var start = $(this).closest('.column .portlet').remove();
-                    $('.start-column').append(start);
-                    console.log('YO!!!');
-                });
-            }
-        }).disableSelection();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    });
-    </script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
