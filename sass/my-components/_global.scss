@@ -1584,6 +1584,7 @@ div.ui-selecting {background-color: #f1f1f1;}
 .table-responsive {
     overflow: visible; 
     overflow-y: visible; 
+    padding-bottom: 30px;
     @media (max-width: 1500px) {
         overflow-x: scroll;
     }
