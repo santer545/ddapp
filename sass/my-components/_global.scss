@@ -88,8 +88,8 @@ textarea {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 80px;
-    line-height: 80px;
+    height: 60px;
+    line-height: 60px;
     color: $brand-primary;
         margin-right: -15px;
         border-top: 1px solid #eaeaea;
@@ -139,15 +139,16 @@ textarea {
 
 .logo {
     display: block;
-    padding: 7px 0 13px 32px;
+    padding: 7px 0 9px 32px;
     img {
-        width: 230px;
+        height: 55px;
+        width: auto;
     }
 }
 
 .search {
     position: relative;
-    margin-top: 30px;
+    margin-top: 16px;
 }
 
 div.ui-selected {
@@ -163,10 +164,9 @@ div.ui-selected {
     &__img {
         display: inline-block;
         vertical-align: middle;
-        width: 80px;
-        height: 80px;
+        width: 55px;
+        height: 55px;
         margin-right: 35px;
-        margin-top: 8px;
         cursor: pointer;
         img {
             width: 100%;
@@ -306,6 +306,9 @@ div.ui-selected {
         border: 1px solid #eaeaea;
         cursor: pointer;
         transition: background-color 0.3s;
+        &--inverse {
+            border: none;
+        }
         &:hover {
             background-color: #f1f1f1;
         }
@@ -348,13 +351,11 @@ div.ui-selected {
     padding-bottom: 60px;
     &__wrapper {
         margin-top: 30px;
-        padding: 15px;
-        border: 1px solid #eaeaea;
     }
 }
 
 .settings__distance {
-    font-size: 21px;
+    font-size: 16px;
     display: inline-block;
     vertical-align: middle;
     margin: 0 30px;
@@ -557,10 +558,6 @@ div.ui-selected {
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
             opacity: 0;
-            @media (max-width: 1600px) {
-                width: 11px;
-                height: 5px;
-            }
         }
     }
 }
@@ -1047,15 +1044,15 @@ div.ui-selected {
     }
     &__small {
         position: absolute;
-        right: -85px;
-        top: 0;
+        right: 30%;
+        top: 20px;
         width: 37px;
         height: 37px;
         line-height: 35px;
         background-color: $brand-primary;
         border-radius: 50%;
         text-align: center;
-        box-shadow: 4px 0px 8px 1px #cfcfcf;
+        cursor: pointer;
         .icon {
             width: 25px;
             height: 25px;
@@ -1065,12 +1062,10 @@ div.ui-selected {
     }
 }
 
-.handle {
-    height: 10px;
-}
 
 .add {
     &__item {
+        position: relative;
         text-align: center;
         padding: 20px 0 13px;
         border: 1px solid #eaeaea;
@@ -1092,9 +1087,6 @@ div.ui-selected {
         .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
             width: 100%;
             margin: 0;
-        }
-        .bootstrap-select.btn-group .dropdown-toggle .filter-option {
-            font-size: 20px;
         }
     }
     &__block {
@@ -1128,7 +1120,9 @@ div.ui-selected {
         border-top: none;
         padding-bottom: 30px;
         &--view {
+            border: 1px solid #eaeaea;
             padding-bottom: 20px;
+            border-top: none;
             td {
                 color: $text-color;
             }
@@ -1174,6 +1168,36 @@ div.ui-selected {
         border: 1px solid #eaeaea;
         border-top: none;
     }
+    &__th,
+    &__td {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 16px;
+        color: $gray-middle;
+        font-weight: 400;
+        padding: 8px 22px;
+    }
+    &__price_category  {
+        width: 27%;
+        margin-right: 3%;
+        .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+            width: 100%;
+        }
+    }
+    &__price {
+        width: 17%;
+    }
+    &__size_block {
+        width: 13%;
+    }
+    &__plus {
+        width: 10%;
+    }
+    &__delete {
+        .icon {
+            cursor: pointer;
+        }
+    }
 }
 
 
@@ -1196,7 +1220,6 @@ div.ui-selected {
         cursor: pointer;
         &.active {
             background-color: $brand-primary;
-            box-shadow: 4px 0px 8px 1px #cfcfcf;
         }
     }
 }
@@ -1220,14 +1243,14 @@ div.ui-selected {
         width: 45px;
         border-radius: 50%;
         cursor: pointer;
-        box-shadow: 4px 0px 8px 1px #cfcfcf;
+
         border: none;
         &:not(:last-child) {
             margin-bottom: 20px;
         }
         &.active {
             border: 3px solid #fff;
-            box-shadow: 4px 0px 8px 1px #cfcfcf;
+
         }
         img {
             width: 100%;
@@ -1250,7 +1273,7 @@ div.ui-selected {
 
 .diagramm {
     &__data {
-        font-size: 30px;
+        font-size: 20px;
         display: inline-block;
         vertical-align: middle;
         margin-right: 40px;
@@ -1270,7 +1293,6 @@ div.ui-selected {
     @media (max-width: 1400px) {
         padding: 20px 15px;
     }
-    &.active,
     &:hover {
         color: #fff;
         background-color: $brand-primary;
@@ -1454,11 +1476,14 @@ div.ui-selected {
 }
 
 .portlet {
+    position: relative;
     min-width: 210px;
     background-color: #fff;
     margin-bottom: 20px;
     border: 1px solid #eaeaea;
     &-remove {
+        position: relative;
+        z-index: 3;
         display: inline-block;
     }
 }
@@ -1506,7 +1531,6 @@ div.ui-selected {
 
 .handle {
     height: 15px;
-    width: 100%;
 }
 
 .copy {

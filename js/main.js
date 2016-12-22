@@ -4,7 +4,9 @@ $(document).ready(function() {
         $(this).toggleClass("active");
     });
     // Bootstrap select
-    $('.selectpicker').selectpicker();
+    $('.selectpicker').selectpicker({
+        dropupAuto: false
+    });
 
 
     var a = $('.js-detail').attr('aria-expanded');
@@ -13,14 +15,14 @@ $(document).ready(function() {
     }
 
 
-    $(document).ready(function() {
-        $(".owl-carousel").owlCarousel({
-            items: 1,
-            mouseDrag: false,
-            nav: true,
-            navText: ['<svg class="icon icon-ico35"><use xlink:href="#icon-ico35"></use></svg> <span>предыдущая неделя</a>', '<span>следующая неделя</span> <svg class="icon icon-ico36"><use xlink:href="#icon-ico36"></use></svg>']
-        });
+
+    $(".owl-carousel").owlCarousel({
+        items: 1,
+        mouseDrag: false,
+        nav: true,
+        navText: ['<svg class="icon icon-ico35"><use xlink:href="#icon-ico35"></use></svg> <span>предыдущая неделя</a>', '<span>следующая неделя</span> <svg class="icon icon-ico36"><use xlink:href="#icon-ico36"></use></svg>']
     });
+
 
 
 
@@ -45,12 +47,25 @@ $(document).ready(function() {
 
     $('#product-name').on('changed.bs.select', function(e) {
         var prod_name = $('[data-id="product-name"] .filter-option').text();
-        console.log(prod_name);
+
         $('.add__name').html(prod_name);
     });
 
 
-    /*$('.scroll-pane').jScrollPane();*/
+
+
+    $(function() {
+        $(".f__item").click(function() {
+            // remove classes from all
+            $(".f__item").removeClass("active");
+            // add class to the one we clicked
+            $(this).addClass("active");
+        });
+    });
+
+
+
+    $('.scroll-pane').jScrollPane();
     $('.route__info').dotdotdot();
 
     // tools panel
@@ -68,6 +83,9 @@ $(document).ready(function() {
 
 
 
+
+    // Same height
+
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
         initSameHeight();
     });
@@ -82,6 +100,28 @@ $(document).ready(function() {
 });
 
 
+$('.js_delete_tr').click(function() {
+    $(this).closest('.add__tr').remove();
+});
+$('.js__add_row').click(function() {
+    var row = $(this).closest('.add__tr').html();
+    $(this).closest('.add__tr').after(row);
+    $(this).remove();
+    $(row).find('.js_delete_tr').click(function() {
+        $(row).remove();
+    });
+});
+$('.js_add_block').click(function() {
+    var block = $(this).closest('.add__product_wrapper').clone();
+    $('.add__product').after(block);
+});
+
+$('.js_add_size').click(function() {
+    var info = $(this).siblings('.add__info:eq(0)').clone();
+    $('.add__info').after(info);
+});
+
+
 
 // Same height blocks
 
@@ -92,12 +132,12 @@ jQuery(function() {
 
 
 function initSameHeight() {
-    jQuery('.wrapper').sameHeight({
+    /*jQuery('.wrapper').sameHeight({
         elements: '.content, .sidebar',
         flexible: true,
         multiLine: true,
         biggestHeight: true
-    });
+    });*/
     jQuery('.column__row').sameHeight({
         elements: '.column__left, .column__right',
         flexible: true,
@@ -248,17 +288,143 @@ jQuery.onFontResize = (function($) {
 
 
 
+
+
+
 // Routes
 
-$(function() {
+/*$(function() {
+
+    $('.column').selectable({
+        cancel: '.test, .route-footer, .portlet-remove',
+        filter: ".portlet",
+        selected: function(event, ui) {
+            if (!(window.event.ctrlKey) && !(window.event.shiftKey)) {
+                $('.column').removeClass('ui-selectable');
+                $('.portlet').removeClass('ui-selected');
+                $('.portlet').removeClass('ui-selectee');
+
+            } else {
+                $('.portlet').addClass('test');
+            }
+
+            $('.column').sortable({
+                cursorAt: {
+                    top: 0,
+                    left: 0
+                },
+                placeholder: "li-placeHolder",
+                connectWith: ".column",
+                items: ".test",
+                handle: '.test',
+                                    helper: function(e, item) {
+                                        if (!item.hasClass('ui-selected')) {
+                                            $('.column').find('.ui-selected').removeClass('ui-selected');
+                                            item.addClass('ui-selected');
+                                        }
+
+                                        var selected = $('.ui-selected').clone();
+                                        item.data('multidrag', selected);
+                                        $('.ui-selected').not(item).remove();
+                                        return $('<div class="transporter"></div>').append(selected);
+                                    },
+                                    stop: function(e, ui) {
+                                        var selected = ui.item.data('multidrag');
+                                        ui.item.after(selected);
+                                        ui.item.remove();
+                                        $('.portlet-remove').on("click", function() {
+                                            var start = $(this).closest('.column .portlet').remove();
+                                            $('.start-column').append(start);
+
+                                        });
+                                    },
+                                    change: function(e, ui) {
+                                        $('.portlet').removeClass('ui-selected');
+                                    },
+                                    start: function(e, ui) {
+                                        $('.portlet').removeClass('ui-selected');
+                                    }
+            }).disableSelection();
+        }
+    });*/
 
 
 
 
 
-    $('.column').bind("mousedown", function(e) {
-        e.metaKey = false;
-    }).selectable({
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $('.column').selectable({
         cancel: '.handle, .route-footer, .portlet-remove',
         filter: ".portlet",
         selected: function(event, ui) {
@@ -266,7 +432,7 @@ $(function() {
                 $('.portlet').removeClass('ui-selected');
             }
         }
-    }).find(".portlet").prepend("<div class='handle'></div>");
+    });
 
 
 
@@ -337,7 +503,3 @@ $(function() {
 
 
 
-
-
-
-});
