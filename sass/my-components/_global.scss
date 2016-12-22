@@ -1066,7 +1066,13 @@ div.ui-selected {
 }
 
 .handle {
-    height: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    cursor: pointer;
 }
 
 .add {
@@ -1454,11 +1460,15 @@ div.ui-selected {
 }
 
 .portlet {
+    position: relative;
+    z-index: 1;
     min-width: 210px;
     background-color: #fff;
     margin-bottom: 20px;
     border: 1px solid #eaeaea;
     &-remove {
+        position: relative;
+        z-index: 3;
         display: inline-block;
     }
 }
@@ -1504,10 +1514,7 @@ div.ui-selected {
     border: none;
 }
 
-.handle {
-    height: 15px;
-    width: 100%;
-}
+
 
 .copy {
     padding-top: 5px;
@@ -1561,14 +1568,14 @@ div.ui-selected {
     }
 }
 .table-responsive {
-<<<<<<< HEAD
+
     overflow: visible; 
     overflow-y: visible; 
     padding-bottom: 30px;
-=======
+
     overflow: visible;
     overflow-y: visible;
->>>>>>> abe79dcc96c475bcb2d89c4161245527b3fbbdec
+
     @media (max-width: 1500px) {
         overflow-x: scroll;
     }
