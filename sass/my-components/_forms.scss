@@ -28,8 +28,11 @@
         &--table {
             padding-left: 0;
             padding-right: 0;
-            max-width: 100px;
-            min-width: 100px;
+            width: 100px;
+        }
+        &--size {
+            padding-left: 0;
+            padding-right: 0;
         }
         &--wr {
             position: relative;
@@ -71,7 +74,7 @@
     &-label {
         display: inline-block;
         vertical-align: middle;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 300;
         color: $gray-light;
         width: 10%;
@@ -116,11 +119,7 @@
         font-weight: 400;
         color: $gray-middle;
         &--big {
-            font-size: 20px;
-            padding-top: 12px;
-            @media (max-width: 1600px) {
-                padding-top: 7px;
-            }
+            padding-top: 8px;
         }
         &--padding {
             padding-top: 7px;
@@ -136,8 +135,7 @@
         margin: 0;
         color: $gray-middle;
         &--big {
-            font-size: 22px;
-            padding-top: 10px;
+            padding-top: 8px;
         }
     }
 
@@ -164,6 +162,10 @@
             outline-offset: 0;
         }
     }
+}
+
+.btn-group.open .dropdown-toggle {
+    float: none;
 }
 
 .dropdown-toggle {
@@ -314,13 +316,13 @@
 
 .jspTrack
 {
-    background: $brand-primary;
+    background: #1f7c9e;
     position: relative;
 }
 
 .jspDrag
 {
-    background: $brand-primary;
+    background: #1f7c9e;
     position: relative;
     top: 0;
     left: 0;
