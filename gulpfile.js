@@ -107,7 +107,7 @@ gulp.task('scripts', function() {
         //.pipe(concat('all.js'))
         .pipe(gulp.dest('dist/js'))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest('dist/js'))
         .pipe(notify({ message: 'Scripts task complete' }));
 });
