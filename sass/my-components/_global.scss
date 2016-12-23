@@ -1060,6 +1060,9 @@ div.ui-selected {
     }
 }
 
+.content-padding {
+    padding-left: 30px;
+}
 
 .add {
     &__item {
@@ -1070,7 +1073,9 @@ div.ui-selected {
     }
     &__product {
         padding-top: 25px;
-        padding-left: 30px;
+        &_wrapper {
+            padding-left: 30px;
+        }
     }
     &__heading {
         margin-bottom: 15px;
@@ -1528,7 +1533,12 @@ div.ui-selected {
 }
 
 .handle {
-    height: 15px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
 }
 
 .copy {

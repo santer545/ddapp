@@ -102,26 +102,29 @@ $(document).ready(function() {
         console.log(pattern)
         $(parent).append(pattern);
     });
-});
 
 
-$('.js_delete_tr').click(function() {
-    $(this).closest('.add__tr').remove();
-});
-$('.js__add_row').click(function() {
-    var row = $(this).closest('.add__tr').html();
-    $(this).closest('.add__tr').after(row);
-    $(this).remove();
-    $(row).find('.js_delete_tr').click(function() {
-        $(row).remove();
+    $('.add__product_wrapper').on('click', '.js_delete_tr', function() {
+        var row = $(this).closest('.add__tr--dynamic').html();
+        $(this).closest('.add__tr--dynamic').remove();
     });
+    $('.add__product_wrapper').on('click', '.js__add_row', function() {
+        var row = $(this).closest('.add__tr').html();
+        $(this).closest('.add__tr').after(row);
+    });
+    $('.add__product_wrapper').on('click', '.js_add_size', function() {
+        var info = $(this).siblings('.add__info:eq(0)').clone();
+        $('.add__info').after(info);
+    });
+
 });
 
 
-$('.js_add_size').click(function() {
-    var info = $(this).siblings('.add__info:eq(0)').clone();
-    $('.add__info').after(info);
-});
+
+
+
+
+
 
 
 
@@ -134,19 +137,12 @@ jQuery(function() {
 
 
 function initSameHeight() {
-    /*jQuery('.wrapper').sameHeight({
-        elements: '.content, .sidebar',
-        flexible: true,
-        multiLine: true,
-        biggestHeight: true
-    });*/
     jQuery('.column__row').sameHeight({
         elements: '.column__left, .column__right',
         flexible: true,
         multiLine: true,
         biggestHeight: true
     });
-
 };
 (function($) {
     $.fn.sameHeight = function(opt) {
@@ -293,62 +289,12 @@ jQuery.onFontResize = (function($) {
 
 
 
-// Routes
 
-/*$(function() {
 
-    $('.column').selectable({
-        cancel: '.test, .route-footer, .portlet-remove',
-        filter: ".portlet",
-        selected: function(event, ui) {
-            if (!(window.event.ctrlKey) && !(window.event.shiftKey)) {
-                $('.column').removeClass('ui-selectable');
-                $('.portlet').removeClass('ui-selected');
-                $('.portlet').removeClass('ui-selectee');
 
-            } else {
-                $('.portlet').addClass('test');
-            }
 
-            $('.column').sortable({
-                cursorAt: {
-                    top: 0,
-                    left: 0
-                },
-                placeholder: "li-placeHolder",
-                connectWith: ".column",
-                items: ".test",
-                handle: '.test',
-                                    helper: function(e, item) {
-                                        if (!item.hasClass('ui-selected')) {
-                                            $('.column').find('.ui-selected').removeClass('ui-selected');
-                                            item.addClass('ui-selected');
-                                        }
 
-                                        var selected = $('.ui-selected').clone();
-                                        item.data('multidrag', selected);
-                                        $('.ui-selected').not(item).remove();
-                                        return $('<div class="transporter"></div>').append(selected);
-                                    },
-                                    stop: function(e, ui) {
-                                        var selected = ui.item.data('multidrag');
-                                        ui.item.after(selected);
-                                        ui.item.remove();
-                                        $('.portlet-remove').on("click", function() {
-                                            var start = $(this).closest('.column .portlet').remove();
-                                            $('.start-column').append(start);
 
-                                        });
-                                    },
-                                    change: function(e, ui) {
-                                        $('.portlet').removeClass('ui-selected');
-                                    },
-                                    start: function(e, ui) {
-                                        $('.portlet').removeClass('ui-selected');
-                                    }
-            }).disableSelection();
-        }
-    });*/
 
 
 
@@ -412,24 +358,22 @@ jQuery.onFontResize = (function($) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+var countClick = 0;
+$('.portlet').on('mouseover', function() {
+    if (!(window.event.ctrlKey) && !(window.event.shiftKey)) {
+        $('.handle').css('z-index', '2').focus();
+        $('.handle').trigger('mousedown');
+    } else {
+        $('.handle').css('z-index', '0');
+        $('.portlet').focus();
+    }
+});
 
 $('.column').selectable({
     cancel: '.handle, .route-footer, .portlet-remove',
     filter: ".portlet",
     selected: function(event, ui) {
+        countClick++;
         if (!(window.event.ctrlKey) && !(window.event.shiftKey)) {
             $('.portlet').removeClass('ui-selected');
         }
@@ -440,14 +384,22 @@ $('.column').selectable({
 
 
 $('.column').sortable({
-    cursorAt: {
-        top: 0,
-        left: 0
-    },
-    placeholder: "li-placeHolder",
+
     connectWith: ".column",
+    handle: ".handle",
     items: ".portlet",
-    handle: '.handle',
+    stop: function(e, ui) {
+        var selected = ui.item.data('multidrag');
+        ui.item.after(selected);
+        ui.item.remove();
+        $('.portlet-remove').on("click", function() {
+            var start = $(this).closest('.column .portlet').remove();
+            $('.start-column').append(start);
+
+        });
+    },
+
+
     helper: function(e, item) {
         if (!item.hasClass('ui-selected')) {
             $('.column').find('.ui-selected').removeClass('ui-selected');
@@ -458,16 +410,6 @@ $('.column').sortable({
         item.data('multidrag', selected);
         $('.ui-selected').not(item).remove();
         return $('<div class="transporter"></div>').append(selected);
-    },
-    stop: function(e, ui) {
-        var selected = ui.item.data('multidrag');
-        ui.item.after(selected);
-        ui.item.remove();
-        $('.portlet-remove').on("click", function() {
-            var start = $(this).closest('.column .portlet').remove();
-            $('.start-column').append(start);
-
-        });
     },
     change: function(e, ui) {
         $('.portlet').removeClass('ui-selected');
@@ -489,10 +431,4 @@ $('#check-2').on('change', function() {
             $(this).removeClass('ui-selected');
         });
     }
-});
-
-$('.portlet').click(function() {
-
-    $('.portlet').removeClass('ui-selected');
-
 });
