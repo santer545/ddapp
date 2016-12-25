@@ -558,7 +558,7 @@
                                         <p class="add__heading">Заполните данные</p>
                                         <div class="add__item">
                                             <input type="file" name="file" id="file" class="inputfile" />
-                                            <div class="load__small">
+                                            <div class="load__small js-color">
                                                 <svg class="icon icon-plus icon__gray">
                                                     <use xlink:href="#icon-plus"></use>
                                                 </svg>
@@ -593,31 +593,19 @@
                                                 <div class="add__th add__price_category add__price_category--th">Ценовая категория</div>
                                                 <div class="add__th add__price add__price--th">Ф1</div>
                                                 <div class="add__th add__price add__price--th">Ф2</div>
-                                            </div>
-                                            <div class="add__tr add__tr--dynamic">
-                                                <div class="add__td add__size_block add__size_block--td">
-                                                    <input type="text" class="form-control form-control--size" value="21-23">
-                                                </div>
-                                                <div class="add__td add__price_category add__price_category--td">
-                                                    <select name="" id="" class="selectpicker">
-                                                        <option value="">минимаркет</option>
-                                                        <option value="">HoReca</option>
-                                                    </select>
-                                                </div>
-                                                <div class="add__td add__price add__price--td">
-                                                    <input type="text" class="form-control--table form-control" value="6 112, 45">
-                                                </div>
-                                                <div class="add__td add__price add__price--td">
-                                                    <input type="text" class="form-control--table form-control" value="6 112, 45">
-                                                </div>
-                                                <div class="add__plus add__td">
-                                                </div>
-                                                <div class="add__td">
-
+                                                <div class="add__th add__plus"></div>
+                                                <div class="add__th">
+                                                    <div class="add__delete js_delete_tr">
+                                                        <svg class="icon icon-ico33 icon__gray">
+                                                            <use xlink:href="#icon-ico33"></use>
+                                                        </svg>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            
                                             <div class="add__tr add__tr--dynamic">
                                                 <div class="add__td add__size_block add__size_block--td">
+                                                <input type="text" class="form-control form-control--size" value="21-23">
                                                 </div>
                                                 <div class="add__td add__price_category add__price_category--td">
                                                     <select name="" id="" class="selectpicker">
@@ -659,7 +647,7 @@
                                                 <li id="id_f2" class="f__item">Ф2</li>
                                             </ul>
                                             <ul class="color__list">
-                                                <li class="color__item active"><img src="assets/images/color-1.jpg" height="45" width="45" alt=""></li>
+                                                <li class="color__item active js-color"></li>
                                             </ul>
                                             <figure>
                                                 <img id="img__preview" src="" alt="">
@@ -708,6 +696,7 @@
     <script src="js/jquery.jscrollpane.min.js"></script>
     <script src="js/jquery.dotdotdot.min.js"></script>
     <script src="js/jquery.sameheight.js"></script>
+    <script src="js/huebee.pkgd.js"></script>
     <script src="js/main.js"></script>
 </body>
 
