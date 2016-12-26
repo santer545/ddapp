@@ -9,6 +9,7 @@ $(document).ready(function() {
 
 
 
+
     var a = $('.js-detail').attr('aria-expanded');
     if (a == 'true') {
         $('.js-detail').html('Скрыть');
@@ -82,9 +83,9 @@ $(document).ready(function() {
         console.log(pattern);
         /*$(pattern)*/
         $(parent).append(pattern.clone().show());
-        /*$('.selectpicker').selectpicker({
+        $('.selectpicker').selectpicker({
             dropupAuto: false
-        });*/
+        });
     });
 
 
@@ -120,32 +121,67 @@ $(document).ready(function() {
     });
 
 
-    /**
-    Product preview
-    **/
-    function readURL(input) {
+    var val_first = $('.add__size_block input').val();
+    $('.add__table_td_size').text(val_first);
 
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
 
-            reader.onload = function(e) {
-                $('#img__preview').attr('src', e.target.result);
-            };
 
-            reader.readAsDataURL(input.files[0]);
-            console.log(e.target.result);
-        }
-    }
-    $("#label").change(function() {
-        readURL(this);
+
+    var val_price_first = $('.add__price_td_f1 input').val();
+    $('.add__price_view').text(val_price_first);
+
+
+
+
+
+    $('.add__size_block input').on('keyup', function() {
+        var value = $(this).val();
+        $('.add__table_td_size').text(value);
     });
 
-    $('select').on('changed.bs.select', function(e) {
-        var prod_name = $('[data-id="product-name"] .filter-option').text();
-
-        $('.add__name').text(prod_name);
+    $('.add__price_td_f1 input').on('keyup', function() {
+        var value = $(this).val();
+        $('.add__price_view').text(value);
     });
+
+    $('.add__price_td_f2 input').on('keyup', function() {
+        var value = $(this).val();
+
+    });
+
+
+    
+
 });
+
+
+
+/**
+Product preview
+**/
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#img__preview').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+        console.log(e.target.result);
+    }
+}
+$("#label").change(function() {
+    readURL(this);
+});
+
+$('.add__brand select').on('changed.bs.select', function(e) {
+    var prod_name = $(this).closest('.add__product').find('.add__brand .filter-option').text();
+
+    $('.add__name').text(prod_name);
+});
+
 
 
 
@@ -462,13 +498,3 @@ $('#check-2').on('change', function() {
 });
 
 
-
-
-// initialize on multiple elements with jQuery
-$('.js-color').each(function(i, elem) {
-    var hueb = new Huebee(elem, {
-        // options
-        setText: false,
-        setBGColor: '.color__item'
-    });
-});

@@ -300,7 +300,7 @@ div.ui-selected {
         position: absolute;
         top: 0;
         right: 10px;
-        padding: 5px 20px;
+        padding: 5px 26px;
         border: 1px solid #eaeaea;
         cursor: pointer;
         transition: background-color 0.3s;
@@ -312,7 +312,7 @@ div.ui-selected {
         }
     }
     &__block {
-        padding: 5px 30px;
+        padding: 5px 26px;
         border: 1px solid #eaeaea;
         display: inline-block;
         transition: background-color 0.3s;
@@ -823,7 +823,7 @@ div.ui-selected {
         }
         &_item {
             display: inline-block;
-            padding: 10px 30px;
+            padding: 5px 26px;
             border: 1px solid #eaeaea;
             cursor: pointer;
         }
@@ -971,7 +971,6 @@ div.ui-selected {
         text-align: center;
     }
     &__info {
-        height: 95px;
         max-height: 95px;
         overflow: hidden;
     }
@@ -1005,6 +1004,7 @@ div.ui-selected {
 
     }
     &__footer {
+        padding-top: 10px;
         .icon {
             width: 20px;
             fill: #E3E3E3;
@@ -1082,6 +1082,9 @@ div.ui-selected {
         padding-top: 25px;
         &_wrapper {
             padding-left: 30px;
+        }
+        &--pattern {
+            padding-top: 25px;
         }
     }
     &__heading {
@@ -1210,6 +1213,26 @@ div.ui-selected {
     }
 }
 
+.preview {
+    &__table_td,
+     &__table_th{
+        font-size: 16px;
+        color: #9f9f9f;
+        font-weight: 400;
+        padding: 8px 22px;
+        display: inline-block;
+        vertical-align: middle;
+        width: 33.3%;
+        overflow: hidden;
+    }
+    &__table_td {
+        color: $text-color;
+    }
+    &__table_tr {
+        font-size: 0;
+    }
+}
+
 
 
 .f {
@@ -1322,7 +1345,7 @@ div.ui-selected {
     @include clearfix;
     .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
         margin: 0;
-        width: 220px;
+        width: 195px;
         &.btn-group .dropdown-toggle .filter-option {
             text-overflow: ellipsis;
             font-size: 20px;
@@ -1349,7 +1372,7 @@ div.ui-selected {
 
 .drop__day {
     position: relative;
-    width: 275px;
+    width: 185px;
     display: inline-block;
     vertical-align: top;
     font-size: 16px;
@@ -1407,7 +1430,7 @@ div.ui-selected {
 
 .merch__item {
     position: relative;
-    width: 275px;
+    width: 185px;
     display: inline-block;
     vertical-align: top;
     font-size: 20px;
@@ -1452,7 +1475,7 @@ div.ui-selected {
 }
 
 .column {
-    width: 275px;
+    width: 185px;
     margin-right: 10px;
     display: inline-block;
     vertical-align: top;
@@ -1466,7 +1489,7 @@ div.ui-selected {
         min-height: 1000px;
     }
     &__left {
-        width: 335px;
+        width: 230px;
         float: left;
         padding-left: 35px;
         padding-right: 11px;
@@ -1487,9 +1510,9 @@ div.ui-selected {
 
 .portlet {
     position: relative;
-    min-width: 210px;
+    min-width: 185px;
     background-color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 1px solid #eaeaea;
     &-remove {
         position: relative;
@@ -1530,7 +1553,7 @@ div.ui-selected {
     padding-bottom: 6px;
     display: inline-block;
     vertical-align: top;
-    width: 275px;
+    width: 185px;
     color: #9f9f9f;
     font-size: 20px;
 }
@@ -1549,7 +1572,6 @@ div.ui-selected {
 }
 
 .copy {
-    padding-top: 5px;
     img {
         width: 23px;
         height: 26px;
@@ -1564,18 +1586,12 @@ div.ui-selected {
     font-size: 16px;
     text-transform: uppercase;
     color: $brand-primary;
-    @media (max-width: 1600px) {
-        font-size: 20px;
-    }
-    @media (max-width: 1400px) {
-        font-size: 16px;
-    }
     span {
         display: inline-block;
-        vertical-align: baseline;
+        vertical-align: middle;
     }
     .icon {
-        vertical-align: baseline;
+        vertical-align: middle;
         width: 24px;
         height: 24px;
     }
@@ -1693,9 +1709,5 @@ div.ui-selected {
     padding-left: 30px;
     .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
         width: 115px;
-        .filter-option {
-            font-size: 20px;
-            font-weight: 400;
-        }
     }
 }
