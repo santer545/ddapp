@@ -4,9 +4,10 @@
         box-shadow: none;
         border-bottom: 1px solid #333;
         height: 40px;
-        padding: 5px 35px 5px 15px;
+        padding: 5px 35px 5px 10px;
         font-size: 16px;
         border-radius: 0;
+        color: $text-color;
         &:focus {
             box-shadow: none;
             outline: none;
@@ -317,13 +318,13 @@
 
 .jspTrack
 {
-    background: #fff;
+    background: #3ab3df;
     position: relative;
 }
 
 .jspDrag
 {
-    background: #fff;
+    background: #3ab3df;
     position: relative;
     top: 0;
     left: 0;
