@@ -299,9 +299,11 @@ div.ui-selected {
     &-button {
         position: absolute;
         top: 0;
-        right: 10px;
+        right: 25px;
         padding: 5px 21px;
-        border: 1px solid #eaeaea;
+        width: 70px;
+        height: 38px;
+        border: 1px solid #f1f1f1;
         cursor: pointer;
         transition: background-color 0.3s;
         &--inverse {
@@ -313,7 +315,9 @@ div.ui-selected {
     }
     &__block {
         padding: 5px 21px;
-        border: 1px solid #eaeaea;
+        width: 70px;
+        height: 38px;
+        border: 1px solid #f1f1f1;
         display: inline-block;
         transition: background-color 0.3s;
         cursor: pointer;
@@ -350,6 +354,9 @@ div.ui-selected {
     &__wrapper {
         margin-top: 30px;
     }
+    &--margin {
+        margin-left: -30px;
+    }
 }
 
 .settings__distance {
@@ -365,7 +372,31 @@ div.ui-selected {
         @include clearfix;
         .tools__panel--right,
         .tools-pagination {
-            display: none;
+
+        }
+    }
+
+    &__item {
+        display: inline-block;
+        border: 1px solid #f1f1f1;
+        cursor: pointer;
+        a {
+            padding: 6px 21px;
+            display: block;
+        }
+        .icon,
+        svg g{
+            fill: #9f9f9f;
+            width: 25px;
+            height: 25px;
+        }
+        &:hover,
+        &.active {
+            background-color: $hover-bg;
+            .icon,
+            svg g{
+                fill: $brand-primary!important;
+            }
         }
     }
     &__panel {
@@ -378,7 +409,10 @@ div.ui-selected {
         &--right {
             margin-right: 0;
             .tools__item {
-                margin-right: 10px;
+                margin-right: 5px;
+            }
+            svg g{
+                fill: $brand-primary;
             }
         }
         &--inline {
@@ -386,32 +420,6 @@ div.ui-selected {
             vertical-align: middle;
             margin-bottom: 0;
             margin-right: 45px;
-        }
-    }
-    &__item {
-        display: inline-block;
-        border: 1px solid #f9f9f9;
-        cursor: pointer;
-        a {
-            padding: 10px 30px;
-            display: block;
-            @media (max-width: 1400px) {
-                padding: 10px 20px;
-            }
-        }
-        .icon,
-        svg g{
-            fill: #9f9f9f!important;
-            width: 25px;
-            height: 25px;
-        }
-        &:hover,
-        &.active {
-            background-color: $hover-bg;
-            .icon,
-            svg g{
-                fill: $brand-primary!important;
-            }
         }
     }
     &__holder {
@@ -435,7 +443,7 @@ div.ui-selected {
             display: inline-block;
             vertical-align: top;
             padding: 5px 30px 5px 10px;
-            border: 1px solid #eaeaea;
+            border: 1px solid #f1f1f1;
             font-size: 16px;
             &:not(:last-child) {
                 margin-right: 10px;
@@ -823,8 +831,8 @@ div.ui-selected {
         }
         &_item {
             display: inline-block;
-            padding: 5px 26px;
-            border: 1px solid #eaeaea;
+            padding: 5px 21px;
+            border: 1px solid #f1f1f1;
             cursor: pointer;
         }
     }
@@ -964,6 +972,8 @@ div.ui-selected {
     }
     &__add {
         padding: 6px 21px;
+        width: 70px;
+        height: 38px;
         border: 1px solid #eaeaea;
         cursor: pointer;
         margin: 20px 0;
@@ -986,7 +996,6 @@ div.ui-selected {
     &__all {
         color: $gray-middle;
         font-size: 20px;
-        padding-right: 12px;
         &_wr {
             margin-bottom: 10px;
             font-size: 21px;
@@ -999,7 +1008,7 @@ div.ui-selected {
         }
     }
     &__item {
-        padding: 10px 15px;
+        padding: 6px 15px;
 
     }
     &__footer {
@@ -1382,7 +1391,6 @@ div.ui-selected {
     height: 105px;
     background-color: #f1f1f1;
     @media (max-width: 1600px) {
-        font-size: 20px;
         &:before {
             content: '';
             top: 0;
@@ -1450,10 +1458,8 @@ div.ui-selected {
         }
     }
     .icon {
-        width: 22px;
-        @media (max-width: 1600px) {
-            width: 15px;
-        }
+        fill: $second-color;
+        width: 15px;
     }
 }
 
@@ -1512,7 +1518,7 @@ div.ui-selected {
     min-width: 185px;
     background-color: #fff;
     margin-bottom: 10px;
-    border: 1px solid #eaeaea;
+    border: 1px solid #f1f1f1;
     &-remove {
         position: relative;
         z-index: 3;
@@ -1571,6 +1577,8 @@ div.ui-selected {
 }
 
 .copy {
+    position: relative;
+    z-index: 3;
     img {
         width: 23px;
         height: 26px;

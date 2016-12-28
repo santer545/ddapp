@@ -15,7 +15,9 @@ $(document).ready(function() {
         $('.js-detail').html('Скрыть');
     }
 
-
+    $('.tools__delete').click(function(){
+        $(this).closest('.tools__editing_item').remove();
+    });
 
     $(".owl-carousel").owlCarousel({
         items: 1,
@@ -52,15 +54,15 @@ $(document).ready(function() {
 
     // tools panel
     $('#tools_map').on('show.bs.tab', function(e) {
-        $('.form-horizontal--inline').hide();
-        $('.tools-pagination').show();
-        $('.tools__panel--right').show();
-
-    });
-    $('#tools_table').on('show.bs.tab', function(e) {
         $('.form-horizontal--inline').show();
         $('.tools-pagination').hide();
         $('.tools__panel--right').hide();
+
+    });
+    $('#tools_table').on('show.bs.tab', function(e) {
+        $('.form-horizontal--inline').hide();
+        $('.tools-pagination').show();
+        $('.tools__panel--right').show();
     });
 
 
@@ -461,15 +463,33 @@ $('.column').sortable({
         var selected = ui.item.data('multidrag');
         ui.item.after(selected);
         ui.item.remove();
+
+
+        $('.column__right .column').each(function () {
+            if(($(this).find('.portlet').length) == 0) {
+                $(this).find('.portlet__number_item').text('0');
+            } else {
+                var lg = $(this).find('.portlet').length;
+                $(this).find('.portlet').closest('.column').find('.portlet__number_item').text(lg);
+            }
+        });
+
+
         $('.portlet-remove').on("click", function() {
+            var lg_del = $(this).closest('.column__right .column').find('.portlet').length;
+            if(lg_del == 0) {
+                $(this).closest('.column').find('.portlet__number_item').text('0');
+            }
+            $(this).closest('.column').find('.portlet__number_item').text(lg_del - 1);
             var start = $(this).closest('.column .portlet').remove();
             $('.start-column').append(start);
 
         });
+
+
         $('#check-2').prop('checked', false);
-        var lg = $('.portlet').closest('.column__right').find('.portlet').length;
-        $('.portlet').closest('.column__right .column').find('.portlet__number_item').text(lg);
-        console.log(lg);
+
+
     },
 
 

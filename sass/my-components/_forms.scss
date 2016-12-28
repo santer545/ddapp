@@ -106,6 +106,7 @@
 
 .form-horizontal {
     &--inline {
+        display: none;
         float: left;
         .control-label {
             vertical-align: middle;
