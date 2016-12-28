@@ -1219,6 +1219,14 @@ div.ui-selected {
             cursor: pointer;
         }
     }
+    &__tr:not(:last-child) {
+        .add__holder {
+            visibility: hidden;
+        }
+    }
+    &__price_view--f2.add__price_view {
+        display: none;
+    }
 }
 
 .preview {

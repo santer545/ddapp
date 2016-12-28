@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     $(".js__arrow").click(function() {
         $(".sidebar").toggleClass("active");
         $(this).toggleClass("active");
@@ -38,12 +39,20 @@ $(document).ready(function() {
 
 
 
-    $(function() {
+    $(function () {
         $(".f__item").click(function() {
             // remove classes from all
             $(".f__item").removeClass("active");
             // add class to the one we clicked
             $(this).addClass("active");
+            var parent = $(this).closest('.add__product');
+            if ($(this).is('#id_f2')) {
+                parent.find('.add__price_view--f1').hide();
+                parent.find('.add__price_view--f2').css('display', 'inline-block');
+            } else {
+                parent.find('.add__price_view--f1').css('display', 'inline-block');
+                parent.find('.add__price_view--f2').hide();
+            }
         });
     });
 
@@ -85,43 +94,57 @@ $(document).ready(function() {
         var parent = $('.js_add_block').closest('.add__product_wrapper');
         //console.log(block);
         console.log(pattern);
+        $(pattern).addClass('add__product').removeClass('add__product--pattern');
         /*$(pattern)*/
         $(parent).append(pattern.clone().show());
         $('.selectpicker').selectpicker({
             dropupAuto: false
         });
     });
-
-
     $(document).on('click', '.js_delete_tr', function() {
-        $(this).closest('.add__tr--dynamic').remove();
+        var parent = $(this).closest('.add__product');
+        if (parent.find('.add__tr--dynamic').length > 1) {
+            $(this).closest('.add__tr--dynamic').remove();
+        }
 
     });
+
+
+    $(document).on('click', '.js_delete_size', function() {
+        var parent = $(this).closest('.add__product');
+        if (parent.find('.add__info').length > 1) {
+            $(this).closest('.add__info').remove();
+        }
+    });
+
+
     $(document).on('click', '.js__add_row', function() {
         var row = $(this).parents(".row").find('.js__add_row').closest('.add__tr--dynamic').clone().wrap('<div></div>').parent().html();
+       console.log(row)
         $(this).closest('.add__tr').after(row);
 
         $(this).closest('.add__tr').next('.add__tr').find('.add__size_block input').remove();
-        $(this).closest('.add__product').find('.preview__table').append('<div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view"></div></div>');
+        $(this).closest('.add__product').find('.preview__table').append('<div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div>');
+
+
         var f1 = $(this).closest('.add__tr').find('.add__price_td_f1 input').val();
-        $(this).closest('.add__product').find('.add__price_view').text(f1);
+        var f2 = $(this).closest('.add__tr').find('.add__price_td_f2 input').val();
+        $(this).closest('.add__product').find('.add__price_view--f1').text(f1);
+        $(this).closest('.add__product').find('.add__price_view--f2').text(f2);
 
 
 
     });
     $(document).on('click', '.js_add_size', function() {
-        var parent_size = $(this).closest('.add__product').find('.add__info').closest('.add__info--wr');
-        /*var info = $(this).parents(".add__info--wr").find('.add__info:first-child').clone();*/
-
-        $(parent_size).append(pattern_size.clone());
-        $('.selectpicker').selectpicker({
+        var parent_size = $(this).parents(".row").find('.js__add_row').closest('.add__info').clone().wrap('<div></div>').parent().html();
+        /*var parent_size = $(this).closest('.add__product').find('.add__info').closest('.add__info--wr');*/
+        console.log(parent_size)
+        $(parent_size).insertBefore(this);
+        //console.log($(this).closest('.add__info'))
+        /*var select = $(this).closest('.add__info').find('.selectpicker')
+        $(select).selectpicker({
             dropupAuto: false
-        });
-
-    });
-
-    $(document).on('click', '.js_delete_tr', function() {
-        $(this).closest('.add__info').remove();
+        });*/
     });
 
 
@@ -138,7 +161,9 @@ $(document).ready(function() {
 
 
     var val_price_first = $('.add__price_td_f1 input').val();
-    $('.add__price_view').text(val_price_first);
+    var val_price_second = $('.add__price_td_f2 input').val();
+    $('.add__price_view--f1').text(val_price_first);
+    $('.add__price_view--f2').text(val_price_second);
 
 
 
