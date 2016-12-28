@@ -103,6 +103,8 @@ $(document).ready(function() {
 
         $(this).closest('.add__tr').next('.add__tr').find('.add__size_block input').remove();
         $(this).closest('.add__product').find('.preview__table').append('<div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view"></div></div>');
+        var f1 = $(this).closest('.add__tr').find('.add__price_td_f1 input').val();
+        $(this).closest('.add__product').find('.add__price_view').text(f1);
 
 
 
@@ -112,7 +114,9 @@ $(document).ready(function() {
         /*var info = $(this).parents(".add__info--wr").find('.add__info:first-child').clone();*/
 
         $(parent_size).append(pattern_size.clone());
-        console.log(pattern_size);
+        $('.selectpicker').selectpicker({
+            dropupAuto: false
+        });
 
     });
 

@@ -137,7 +137,7 @@ textarea {
 
 .logo {
     display: block;
-    padding: 7px 0 9px 32px;
+    padding: 7px 0 9px 16px;
     img {
         height: 55px;
         width: auto;
@@ -195,10 +195,10 @@ div.ui-selected {
         width: 20%;
         display: inline-block;
         vertical-align: top;
-        padding: 0 8px;
+        padding: 0 10px 0 0;
         font-size: 22px;
         text-align: center;
-        margin-bottom: 17px;
+        margin-bottom: 10px;
         cursor: pointer;
         @media (max-width: 1600px) {
             width: 25%;
@@ -294,7 +294,7 @@ div.ui-selected {
 
 .edit {
     &__holder {
-        padding-left: 35px;
+        padding-left: 30px;
     }
     &-button {
         position: absolute;
@@ -709,7 +709,7 @@ div.ui-selected {
 }
 
 .form__data {
-    padding-left: 50px;
+    padding-left: 45px;
 }
 
 .circle__wr {
@@ -927,7 +927,7 @@ div.ui-selected {
 .route {
     margin-bottom: 40px;
     &__panel {
-        padding-left: 29px;
+        padding-left: 30px;
     }
     &__table {
         width: 100%;
@@ -1366,7 +1366,7 @@ div.ui-selected {
     }
     &--first {
         padding-left: 35px;
-        margin: 0 -30px 0 -45px;
+        margin: 0 -30px 0 -43px;
         padding-top: 0;
         line-height: 105px;
     }
@@ -1496,7 +1496,7 @@ div.ui-selected {
     &__left {
         width: 230px;
         float: left;
-        padding-left: 35px;
+        padding-left: 30px;
         padding-right: 11px;
         background-color: #fafafa;
     }
