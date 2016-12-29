@@ -16,7 +16,7 @@ $(document).ready(function() {
         $('.js-detail').html('Скрыть');
     }
 
-    $('.tools__delete').click(function(){
+    $('.tools__delete').click(function() {
         $(this).closest('.tools__editing_item').remove();
     });
 
@@ -25,35 +25,6 @@ $(document).ready(function() {
         mouseDrag: false,
         nav: true,
         navText: ['<svg class="icon icon-ico35"><use xlink:href="#icon-ico35"></use></svg> <span>предыдущая неделя</a>', '<span>следующая неделя</span> <svg class="icon icon-ico36"><use xlink:href="#icon-ico36"></use></svg>']
-    });
-
-
-    var pattern = $('.add__product_wrapper').find('.add__product--pattern').clone();
-    var pattern_size = $(".add__product--pattern").find('.add__info:first-child').clone();
-    console.log(pattern_size);
-
-
-
-
-
-
-
-
-    $(function () {
-        $(".f__item").click(function() {
-            // remove classes from all
-            $(".f__item").removeClass("active");
-            // add class to the one we clicked
-            $(this).addClass("active");
-            var parent = $(this).closest('.add__product');
-            if ($(this).is('#id_f2')) {
-                parent.find('.add__price_view--f1').hide();
-                parent.find('.add__price_view--f2').css('display', 'inline-block');
-            } else {
-                parent.find('.add__price_view--f1').css('display', 'inline-block');
-                parent.find('.add__price_view--f2').hide();
-            }
-        });
     });
 
 
@@ -89,69 +60,23 @@ $(document).ready(function() {
     $('#collapseExample').on('shown.bs.collapse', function() {
         initSameHeight();
     });
-
-    $(document).on('click', '.js_add_block', function() {
-        var parent = $('.js_add_block').closest('.add__product_wrapper');
-        //console.log(block);
-        console.log(pattern);
-        $(pattern).addClass('add__product').removeClass('add__product--pattern');
-        /*$(pattern)*/
-        $(parent).append(pattern.clone().show());
-        $('.selectpicker').selectpicker({
-            dropupAuto: false
-        });
-    });
-    $(document).on('click', '.js_delete_tr', function() {
-        var parent = $(this).closest('.add__product');
-        if (parent.find('.add__tr--dynamic').length > 1) {
-            $(this).closest('.add__tr--dynamic').remove();
-        }
-
-    });
-
-
-    $(document).on('click', '.js_delete_size', function() {
-        var parent = $(this).closest('.add__product');
-        if (parent.find('.add__info').length > 1) {
-            $(this).closest('.add__info').remove();
-        }
-    });
-
-
-    $(document).on('click', '.js__add_row', function() {
-        var row = $(this).parents(".row").find('.js__add_row').closest('.add__tr--dynamic').clone().wrap('<div></div>').parent().html();
-       console.log(row)
-        $(this).closest('.add__tr').after(row);
-
-        $(this).closest('.add__tr').next('.add__tr').find('.add__size_block input').remove();
-        $(this).closest('.add__product').find('.preview__table').append('<div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div>');
-
-
-        var f1 = $(this).closest('.add__tr').find('.add__price_td_f1 input').val();
-        var f2 = $(this).closest('.add__tr').find('.add__price_td_f2 input').val();
-        $(this).closest('.add__product').find('.add__price_view--f1').text(f1);
-        $(this).closest('.add__product').find('.add__price_view--f2').text(f2);
-
-
-
-    });
-    $(document).on('click', '.js_add_size', function() {
-        var parent_size = $(this).parents(".row").find('.js__add_row').closest('.add__info').clone().wrap('<div></div>').parent().html();
-        /*var parent_size = $(this).closest('.add__product').find('.add__info').closest('.add__info--wr');*/
-        console.log(parent_size)
-        $(parent_size).insertBefore(this);
-        //console.log($(this).closest('.add__info'))
-        /*var select = $(this).closest('.add__info').find('.selectpicker')
-        $(select).selectpicker({
-            dropupAuto: false
-        });*/
-    });
-
-
-    // Bootstrap select
+// Bootstrap select
     $('.selectpicker').selectpicker({
         dropupAuto: false
     });
+
+    initAddBrandline();
+    initAddRow();
+    initAddSize();
+    initDeleteTr();
+    initDeleteSize();
+    togglePrice();
+
+
+
+
+
+
 
 
     var val_first = $('.add__size_block input').val();
@@ -181,7 +106,6 @@ $(document).ready(function() {
 
     $('.add__price_td_f2 input').on('keyup', function() {
         var value = $(this).val();
-
     });
 
 
@@ -189,267 +113,116 @@ $(document).ready(function() {
 
 
 
-/**
-Product preview
-**/
-/*function readURL(input) {
 
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
 
-        reader.onload = function(e) {
-            $('#img__preview').attr('src', e.target.result);
-        };
 
-        reader.readAsDataURL(input.files[0]);
-        console.log(e.target.result);
-    }
-}*/
-/*$("#label").change(function() {
-    readURL(this);
-});*/
+
+// Добавление строки с ценой
+function initAddRow() {
+    $(document).on('click', '.js__add_row', function() {
+        var row = $(this).parents(".row").find('.js__add_row').closest('.add__tr--dynamic').clone().wrap('<div></div>').parent().html();
+
+        $(this).closest('.add__tr').after(row);
+
+        $(this).closest('.add__tr').next('.add__tr').find('.add__size_block input').remove();
+        $(this).closest('.add__product').find('.preview__table').append('<div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div>');
+
+
+        var number_tr = $(this).closest('.add__info').find('.add__tr--dynamic').index();
+        $(this).closest('.add__product').find('.preview__table').find('.preview__table_tr:eq(' + number_tr + ')');
+        var f1 = $(this).closest('.add__tr').find('.add__price_td_f1 input').val();
+        var f2 = $(this).closest('.add__tr').find('.add__price_td_f2 input').val();
+        $(this).closest('.add__product').find('.preview__table').find('.add__price_view--f1').text(f1);
+        $(this).closest('.add__product').find('.add__price_view--f2').text(f2);
+    });
+
+}
+
+//Добавление блока размера
+function initAddSize() {
+    $(document).on('click', '.js_add_size', function() {
+        var parent_size = $(this).closest(".add__product_wrapper").find('.add__product--pattern').find('.add__info:first-child').clone().wrap('<div></div>').parent().html();
+        $(parent_size).insertBefore(this);
+        $(this).closest('.add__product').find('.add__info--view').append('<div class="preview__table"><div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div></div>');
+        var f1 = $(this).closest('.add__info--wr').find('.add__tr').find('.add__price_td_f1 input').val();
+        var f2 = $(this).closest('.add__info--wr').find('.add__tr').find('.add__price_td_f2 input').val();
+        var sz = $(this).closest('.add__info--wr').find('.add__info').find('.add__size_block input').val();
+        console.log(sz);
+        $(this).closest('.add__product .preview__table').find('.preview__table').find('.add__price_view--f1').text(f1);
+        $(this).closest('.add__product').find('.preview__table').find('.add__price_view--f2').text(f2);
+        $(this).closest('.add__product').find('.preview__table').find('.preview__table_tr:eq(0)').find('.add__table_td_size').text(sz);
+
+    });
+
+}
+
+//добавление брендлайна
+function initAddBrandline() {
+    var pattern = $('.add__product_wrapper').find('.add__product--pattern').clone();
+    $(document).on('click', '.js_add_block', function() {
+        var parent = $('.js_add_block').closest('.add__product_wrapper');
+        $(pattern).addClass('add__product').removeClass('add__product--pattern');
+        $(parent).append(pattern.clone().show());
+    });
+}
+
+//удаление строки с ценой
+function initDeleteTr() {
+    $(document).on('click', '.js_delete_tr', function() {
+        var parent = $(this).closest('.add__info');
+
+        var number_tr = $(this).closest('.add__info').find('.add__tr--dynamic').index();
+        $(this).closest('.add__product').find('.preview__table').find('.preview__table_tr:eq(' + number_tr + ')').remove();
+        if (parent.find('.add__tr--dynamic').length > 1) {
+            $(this).closest('.add__tr--dynamic').remove();
+        }
+
+    });
+}
+
+// удаление размера
+function initDeleteSize() {
+    $(document).on('click', '.js_delete_size', function() {
+        var parent = $(this).closest('.add__product');
+        var number_size = $(this).find('.add__info').index();
+        console.log(number_size);
+        $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').remove();
+
+        if (parent.find('.add__info').length > 1) {
+            $(this).closest('.add__info').remove();
+        }
+    });
+}
+
+// переключение между ценами
+function togglePrice() {
+    $(document).on('click', '.f__item', function() {
+        // remove classes from all
+        $(".f__item").removeClass("active");
+        // add class to the one we clicked
+        $(this).addClass("active");
+        var parent = $(this).closest('.add__product');
+        if ($(this).is('#id_f2')) {
+            parent.find('.add__price_view--f1').hide();
+            parent.find('.add__price_view--f2').css('display', 'inline-block');
+        } else {
+            parent.find('.add__price_view--f1').css('display', 'inline-block');
+            parent.find('.add__price_view--f2').hide();
+        }
+    });
+}
+
+
+
+
+
+
 
 $('.add__brand select').on('changed.bs.select', function(e) {
     var prod_name = $(this).closest('.add__product').find('.add__brand .filter-option').text();
 
     $('.add__name').text(prod_name);
 });
-
-
-
-
-
-
-
-
-
-
-
-// Same height blocks
-
-jQuery(function() {
-    initSameHeight();
-});
-
-
-
-function initSameHeight() {
-    jQuery('.column__row').sameHeight({
-        elements: '.column__left, .column__right',
-        flexible: true,
-        multiLine: true,
-        biggestHeight: true
-    });
-};
-(function($) {
-    $.fn.sameHeight = function(opt) {
-        var options = $.extend({
-            skipClass: 'same-height-ignore',
-            leftEdgeClass: 'same-height-left',
-            rightEdgeClass: 'same-height-right',
-            elements: '>*',
-            flexible: false,
-            multiLine: false,
-            useMinHeight: false,
-            biggestHeight: false
-        }, opt);
-        return this.each(function() {
-            var holder = $(this),
-                postResizeTimer, ignoreResize;
-            var elements = holder.find(options.elements).not('.' + options.skipClass);
-            if (!elements.length) return;
-
-            function doResize() {
-                elements.css(options.useMinHeight && supportMinHeight ? 'minHeight' : 'height', '');
-                if (options.multiLine) {
-                    resizeElementsByRows(elements, options);
-                } else {
-                    resizeElements(elements, holder, options);
-                }
-            }
-            doResize();
-            var delayedResizeHandler = function() {
-                if (!ignoreResize) {
-                    ignoreResize = true;
-                    doResize();
-                    clearTimeout(postResizeTimer);
-                    postResizeTimer = setTimeout(function() {
-                        doResize();
-                        setTimeout(function() {
-                            ignoreResize = false;
-                        }, 10);
-                    }, 100);
-                }
-            };
-            if (options.flexible) {
-                $(window).bind('resize orientationchange fontresize', delayedResizeHandler);
-            }
-            $(window).bind('load', delayedResizeHandler);
-        });
-    };
-    var supportMinHeight = typeof document.documentElement.style.maxHeight !== 'undefined';
-
-    function resizeElementsByRows(boxes, options) {
-        var currentRow = $(),
-            maxHeight, maxCalcHeight = 0,
-            firstOffset = boxes.eq(0).offset().top;
-        boxes.each(function(ind) {
-            var curItem = $(this);
-            if (curItem.offset().top === firstOffset) {
-                currentRow = currentRow.add(this);
-            } else {
-                maxHeight = getMaxHeight(currentRow);
-                maxCalcHeight = Math.max(maxCalcHeight, resizeElements(currentRow, maxHeight, options));
-                currentRow = curItem;
-                firstOffset = curItem.offset().top;
-            }
-        });
-        if (currentRow.length) {
-            maxHeight = getMaxHeight(currentRow);
-            maxCalcHeight = Math.max(maxCalcHeight, resizeElements(currentRow, maxHeight, options));
-        }
-        if (options.biggestHeight) {
-            boxes.css(options.useMinHeight && supportMinHeight ? 'minHeight' : 'height', maxCalcHeight);
-        }
-    }
-
-    function getMaxHeight(boxes) {
-        var maxHeight = 0;
-        boxes.each(function() {
-            maxHeight = Math.max(maxHeight, $(this).outerHeight());
-        });
-        return maxHeight;
-    }
-
-    function resizeElements(boxes, parent, options) {
-        var calcHeight;
-        var parentHeight = typeof parent === 'number' ? parent : parent.height();
-        boxes.removeClass(options.leftEdgeClass).removeClass(options.rightEdgeClass).each(function(i) {
-            var element = $(this);
-            var depthDiffHeight = 0;
-            var isBorderBox = element.css('boxSizing') === 'border-box' || element.css('-moz-box-sizing') === 'border-box' || '-webkit-box-sizing' === 'border-box';
-            if (typeof parent !== 'number') {
-                element.parents().each(function() {
-                    var tmpParent = $(this);
-                    if (parent.is(this)) {
-                        return false;
-                    } else {
-                        depthDiffHeight += tmpParent.outerHeight() - tmpParent.height();
-                    }
-                });
-            }
-            calcHeight = parentHeight - depthDiffHeight;
-            calcHeight -= isBorderBox ? 0 : element.outerHeight() - element.height();
-            if (calcHeight > 0) {
-                element.css(options.useMinHeight && supportMinHeight ? 'minHeight' : 'height', calcHeight);
-            }
-        });
-        boxes.filter(':first').addClass(options.leftEdgeClass);
-        boxes.filter(':last').addClass(options.rightEdgeClass);
-        return calcHeight;
-    }
-}(jQuery));
-jQuery.onFontResize = (function($) {
-    $(function() {
-        var randomID = 'font-resize-frame-' + Math.floor(Math.random() * 1000);
-        var resizeFrame = $('<iframe>').attr('id', randomID).addClass('font-resize-helper');
-        resizeFrame.css({
-            width: '100em',
-            height: '10px',
-            position: 'absolute',
-            borderWidth: 0,
-            top: '-9999px',
-            left: '-9999px'
-        }).appendTo('body');
-        if (window.attachEvent && !window.addEventListener) {
-            resizeFrame.bind('resize', function() {
-                $.onFontResize.trigger(resizeFrame[0].offsetWidth / 100);
-            });
-        } else {
-            var doc = resizeFrame[0].contentWindow.document;
-            doc.open();
-            doc.write('<scri' + 'pt>window.onload = function(){var em = parent.jQuery("#' + randomID + '")[0];window.onresize = function(){if(parent.jQuery.onFontResize){parent.jQuery.onFontResize.trigger(em.offsetWidth / 100);}}};</scri' + 'pt>');
-            doc.close();
-        }
-        jQuery.onFontResize.initialSize = resizeFrame[0].offsetWidth / 100;
-    });
-    return {
-        trigger: function(em) {
-            $(window).trigger("fontresize", [em]);
-        }
-    };
-}(jQuery));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -494,8 +267,8 @@ $('.column').sortable({
         ui.item.remove();
 
 
-        $('.column__right .column').each(function () {
-            if(($(this).find('.portlet').length) == 0) {
+        $('.column__right .column').each(function() {
+            if (($(this).find('.portlet').length) == 0) {
                 $(this).find('.portlet__number_item').text('0');
             } else {
                 var lg = $(this).find('.portlet').length;
@@ -506,7 +279,7 @@ $('.column').sortable({
 
         $('.portlet-remove').on("click", function() {
             var lg_del = $(this).closest('.column__right .column').find('.portlet').length;
-            if(lg_del == 0) {
+            if (lg_del == 0) {
                 $(this).closest('.column').find('.portlet__number_item').text('0');
             }
             $(this).closest('.column').find('.portlet__number_item').text(lg_del - 1);
