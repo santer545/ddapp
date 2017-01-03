@@ -248,10 +248,7 @@ div.ui-selected {
         }
     }
     &__info {
-        font-size: 23px;
-        p {
-            margin-bottom: 20px;
-        }
+        font-size: 16px;
         a[href^="tel"] {
             display: inline-block;
             color: $text-color;
@@ -266,11 +263,55 @@ div.ui-selected {
     }
 }
 
+.tooltip-inner {
+    background-color: #fff;
+    color: $text-color;
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+
+.tooltip {
+    &.bottom,
+    &.left,
+    &.top,
+    &.right {
+        .tooltip-arrow {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            transform: rotate(45deg);
+            border-bottom: none;
+            border-right: none;
+        }
+    }
+    &.left {
+        .tooltip-arrow {
+            border: 1px solid #ccc;
+            border-left: none;
+            border-bottom: none;
+            right: 1px;
+            top: -3px;
+        }
+    }
+    &.right {
+        .tooltip-arrow {
+            border: 1px solid #ccc;
+            border-right: none;
+            border-top: none;
+            left: 1px;
+            top: -3px;
+        }
+    }
+
+}
+
 .add__holder {
     display: inline-block;
     vertical-align: middle;
     margin-left: 30px;
     cursor: pointer;
+    color: $brand-primary;
     @media (max-width: 1600px) {
         margin-left: 0;
     }
@@ -1019,6 +1060,13 @@ div.ui-selected {
             cursor: pointer;
         }
     }
+    &__left {
+        width: 33.3%;
+        float: left;
+    }
+    &__holder {
+        @include clearfix;
+    }
 }
 
 
@@ -1247,7 +1295,8 @@ div.ui-selected {
     &__table_td {
         color: $text-color;
     }
-    &__table_tr {
+    &__table_tr,
+    &__table_holder {
         font-size: 0;
     }
 }
@@ -1468,6 +1517,16 @@ div.ui-selected {
             background-color: #f1f1f1;
         }
     }
+    a {
+        color: $second-color;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
     .icon {
         fill: $second-color;
         width: 15px;
@@ -1594,6 +1653,9 @@ div.ui-selected {
         width: 23px;
         height: 26px;
     }
+    a {
+        display: block;
+    }
 }
 
 .owl-nav {
@@ -1673,6 +1735,10 @@ div.ui-selected {
     padding: 20px 37px 0;
     &--inverse {
         padding-bottom: 28px;
+    }
+    &--delete {
+        padding: 20px 0;
+        text-align: center;
     }
     .wide-select {
         .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {

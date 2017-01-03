@@ -123,6 +123,12 @@
         font-size: 16px;
         font-weight: 400;
         color: $gray-middle;
+        &--inline {
+            display: inline-block;
+            vertical-align: middle;
+            padding-top: 0;
+            margin-right: 20px;
+        }
         &--big {
             padding-top: 8px;
         }
@@ -207,6 +213,9 @@
 }
 
 .wide-select {
+    width: 215px;
+    display: inline-block;
+    vertical-align: middle;
     .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
         width: 100%;
         display: block;

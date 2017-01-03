@@ -1,9 +1,12 @@
 $(document).ready(function() {
 
+    // Раскрытие левого меню
     $(".js__arrow").click(function() {
         $(".sidebar").toggleClass("active");
         $(this).toggleClass("active");
     });
+
+
     $(".load__small").click(function() {
         $(this).toggleClass("active");
     });
@@ -16,10 +19,16 @@ $(document).ready(function() {
         $('.js-detail').html('Скрыть');
     }
 
+    // Tooltips
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip('show');
+    })
+
     $('.tools__delete').click(function() {
         $(this).closest('.tools__editing_item').remove();
     });
 
+    // Вызов карусели на странице редактирования маршрутов
     $(".owl-carousel").owlCarousel({
         items: 1,
         mouseDrag: false,
@@ -28,8 +37,10 @@ $(document).ready(function() {
     });
 
 
-
+    // Вызов кастомного скролла
     $('.scroll-pane').jScrollPane();
+
+    // Обрезка текста многоточием
     $('.route__info').dotdotdot();
 
     // tools panel
@@ -60,18 +71,44 @@ $(document).ready(function() {
     $('#collapseExample').on('shown.bs.collapse', function() {
         initSameHeight();
     });
-// Bootstrap select
+    // Bootstrap select
     $('.selectpicker').selectpicker({
         dropupAuto: false
     });
 
+
+    // Добавление брендлайна
     initAddBrandline();
+
+    // Добавление строки с ценой
     initAddRow();
+
+    //Добавление размера к брендлайну
     initAddSize();
+
+    // Удаление строки с ценой
     initDeleteTr();
+
+    // Удаление размера брендлайна
     initDeleteSize();
+
+    // Переключение цен
     togglePrice();
 
+    // Пересчет маршрутов в колонке
+    initCheckedPortlets();
+
+    //Выделение маршрутов
+    initSelectable();
+
+    // Перетаскивание маршрутов
+    initSortable();
+
+    // переключение форм в модальном окне
+    initModalForm();
+
+    // Вызов модального окна в маршруте
+    initModalOnPortlets();
 
 
 
@@ -79,6 +116,7 @@ $(document).ready(function() {
 
 
 
+    // установка начальных значений в предпросмотре
     var val_first = $('.add__size_block input').val();
     $('.add__table_td_size').text(val_first);
 
@@ -99,14 +137,14 @@ $(document).ready(function() {
         $('.add__table_td_size').text(value);
     });
 
-    $('.add__price_td_f1 input').on('keyup', function() {
+    /*$('.add__price_td_f1 input').on('keyup', function() {
         var value = $(this).val();
         $('.add__price_view').text(value);
     });
 
     $('.add__price_td_f2 input').on('keyup', function() {
         var value = $(this).val();
-    });
+    });*/
 
 
 });
@@ -125,15 +163,25 @@ function initAddRow() {
         $(this).closest('.add__tr').after(row);
 
         $(this).closest('.add__tr').next('.add__tr').find('.add__size_block input').remove();
+
         $(this).closest('.add__product').find('.preview__table').append('<div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div>');
 
 
-        var number_tr = $(this).closest('.add__info').find('.add__tr--dynamic').index();
-        $(this).closest('.add__product').find('.preview__table').find('.preview__table_tr:eq(' + number_tr + ')');
+        var number_tr = $(this).closest('.add__tr--dynamic').index();
+
+
+
         var f1 = $(this).closest('.add__tr').find('.add__price_td_f1 input').val();
+
         var f2 = $(this).closest('.add__tr').find('.add__price_td_f2 input').val();
-        $(this).closest('.add__product').find('.preview__table').find('.add__price_view--f1').text(f1);
-        $(this).closest('.add__product').find('.add__price_view--f2').text(f2);
+
+        $(this).closest('.add__product').find('.preview__table').each(function(element) {
+            $(element).find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f1').text(f1);
+            element ++;
+            console.log(element);
+        });
+
+
     });
 
 }
@@ -144,19 +192,25 @@ function initAddSize() {
         var parent_size = $(this).closest(".add__product_wrapper").find('.add__product--pattern').find('.add__info:first-child').clone().wrap('<div></div>').parent().html();
         $(parent_size).insertBefore(this);
         $(this).closest('.add__product').find('.add__info--view').append('<div class="preview__table"><div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div></div>');
+
+
+
+        var number_tr = $(this).closest('.add__tr--dynamic').index();
+        /*$(this).closest('.add__product').find('.preview__table').find('.preview__table_tr:eq(' + number_tr + ')');*/
+
         var f1 = $(this).closest('.add__info--wr').find('.add__tr').find('.add__price_td_f1 input').val();
         var f2 = $(this).closest('.add__info--wr').find('.add__tr').find('.add__price_td_f2 input').val();
         var sz = $(this).closest('.add__info--wr').find('.add__info').find('.add__size_block input').val();
         console.log(sz);
-        $(this).closest('.add__product .preview__table').find('.preview__table').find('.add__price_view--f1').text(f1);
-        $(this).closest('.add__product').find('.preview__table').find('.add__price_view--f2').text(f2);
+        $(this).closest('.add__product').find('.preview__table:eq(' + number_tr + ')').find('.add__price_view--f1').text(f1);
+        $(this).closest('.add__product').find('.preview__table:eq(' + number_tr + ')').find('.add__price_view--f2').text(f2);
         $(this).closest('.add__product').find('.preview__table').find('.preview__table_tr:eq(0)').find('.add__table_td_size').text(sz);
 
     });
 
 }
 
-//добавление брендлайна
+// добавление брендлайна
 function initAddBrandline() {
     var pattern = $('.add__product_wrapper').find('.add__product--pattern').clone();
     $(document).on('click', '.js_add_block', function() {
@@ -166,7 +220,7 @@ function initAddBrandline() {
     });
 }
 
-//удаление строки с ценой
+// удаление строки с ценой
 function initDeleteTr() {
     $(document).on('click', '.js_delete_tr', function() {
         var parent = $(this).closest('.add__info');
@@ -239,90 +293,131 @@ $('.portlet').on('mouseover', function() {
     }
 });
 
-$('.column').selectable({
-    cancel: '.handle, .route-footer, .portlet-remove',
-    filter: ".portlet",
-    selected: function(event, ui) {
-        countClick++;
-        if (!(window.event.ctrlKey) && !(window.event.shiftKey)) {
+
+function initSelectable() {
+
+    $('.column').selectable({
+        cancel: '.handle, .route-footer, .portlet-remove, .copy',
+        filter: ".portlet",
+        selected: function(event, ui) {
+            countClick++;
+            if (!(window.event.ctrlKey) && !(window.event.shiftKey)) {
+                $('.portlet').removeClass('ui-selected');
+            }
+        },
+        stop: function(event, ui) {
+            $('#check-2').prop('checked', false);
+            var lg_checked = $('.column__left').find('.portlet.ui-selected').length;
+            $('.js_checked_portlets').text(lg_checked);
+        }
+    });
+}
+
+
+function initSortable() {
+
+    $('.column').sortable({
+
+        connectWith: ".column",
+        handle: ".handle",
+        items: ".portlet",
+        stop: function(e, ui) {
+            var selected = ui.item.data('multidrag');
+            ui.item.after(selected);
+            ui.item.remove();
+
+
+            $('.column__right .column').each(function() {
+                if (($(this).find('.portlet').length) == 0) {
+                    $(this).find('.portlet__number_item').text('0');
+                } else {
+                    var lg = $(this).find('.portlet').length;
+                    $(this).find('.portlet').closest('.column').find('.portlet__number_item').text(lg);
+                }
+            });
+
+
+            $('.portlet-remove').on("click", function() {
+                var lg_del = $(this).closest('.column__right .column').find('.portlet').length;
+                if (lg_del == 0) {
+                    $(this).closest('.column').find('.portlet__number_item').text('0');
+                }
+                $(this).closest('.column').find('.portlet__number_item').text(lg_del - 1);
+                var start = $(this).closest('.column .portlet').remove();
+                $('.start-column').append(start);
+
+            });
+
+
+            $('#check-2').prop('checked', false);
+
+
+        },
+
+
+        helper: function(e, item) {
+            if (!item.hasClass('ui-selected')) {
+                $('.column').find('.ui-selected').removeClass('ui-selected');
+                item.addClass('ui-selected');
+            }
+
+            var selected = $('.ui-selected').clone();
+            item.data('multidrag', selected);
+            $('.ui-selected').not(item).remove();
+            return $('<div class="transporter"></div>').append(selected);
+        },
+        change: function(e, ui) {
+            $('.portlet').removeClass('ui-selected');
+        },
+        start: function(e, ui) {
             $('.portlet').removeClass('ui-selected');
         }
-    },
-    stop: function(event, ui) {
-        $('#check-2').prop('checked', false);
-    }
-});
+    }).disableSelection();
 
+}
 
+function initCheckedPortlets() {
 
+    var lg = $('.column__left .portlet').length;
+    $('.js_all_portlets').text(lg);
+    var lg_checked = $('.column__left').find('.portlet.ui-selected').length;
+    $('.js_checked_portlets').text(lg_checked);
 
-$('.column').sortable({
-
-    connectWith: ".column",
-    handle: ".handle",
-    items: ".portlet",
-    stop: function(e, ui) {
-        var selected = ui.item.data('multidrag');
-        ui.item.after(selected);
-        ui.item.remove();
-
-
-        $('.column__right .column').each(function() {
-            if (($(this).find('.portlet').length) == 0) {
-                $(this).find('.portlet__number_item').text('0');
-            } else {
-                var lg = $(this).find('.portlet').length;
-                $(this).find('.portlet').closest('.column').find('.portlet__number_item').text(lg);
-            }
-        });
-
-
-        $('.portlet-remove').on("click", function() {
-            var lg_del = $(this).closest('.column__right .column').find('.portlet').length;
-            if (lg_del == 0) {
-                $(this).closest('.column').find('.portlet__number_item').text('0');
-            }
-            $(this).closest('.column').find('.portlet__number_item').text(lg_del - 1);
-            var start = $(this).closest('.column .portlet').remove();
-            $('.start-column').append(start);
-
-        });
-
-
-        $('#check-2').prop('checked', false);
-
-
-    },
-
-
-    helper: function(e, item) {
-        if (!item.hasClass('ui-selected')) {
-            $('.column').find('.ui-selected').removeClass('ui-selected');
-            item.addClass('ui-selected');
+    $('#check-2').on('change', function() {
+        if ($(this).is(':checked')) {
+            $('.column__left .portlet').each(function() {
+                $(this).addClass('ui-selected');
+                var lg_checked = $('.column__left').find('.portlet.ui-selected').length;
+                $('.js_checked_portlets').text(lg_checked);
+            });
+        } else {
+            $('.column__left .portlet').each(function() {
+                $(this).removeClass('ui-selected');
+                $('.js_checked_portlets').text('0');
+            });
         }
+    });
+}
 
-        var selected = $('.ui-selected').clone();
-        item.data('multidrag', selected);
-        $('.ui-selected').not(item).remove();
-        return $('<div class="transporter"></div>').append(selected);
-    },
-    change: function(e, ui) {
-        $('.portlet').removeClass('ui-selected');
-    },
-    start: function(e, ui) {
-        $('.portlet').removeClass('ui-selected');
-    }
-}).disableSelection();
+function initModalOnPortlets() {
+    $('.copy').click(function() {
+        console.log('Click!!');
+        $('#editModal').modal('show');
+    });
+}
 
 
-$('#check-2').on('change', function() {
-    if ($(this).is(':checked')) {
-        $('.column__left .portlet').each(function() {
-            $(this).addClass('ui-selected');
-        });
-    } else {
-        $('.column__left .portlet').each(function() {
-            $(this).removeClass('ui-selected');
-        });
-    }
-});
+function initModalForm() {
+    $('#form__unchecked').hide();
+    $('#modal-checked').change(function() {
+        var bool = $(this).prop('checked');
+        console.log(bool);
+        if (!bool) {
+            $('#form__checked').show();
+            $('#form__unchecked').hide();
+        } else {
+            $('#form__checked').hide();
+            $('#form__unchecked').show();
+        }
+    });
+}

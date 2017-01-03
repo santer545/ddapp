@@ -391,13 +391,13 @@
                                 <option value="">Маршрут 1</option>
                                 <option value="">Маршрут 1</option>
                             </select>
-                            <div class="edit__block">
+                            <div class="edit__block" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
                                 <svg class="icon icon-pencil">
                                     <use xlink:href="#icon-pencil"></use>
                                 </svg>
                             </div>
                             <div class="edit__wr">
-                                <div class="edit__block">
+                                <div class="edit__block" data-toggle="tooltip" data-placement="right" title="Добавить">
                                     <svg class="icon icon-plus">
                                         <use xlink:href="#icon-plus"></use>
                                     </svg>
@@ -424,7 +424,7 @@
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-9 text-right">
                                     <div class="route__all">
-                                        202 из 250
+                                        <span class="js_checked_portlets">202</span> из <span class="js_all_portlets">250</span>
                                     </div>
                                 </div>
                             </div>
@@ -440,9 +440,9 @@
                                             <div class="route__footer text-right row">
                                                 <div class="col-md-4 text-center"></div>
                                                 <div class="col-md-4 text-center">
-                                                    <div class="copy">
+                                                    <a class="copy">
                                                         <img src="assets/svg/copy.svg" width="20" height="20" alt="">
-                                                    </div>
+                                                    </a>
                                                 </div>
                                                 <div class="col-md-4 text-center">
                                                     <div class="portlet-remove">
@@ -466,9 +466,9 @@
                                             <div class="route__footer text-right row">
                                                 <div class="col-md-4 text-center"></div>
                                                 <div class="col-md-4 text-center">
-                                                    <div class="copy">
+                                                    <a class="copy">
                                                         <img src="assets/svg/copy.svg" width="20" height="20" alt="">
-                                                    </div>
+                                                    </a>
                                                 </div>
                                                 <div class="col-md-4 text-center">
                                                     <div class="portlet-remove">
@@ -492,9 +492,9 @@
                                             <div class="route__footer text-right row">
                                                 <div class="col-md-4 text-center"></div>
                                                 <div class="col-md-4 text-center">
-                                                    <div class="copy">
+                                                    <a class="copy">
                                                         <img src="assets/svg/copy.svg" width="20" height="20" alt="">
-                                                    </div>
+                                                    </a>
                                                 </div>
                                                 <div class="col-md-4 text-center">
                                                     <div class="portlet-remove">
@@ -591,6 +591,71 @@
                 </section>
             </section>
         </main>
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        Укажите день посещения
+                    </div>
+                    <div class="modal-body modal-body--inverse">
+                        <label for="check-303" class="admin__checkbox admin__checkbox--modal">
+                            <input type="checkbox" id="check-303" name="check-303">
+                            <span class="admin__checkbox_emulator"></span>
+                            <span class="admin__text">Для каждой точки отдельно</span>
+                        </label>
+                        <table class="modal__table">
+                            <tr>
+                                <th></th>
+                                <th>Неделя</th>
+                                <th>День недели</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Киев, ул. Крещатик
+                                </td>
+                                <td>
+                                    <select name="" id="" class="selectpicker">
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="" id="" class="selectpicker">
+                                        <option value="">Пн</option>
+                                        <option value="">Вт</option>
+                                        <option value="">Ср</option>
+                                        <option value="">Чт</option>
+                                        <option value="">Пт</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Киев, ул. Крещатик</td>
+                                <td>
+                                    <select name="" id="" class="selectpicker">
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="" id="" class="selectpicker">
+                                        <option value="">Пн</option>
+                                        <option value="">Вт</option>
+                                        <option value="">Ср</option>
+                                        <option value="">Чт</option>
+                                        <option value="">Пт</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="save text-center">
+                        <div class="save__wrapper save__wrapper--modal">сохранить</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <link rel="stylesheet" href="css/jquery-ui.css">
     <script src="js/jquery-2.2.1.min.js"></script>
