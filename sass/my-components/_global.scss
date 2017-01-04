@@ -1098,8 +1098,8 @@ div.ui-selected {
     }
     &__small {
         position: absolute;
-        right: 30%;
-        top: 20px;
+        right: 100%;
+        top: -20px;
         width: 37px;
         height: 37px;
         line-height: 35px;
@@ -1121,6 +1121,28 @@ div.ui-selected {
             }
         }
     }
+}
+
+.color-box {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    @include translate(-230px, 0);
+    opacity: 0;
+    @include transition(transform 0.3s, opacity 0.3s);
+    &.active {
+        opacity: 1;
+        @include translate(0, 0);
+    }
+}
+
+.color-holder {
+    position: relative;
+    display: inline-block;
+    width: 230px;
+    height: 250px;
+    margin-left: 60px;
+    margin-top: 30px;
 }
 
 .content-padding {
@@ -1262,8 +1284,10 @@ div.ui-selected {
     &__size_block {
         width: 13%;
     }
-    &__plus {
-        width: 10%;
+    &__plus,
+    &__delete {
+        width: 12.5%;
+        margin: 0;
     }
     &__delete {
         .icon {

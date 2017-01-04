@@ -7,9 +7,7 @@ $(document).ready(function() {
     });
 
 
-    $(".load__small").click(function() {
-        $(this).toggleClass("active");
-    });
+
 
 
 
@@ -110,8 +108,17 @@ $(document).ready(function() {
     // Вызов модального окна в маршруте
     initModalOnPortlets();
 
+    // выбор цвета
+    initColor();
 
 
+    /* // initialize on multiple elements with jQuery
+     $('.color-input').each(function(i, elem) {
+         var hueb = new Huebee(elem, {
+             // options
+             staticOpen: true
+         });
+     });*/
 
 
 
@@ -158,16 +165,18 @@ $(document).ready(function() {
 // Добавление строки с ценой
 function initAddRow() {
     $(document).on('click', '.js__add_row', function() {
+        var number_tr = $(this).closest('.add__tr--dynamic').index();
+        var number_size = $(this).closest('.add__info').index();
         var row = $(this).parents(".row").find('.js__add_row').closest('.add__tr--dynamic').clone().wrap('<div></div>').parent().html();
 
         $(this).closest('.add__tr').after(row);
 
         $(this).closest('.add__tr').next('.add__tr').find('.add__size_block input').remove();
 
-        $(this).closest('.add__product').find('.preview__table').append('<div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div>');
+        $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').append('<div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div>');
 
 
-        var number_tr = $(this).closest('.add__tr--dynamic').index();
+
 
 
 
@@ -175,14 +184,11 @@ function initAddRow() {
 
         var f2 = $(this).closest('.add__tr').find('.add__price_td_f2 input').val();
 
-        $(this).closest('.add__product').find('.preview__table').each(function(element) {
-            $(element).find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f1').text(f1);
-            element ++;
-            console.log(element);
-        });
-
-
+        var a = $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f1').text(f1);
     });
+
+
+
 
 }
 
@@ -224,9 +230,10 @@ function initAddBrandline() {
 function initDeleteTr() {
     $(document).on('click', '.js_delete_tr', function() {
         var parent = $(this).closest('.add__info');
+        var number_size = $(this).closest('.add__info').index();
 
         var number_tr = $(this).closest('.add__info').find('.add__tr--dynamic').index();
-        $(this).closest('.add__product').find('.preview__table').find('.preview__table_tr:eq(' + number_tr + ')').remove();
+        $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').remove();
         if (parent.find('.add__tr--dynamic').length > 1) {
             $(this).closest('.add__tr--dynamic').remove();
         }
@@ -419,5 +426,27 @@ function initModalForm() {
             $('#form__checked').hide();
             $('#form__unchecked').show();
         }
+    });
+}
+
+
+function initColor() {
+    $(document).on('click', '.load__small', function() {
+        $(this).toggleClass("active");
+        $(this).closest('.color-holder').find('.color-box').toggleClass('active');
+        console.log($(this).closest('.color-holder').find('.color-box'));
+
+
+
+        $(this).closest('.color-holder').find('.color-input').each(function(i, elem) {
+            var hueb = new Huebee(elem, {
+                // options
+                staticOpen: true,
+                setBGColor: '.js-color',
+                setText: '.asdasdasd'
+            }).on('change', function(color, hue, sat, lum) {
+                setBGColor: '.js-color'
+            });
+        });
     });
 }
