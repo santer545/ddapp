@@ -553,12 +553,17 @@
                         </div>
                         <div class="add__product_wrapper">
                             <div class="add__product--pattern" style="display:none;">
+                                <span class="add__product-delete js-product-delete">
+                                    <svg class="icon icon-ico33 icon__gray">
+                                        <use xlink:href="#icon-ico33"></use>
+                                    </svg>
+                                </span>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-8 col-xs-8">
                                         <p class="add__heading">Заполните данные</p>
                                         <div class="add__item">
-                                            <input type="file" name="file" id="file" class="inputfile" />
-                                            <label for="file" class="load__img">
+                                            <input type="file" name="file-img" class="input-file">
+                                            <label class="load__img js-labelFile">
                                                 <div class="load__holder">
                                                     <svg class="icon icon-plus icon__gray">
                                                         <use xlink:href="#icon-plus"></use>
@@ -572,7 +577,14 @@
                                                         <use xlink:href="#icon-plus"></use>
                                                     </svg>
                                                 </div>
-                                                <div class="color-box"><span class="color-input"></span></div>
+                                                <div class="color-box">
+                                                    <span class="color-input"></span>
+                                                    <span class="color-or">или</span>
+                                                    <div class="form-group">
+                                                        <label for="file__color" class="label__file--color">загрузить фото</label>
+                                                        <input type="file" name="file__color" class="input__color" id="file__color">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="add__brand">
@@ -681,12 +693,17 @@
                                 </div>
                             </div>
                             <div class="add__product">
+                                <span class="add__product-delete js-product-delete">
+                                    <svg class="icon icon-ico33 icon__gray">
+                                        <use xlink:href="#icon-ico33"></use>
+                                    </svg>
+                                </span>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-8 col-xs-8">
                                         <p class="add__heading">Заполните данные</p>
                                         <div class="add__item">
-                                            <input type="file" name="file" id="file" class="inputfile" />
-                                            <label for="file" class="load__img">
+                                            <input type="file" name="file-img-1" class="input-file" id="file-image">
+                                            <label for="file-image" class="load__img js-labelFile">
                                                 <div class="load__holder">
                                                     <svg class="icon icon-plus icon__gray">
                                                         <use xlink:href="#icon-plus"></use>
@@ -700,7 +717,14 @@
                                                         <use xlink:href="#icon-plus"></use>
                                                     </svg>
                                                 </div>
-                                                <div class="color-box"><span class="color-input"></span></div>
+                                                <div class="color-box">
+                                                    <span class="color-input"></span>
+                                                    <span class="color-or">или</span>
+                                                    <div class="form-group">
+                                                        <label for="file__color1" class="label__file--color">загрузить фото</label>
+                                                        <input type="file" name="file__color" class="input__color" id="file__color1">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="add__brand">
@@ -823,8 +847,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.custom-file-input.js"></script>
-    <script src="js/custom-file-input.js"></script>
     <script src="js/jquery.mousewheel.js"></script>
     <script src="js/huebee.pkgd.min.js"></script>
     <script src="js/jquery.jscrollpane.min.js"></script>

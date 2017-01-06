@@ -75,6 +75,15 @@ $(document).ready(function() {
     });
 
 
+    $('.color-input').each(function(i, elem) {
+        var hueb = new Huebee(elem, {
+            // options
+            staticOpen: true,
+            setBGColor: '.js-color',
+            setText: '.asdasdasd'
+        });
+    });
+
     // Добавление брендлайна
     initAddBrandline();
 
@@ -111,6 +120,16 @@ $(document).ready(function() {
     // выбор цвета
     initColor();
 
+    initRemoveBrandline();
+
+    initImagesUpload();
+
+    keyUpSize();
+
+    keyUpF1();
+
+    keyUpF2();
+
 
     /* // initialize on multiple elements with jQuery
      $('.color-input').each(function(i, elem) {
@@ -136,28 +155,41 @@ $(document).ready(function() {
     $('.add__price_view--f2').text(val_price_second);
 
 
-
-
-
-    $('.add__size_block input').on('keyup', function() {
-        var value = $(this).val();
-        $('.add__table_td_size').text(value);
-    });
-
-    /*$('.add__price_td_f1 input').on('keyup', function() {
-        var value = $(this).val();
-        $('.add__price_view').text(value);
-    });
-
-    $('.add__price_td_f2 input').on('keyup', function() {
-        var value = $(this).val();
-    });*/
-
-
 });
 
 
+function keyUpSize() {
+    $(document).on('keyup', '.add__size_block input', function() {
+        var number_size = $(this).closest('.add__info').index();
+        var value = $(this).val();
 
+        $(this).closest('.add__product').find('.add__info--view').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(0)').find('.add__table_td_size').text(value);
+    });
+}
+
+function keyUpF1() {
+    $(document).on('keyup', '.add__price_td_f1 input', function() {
+        var number_size = $(this).closest('.add__info').index();
+        var number_tr = $(this).closest('.add__product').closest('.add__tr--dynamic').index();
+        var value = $(this).val();
+        console.log(number_tr);
+        console.log(value);
+        console.log($(this).closest('.add__product').find('.add__info--view').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f1'));
+        $(this).closest('.add__product').find('.add__info--view').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f1').text(value);
+    });
+}
+
+function keyUpF2() {
+    $(document).on('keyup', '.add__price_td_f2 input', function() {
+        var number_size = $(this).closest('.add__info').index();
+        var number_tr = $(this).closest('.add__product').closest('.add__tr--dynamic').index();
+        var value = $(this).val();
+        console.log(number_tr);
+        console.log(value);
+        console.log($(this).closest('.add__product').find('.add__info--view').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f2'));
+        $(this).closest('.add__product').find('.add__info--view').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f2').text(value);
+    });
+}
 
 
 
@@ -166,7 +198,9 @@ $(document).ready(function() {
 function initAddRow() {
     $(document).on('click', '.js__add_row', function() {
         var number_tr = $(this).closest('.add__tr--dynamic').index();
+
         var number_size = $(this).closest('.add__info').index();
+
         var row = $(this).parents(".row").find('.js__add_row').closest('.add__tr--dynamic').clone().wrap('<div></div>').parent().html();
 
         $(this).closest('.add__tr').after(row);
@@ -185,6 +219,8 @@ function initAddRow() {
         var f2 = $(this).closest('.add__tr').find('.add__price_td_f2 input').val();
 
         var a = $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f1').text(f1);
+
+        var a = $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f2').text(f2);
     });
 
 
@@ -196,7 +232,9 @@ function initAddRow() {
 function initAddSize() {
     $(document).on('click', '.js_add_size', function() {
         var parent_size = $(this).closest(".add__product_wrapper").find('.add__product--pattern').find('.add__info:first-child').clone().wrap('<div></div>').parent().html();
+
         $(parent_size).insertBefore(this);
+
         $(this).closest('.add__product').find('.add__info--view').append('<div class="preview__table"><div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div></div>');
 
 
@@ -205,12 +243,14 @@ function initAddSize() {
         /*$(this).closest('.add__product').find('.preview__table').find('.preview__table_tr:eq(' + number_tr + ')');*/
 
         var f1 = $(this).closest('.add__info--wr').find('.add__tr').find('.add__price_td_f1 input').val();
+
         var f2 = $(this).closest('.add__info--wr').find('.add__tr').find('.add__price_td_f2 input').val();
+
         var sz = $(this).closest('.add__info--wr').find('.add__info').find('.add__size_block input').val();
-        console.log(sz);
+
         $(this).closest('.add__product').find('.preview__table:eq(' + number_tr + ')').find('.add__price_view--f1').text(f1);
+
         $(this).closest('.add__product').find('.preview__table:eq(' + number_tr + ')').find('.add__price_view--f2').text(f2);
-        $(this).closest('.add__product').find('.preview__table').find('.preview__table_tr:eq(0)').find('.add__table_td_size').text(sz);
 
     });
 
@@ -219,21 +259,47 @@ function initAddSize() {
 // добавление брендлайна
 function initAddBrandline() {
     var pattern = $('.add__product_wrapper').find('.add__product--pattern').clone();
+
     $(document).on('click', '.js_add_block', function() {
         var parent = $('.js_add_block').closest('.add__product_wrapper');
+
         $(pattern).addClass('add__product').removeClass('add__product--pattern');
+
         $(parent).append(pattern.clone().show());
+        initImagesUpload();
+
+
+        var i = 0;
+        $(this).closest('.add__product_wrapper').find('.input-file').each(function() {
+            i++;
+            $(this).attr("id", "file-image-" + i);
+            $(this).siblings('label').attr('for', "file-image-" + i);
+        });
+
+        $('.color-input').each(function(i, elem) {
+            var hueb = new Huebee(elem, {
+                // options
+                staticOpen: true,
+                setBGColor: '.js-color',
+                setText: '.asdasdasd'
+            });
+        });
+
     });
 }
 
 // удаление строки с ценой
 function initDeleteTr() {
     $(document).on('click', '.js_delete_tr', function() {
+
         var parent = $(this).closest('.add__info');
+
         var number_size = $(this).closest('.add__info').index();
 
         var number_tr = $(this).closest('.add__info').find('.add__tr--dynamic').index();
+
         $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').remove();
+
         if (parent.find('.add__tr--dynamic').length > 1) {
             $(this).closest('.add__tr--dynamic').remove();
         }
@@ -251,6 +317,16 @@ function initDeleteSize() {
 
         if (parent.find('.add__info').length > 1) {
             $(this).closest('.add__info').remove();
+        }
+    });
+}
+
+// удаление продукта
+function initRemoveBrandline() {
+    $(document).on('click', '.js-product-delete', function() {
+        var lg = $(this).closest('.add__product_wrapper').find('.add__product').length;
+        if (lg > 1) {
+            $(this).closest('.add__product').remove();
         }
     });
 }
@@ -434,19 +510,40 @@ function initColor() {
     $(document).on('click', '.load__small', function() {
         $(this).toggleClass("active");
         $(this).closest('.color-holder').find('.color-box').toggleClass('active');
-        console.log($(this).closest('.color-holder').find('.color-box'));
+        var elem;
+        var hueb = new Huebee(elem, {
+            // options
+            staticOpen: true,
+            setBGColor: '.js-color',
+            setText: '.asdasdasd',
 
+        });
+        $('.color-input').each(function(i, elem) {
+            hueb.close();
+        });
 
-
-        $(this).closest('.color-holder').find('.color-input').each(function(i, elem) {
-            var hueb = new Huebee(elem, {
-                // options
-                staticOpen: true,
-                setBGColor: '.js-color',
-                setText: '.asdasdasd'
-            }).on('change', function(color, hue, sat, lum) {
-                setBGColor: '.js-color'
+        if ($(this).closest('.color-holder').find('.color-box').hasClass('active')) {
+            $('.color-input').each(function(i, elem) {
+                hueb.open();
             });
+        }
+    });
+}
+
+
+
+
+
+function initImagesUpload() {
+    $('.input-file').each(function() {
+        var $input = $(this),
+            $label = $input.next('.js-labelFile'),
+            labelVal = $label.html();
+        $input.on('change', function(element) {
+            var tmppath = URL.createObjectURL(event.target.files[0]);
+            $(this).closest('.add__product').find('.add__view').find('img').fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
+            console.log($(this).closest('.add__product'));
+            console.log(URL.createObjectURL(event.target.files[0]));
         });
     });
 }
