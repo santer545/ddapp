@@ -450,14 +450,14 @@
             <header class="header">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-4 col-xs-4 col-sm-4">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             <div class="header__left">
                                 <a href="" class="logo">
-                                    <img src="assets/images/logo.png" alt="">
+                                    <img src="assets/images/logo.png" width="230" alt="">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-4 col-xs-4 col-sm-4">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             <div class="header__middle">
                                 <div class="search">
                                     <svg class="icon icon-search">
@@ -467,14 +467,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 col-xs-4 col-sm-4">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             <div class="header__right">
                                 <div class="user">
                                     <div class="user__img">
                                         <img src="assets/images/user.jpg" class="img-circle" alt="">
                                     </div>
-                                    <div class="user__info" data-toggle="tooltip" data-placement="bottom" title="Информация">
-                                        <svg class="icon icon-info">
+                                    <div class="user__info">
+                                        <svg class="icon icon-info" data-toggle="tooltip" data-placement="bottom" title="Информация">
                                             <use xlink:href="#icon-info"></use>
                                         </svg>
                                     </div>
@@ -485,260 +485,391 @@
                 </div>
             </header>
             <section class="route">
-                <p class="heading-h2">Маршруты</p>
-                <div class="route__panel">
+                <div class="container-fluid">
+                    <p class="heading-h2">Добавление товара</p>
                     <form action="" class="form-horizontal">
-                        <div class="route__holder">
-                            <div class="route__left">
-                                <div class="form-group">
-                                    <label for="codtt" class="control-label control-label--inline">Отдел продаж</label>
-                                    <div class="wide-select">
-                                        <select name="" id="" class="selectpicker">
-                                            <option value="">Тов "Яблонька"</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                        </select>
+                        <div class="route__panel">
+                            <form action="" class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="form-group container-fluid">
+                                            <div class="row">
+                                                <label for="codtt" class="col-md-4 col-sm-4 col-xs-4 control-label">Бренд</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-8 wide-select">
+                                                    <select name="" id="" class="selectpicker">
+                                                        <option value="">Дюна</option>
+                                                        <option value="">Русский</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group container-fluid">
+                                            <div class="row">
+                                                <label for="codtt" class="col-md-4 col-sm-4 col-xs-4 control-label">Сегмент</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-8 wide-select">
+                                                    <select name="" id="" class="selectpicker">
+                                                        <option value="">Одежда</option>
+                                                        <option value="">Русский</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group container-fluid">
+                                            <div class="row">
+                                                <label for="codtt" class="col-md-4 col-sm-4 col-xs-4 control-label">Группа</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-8 wide-select">
+                                                    <select name="" id="" class="selectpicker">
+                                                        <option value="">Мужские</option>
+                                                        <option value="">Русский</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group container-fluid">
+                                            <div class="row">
+                                                <label for="codtt" class="col-md-4 col-sm-4 col-xs-4 control-label">Категория</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-8 wide-select">
+                                                    <select name="" id="" class="selectpicker">
+                                                        <option value="">Носки</option>
+                                                        <option value="">Русский</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group container-fluid">
+                                            <div class="row">
+                                                <label for="codtt" class="col-md-4 col-sm-4 col-xs-4 control-label">Валюта</label>
+                                                <div class="col-md-8 col-sm-8 col-xs-8 wide-select">
+                                                    <select name="" id="" class="selectpicker">
+                                                        <option value="">грн</option>
+                                                        <option value="">доллар</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="codtt" class="control-label control-label--inline">Отдел продаж</label>
-                                    <div class="wide-select">
-                                        <select name="" id="" class="selectpicker">
-                                            <option value="">Тов "Яблонька"</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                        </select>
-                                    </div>
+                            </form>
+                        </div>
+                        <div class="add__product_wrapper">
+                            <div class="add__product--pattern" style="display:none;">
+                                <div class="js-product-delete add__product-delete">
+                                    <svg class="icon icon-ico33 icon__gray">
+                                        <use xlink:href="#icon-ico33"></use>
+                                    </svg>
                                 </div>
-                                <div class="form-group">
-                                    <label for="codtt" class="control-label control-label--inline">Отдел продаж</label>
-                                    <div class="wide-select">
-                                        <select name="" id="" class="selectpicker">
-                                            <option value="">Тов "Яблонька"</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                        </select>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                        <p class="add__heading">Заполните данные</p>
+                                        <div class="add__item">
+<<<<<<< HEAD
+                                            <input type="file" name="file" id="file" class="inputfile" />
+                                            <div class="load__small js-color">
+                                                <svg class="icon icon-plus icon__gray">
+                                                    <use xlink:href="#icon-plus"></use>
+                                                </svg>
+                                            </div>
+                                            <label for="file" class="load__img">
+=======
+                                            <label for="file" class="load__img js-labelFile">
+                                                <input type="file" name="file" id="file" class="inputfile" />
+>>>>>>> afbbd3ce62252e4e78374ff57a3dbd35a297a7bf
+                                                <div class="load__holder">
+                                                    <svg class="icon icon-plus icon__gray">
+                                                        <use xlink:href="#icon-plus"></use>
+                                                    </svg>
+                                                    <span>Загрузить фото</span>
+                                                </div>
+                                            </label>
+<<<<<<< HEAD
+=======
+                                            <div class="color-holder">
+                                                <div class="color-box">
+                                                    <span class="color-input"></span>
+                                                </div>
+                                                <div class="load__small">
+                                                    <svg class="icon icon-plus icon__gray">
+                                                        <use xlink:href="#icon-plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+>>>>>>> afbbd3ce62252e4e78374ff57a3dbd35a297a7bf
+                                        </div>
+                                        <div class="add__brand">
+                                            <div class="row">
+                                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                                    <label for="product-name" class="control-label control-label--big">Брендлайн</label>
+                                                </div>
+                                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                                    <select name="" id="product-name" class="selectpicker">
+                                                        <option value="">Модель 213 рисунок 1220, голубой</option>
+                                                        <option value="">Модель 213 рисунок 20, неголубой</option>
+                                                        <option value="">Модель 213 рисунок 0, гоголубой</option>
+                                                        <option value="">Модель 213 рисунок 1, неголубой</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="add__info--wr">
+                                            <div class="add__info">
+                                                <div class="add__tr">
+                                                    <div class="add__th add__size_block add__size_blcok--th">Размер</div>
+                                                    <div class="add__th add__price_category add__price_category--th">Ценовая категория</div>
+                                                    <div class="add__th add__price add__price--th">Ф1</div>
+                                                    <div class="add__th add__price add__price--th">Ф2</div>
+                                                    <div class="add__th add__plus"></div>
+                                                    <div class="add__th">
+                                                        <div class="add__delete js_delete_size">
+                                                            <svg class="icon icon-ico33 icon__gray">
+                                                                <use xlink:href="#icon-ico33"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="add__tr add__tr--dynamic">
+                                                    <div class="add__td add__size_block add__size_block--td">
+                                                        <input type="text" class="form-control form-control--size" value="21-23">
+                                                    </div>
+                                                    <div class="add__td add__price_category add__price_category--td">
+                                                        <select name="" id="" class="selectpicker">
+                                                            <option value="">минимаркет</option>
+                                                            <option value="">HoReca</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="add__td add__price add__price--td add__price_td_f1">
+                                                        <input type="text" class="form-control--table form-control" value="6 112, 45">
+                                                    </div>
+                                                    <div class="add__td add__price add__price--td add__price_td_f2">
+                                                        <input type="text" class="form-control--table form-control" value="6 500, 45">
+                                                    </div>
+                                                    <div class="add__plus add__td">
+                                                        <div class="add__holder add__holder--big js__add_row">
+                                                            <svg class="icon icon-plus">
+                                                                <use xlink:href="#icon-plus"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="add__td">
+                                                        <div class="add__delete js_delete_tr">
+                                                            <svg class="icon icon-ico33 icon__gray">
+                                                                <use xlink:href="#icon-ico33"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="add__size text-center js_add_size">
+                                                добавить размер
+                                            </div>
+                                        </div>
+                                        <div class="add__size text-center js_add_block">
+                                            добавить брендлайн
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <p class="add__heading">Предпросмотр</p>
+                                        <div class="add__view">
+                                            <ul class="f__list">
+                                                <li class="f__item active">Ф1</li>
+                                                <li class="f__item">Ф2</li>
+                                            </ul>
+                                            <ul class="color__list">
+                                                <li class="color__item active js-color"></li>
+                                            </ul>
+                                            <figure>
+                                                <img id="img__preview" src="assets/images/turmalinovye-noski.jpg" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="add__name">
+                                            Модель 321 - рисунок 1220, голубой
+                                        </div>
+                                        <div class="add__info--view">
+                                            <div class="preview__table">
+                                                <div class="preview__table_holder">
+                                                    <div class="preview__table_th">Размер</div>
+                                                    <div class="preview__table_th">Кол-во</div>
+                                                    <div class="preview__table_th">Цена</div>
+                                                </div>
+                                                <div class="preview__table_tr">
+                                                    <div class="preview__table_td add__table_td_size">21-23</div>
+                                                    <div class="preview__table_td"><span class="preview__number bordered">0</span></div>
+                                                    <div class="preview__table_td add__price_view">12,35</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="route__left">
-                                <div class="form-group">
-                                    <label for="codtt" class="control-label control-label--inline">Отдел продаж</label>
-                                    <div class="wide-select">
-                                        <select name="" id="" class="selectpicker">
-                                            <option value="">Тов "Яблонька"</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                        </select>
-                                    </div>
+                            <div class="add__product">
+                                <div class="js-product-delete add__product-delete">
+                                    <svg class="icon icon-ico33 icon__gray">
+                                        <use xlink:href="#icon-ico33"></use>
+                                    </svg>
                                 </div>
-                                <div class="form-group">
-                                    <label for="codtt" class="control-label control-label--inline">Отдел продаж</label>
-                                    <div class="wide-select">
-                                        <select name="" id="" class="selectpicker">
-                                            <option value="">Тов "Яблонька"</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                        </select>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                        <p class="add__heading">Заполните данные</p>
+                                        <div class="add__item">
+<<<<<<< HEAD
+                                            <input type="file" name="file" id="file" class="inputfile" />
+                                            <div class="load__small js-color">
+                                                <svg class="icon icon-plus icon__gray">
+                                                    <use xlink:href="#icon-plus"></use>
+                                                </svg>
+                                            </div>
+                                            <label for="file" class="load__img">
+=======
+                                            <label for="file-1" class="load__img js-labelFile">
+                                                <input type="file" name="file" id="file-1" class="inputfile" />
+>>>>>>> afbbd3ce62252e4e78374ff57a3dbd35a297a7bf
+                                                <div class="load__holder">
+                                                    <svg class="icon icon-plus icon__gray">
+                                                        <use xlink:href="#icon-plus"></use>
+                                                    </svg>
+                                                    <span>Загрузить фото</span>
+                                                </div>
+                                            </label>
+<<<<<<< HEAD
+=======
+                                            <div class="color-holder">
+                                                <div class="color-box">
+                                                    <span class="color-input"></span>
+                                                </div>
+                                                <div class="load__small">
+                                                    <svg class="icon icon-plus icon__gray">
+                                                        <use xlink:href="#icon-plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+>>>>>>> afbbd3ce62252e4e78374ff57a3dbd35a297a7bf
+                                        </div>
+                                        <div class="add__brand">
+                                            <div class="row">
+                                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                                    <label for="product-name" class="control-label control-label--big">Брендлайн</label>
+                                                </div>
+                                                <div class="col-md-9 col-sm-9 col-xs-9">
+                                                    <select name="" id="product-name" class="selectpicker">
+                                                        <option value="">Модель 213 рисунок 1220, голубой</option>
+                                                        <option value="">Модель 213 рисунок 20, неголубой</option>
+                                                        <option value="">Модель 213 рисунок 0, гоголубой</option>
+                                                        <option value="">Модель 213 рисунок 1, неголубой</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="add__info--wr">
+                                            <div class="add__info">
+                                                <div class="add__tr">
+                                                    <div class="add__th add__size_block add__size_blcok--th">Размер</div>
+                                                    <div class="add__th add__price_category add__price_category--th">Ценовая категория</div>
+                                                    <div class="add__th add__price add__price--th">Ф1</div>
+                                                    <div class="add__th add__price add__price--th">Ф2</div>
+                                                    <div class="add__th add__plus"></div>
+                                                    <div class="add__th">
+                                                        <div class="add__delete js_delete_size">
+                                                            <svg class="icon icon-ico33 icon__gray">
+                                                                <use xlink:href="#icon-ico33"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="add__tr add__tr--dynamic">
+                                                    <div class="add__td add__size_block add__size_block--td">
+                                                        <input type="text" class="form-control form-control--size" value="21-23">
+                                                    </div>
+                                                    <div class="add__td add__price_category add__price_category--td">
+                                                        <select name="" id="" class="selectpicker">
+                                                            <option value="">минимаркет</option>
+                                                            <option value="">HoReca</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="add__td add__price add__price--td add__price_td_f1">
+                                                        <input type="text" class="form-control--table form-control" value="6 112, 45">
+                                                    </div>
+                                                    <div class="add__td add__price add__price--td add__price_td_f2">
+                                                        <input type="text" class="form-control--table form-control" value="6 500, 45">
+                                                    </div>
+                                                    <div class="add__plus add__td">
+                                                        <div class="add__holder add__holder--big js__add_row">
+                                                            <svg class="icon icon-plus">
+                                                                <use xlink:href="#icon-plus"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="add__td">
+                                                        <div class="add__delete js_delete_tr">
+                                                            <svg class="icon icon-ico33 icon__gray">
+                                                                <use xlink:href="#icon-ico33"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="add__size text-center js_add_size">
+                                                добавить размер
+                                            </div>
+                                        </div>
+                                        <div class="add__size text-center js_add_block">
+                                            добавить брендлайн
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="codtt" class="control-label control-label--inline">Отдел продаж</label>
-                                    <div class="wide-select">
-                                        <select name="" id="" class="selectpicker">
-                                            <option value="">Тов "Яблонька"</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                            <option value="">Русский</option>
-                                        </select>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <p class="add__heading">Предпросмотр</p>
+                                        <div class="add__view">
+                                            <ul class="f__list">
+                                                <li class="f__item active">Ф1</li>
+                                                <li class="f__item">Ф2</li>
+                                            </ul>
+                                            <ul class="color__list">
+                                                <li class="color__item active js-color"></li>
+                                            </ul>
+                                            <figure>
+                                                <img id="img__preview" src="assets/images/turmalinovye-noski.jpg" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="add__name">
+                                            Модель 321 - рисунок 1220, голубой
+                                        </div>
+                                        <div class="add__info--view">
+                                            <div class="preview__table">
+                                                <div class="preview__table_holder">
+                                                    <div class="preview__table_th">Размер</div>
+                                                    <div class="preview__table_th">Кол-во</div>
+                                                    <div class="preview__table_th">Цена</div>
+                                                </div>
+                                                <div class="preview__table_tr">
+                                                    <div class="preview__table_td add__table_td_size">21-23</div>
+                                                    <div class="preview__table_td"><span class="preview__number bordered">0</span></div>
+                                                    <div class="preview__table_td add__price_view add__price_view--f1">1212</div>
+                                                    <div class="preview__table_td add__price_view add__price_view--f2">1231</div>
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    <div class="route__add edit__block" data-toggle="tooltip" data-placement="right" title="Добавить">
-                        <svg class="icon icon-plus">
-                            <use xlink:href="#icon-plus"></use>
-                        </svg>
-                    </div>
                 </div>
-                <section class="drop__area">
-                    <div class="column__row">
-                        <div class="column__left">
-                            <div class="drop__top drop__top--first drop__top--small">
-                                <select name="" id="" class="selectpicker">
-                                    <option value="">Нераспределенные</option>
-                                    <option value="">Все</option>
-                                </select>
-                            </div>
-                            <div class="route__all_wr route__all_wr--first row">
-                                <div class="col-md-3 col-sm-3 col-xs-3">
-                                    <label for="check-2" class="admin__checkbox">
-                                        <input type="checkbox" id="check-2" name="check-2">
-                                        <span class="admin__checkbox_emulator"></span>
-                                    </label>
-                                </div>
-                                <div class="col-md-9 col-sm-9 col-xs-9 text-right">
-                                    <div class="route__all">
-                                        <span class="js_checked_portlets">202</span> из <span class="js_all_portlets">250</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column column--wide start-column">
-                                <div class="portlet">
-                                    <div class="handle"></div>
-                                    <div class="portlet-header">
-                                        <div class="route__item">
-                                            <div class="route__info">
-                                                <span class="route__place">ТОВ "Наливайка1"</span>
-                                                <span class="route__adress">г. Киев <br> ул. Хрещатик</span>
-                                            </div>
-                                            <div class="route__footer text-right row">
-                                                <div class="col-md-4 text-center"></div>
-                                                <div class="col-md-4 text-center">
-                                                </div>
-                                                <div class="col-md-4 text-right">
-                                                    <div class="portlet-remove">
-                                                        <svg class="icon icon-ico33">
-                                                            <use xlink:href="#icon-ico33"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="portlet">
-                                    <div class="handle"></div>
-                                    <div class="portlet-header">
-                                        <div class="route__item">
-                                            <div class="route__info">
-                                                <span class="route__place">ТОВ "Наливайка1"</span>
-                                                <span class="route__adress">г. Киев <br> ул. Хрещатик</span>
-                                            </div>
-                                            <div class="route__footer text-right row">
-                                                <div class="col-md-4 text-center"></div>
-                                                <div class="col-md-4 text-center">
-                                                </div>
-                                                <div class="col-md-4 text-right">
-                                                    <div class="portlet-remove">
-                                                        <svg class="icon icon-ico33">
-                                                            <use xlink:href="#icon-ico33"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="portlet">
-                                    <div class="handle"></div>
-                                    <div class="portlet-header">
-                                        <div class="route__item">
-                                            <div class="route__info">
-                                                <span class="route__place">ТОВ "Наливайка1"</span>
-                                                <span class="route__adress">г. Киев <br> ул. Хрещатик</span>
-                                            </div>
-                                            <div class="route__footer text-right row">
-                                                <div class="col-md-4 text-center"></div>
-                                                <div class="col-md-4 text-center">
-                                                </div>
-                                                <div class="col-md-4 text-right">
-                                                    <div class="portlet-remove">
-                                                        <svg class="icon icon-ico33">
-                                                            <use xlink:href="#icon-ico33"></use>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column__right column__right--scrollable">
-                            <div class="drop__top drop__top--small text-center">
-                                <div class="merch__wr">
-                                    <div class="merch__item">
-                                        <a href="#">
-                                            <svg class="icon icon-pencil">
-                                                <use xlink:href="#icon-pencil"></use>
-                                            </svg> <span>3388</span>
-                                            <br> Иванов И. И.
-                                        </a>
-                                    </div>
-                                    <div class="merch__item">
-                                        <a href="">
-                                            <svg class="icon icon-pencil">
-                                                <use xlink:href="#icon-pencil"></use>
-                                            </svg> <span>3388</span>
-                                            <br> Иванов И. И.
-                                        </a>
-                                    </div>
-                                    <div class="merch__item">
-                                        <a href="">
-                                            <svg class="icon icon-pencil">
-                                                <use xlink:href="#icon-pencil"></use>
-                                            </svg> <span>3388</span>
-                                            <br> Иванов И. И.
-                                        </a>
-                                    </div>
-                                    <div class="merch__item">
-                                        <a href="">
-                                            <svg class="icon icon-pencil">
-                                                <use xlink:href="#icon-pencil"></use>
-                                            </svg> <span>3388</span>
-                                            <br> Иванов И. И.
-                                        </a>
-                                    </div>
-                                    <div class="merch__item">
-                                        <a href="">
-                                            <svg class="icon icon-pencil">
-                                                <use xlink:href="#icon-pencil"></use>
-                                            </svg> <span>3388</span>
-                                            <br> Иванов И. И.
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column__wr">
-                                <div class="column">
-                                    <div class="portlet__number_item">0</div>
-                                </div>
-                                <div class="column">
-                                    <div class="portlet__number_item">0</div>
-                                </div>
-                                <div class="column">
-                                    <div class="portlet__number_item">0</div>
-                                </div>
-                                <div class="column">
-                                    <div class="portlet__number_item">0</div>
-                                </div>
-                                <div class="column">
-                                    <div class="portlet__number_item">0</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </section>
+            <div class="save">
+                <div class="text-center">сохранить</div>
+            </div>
         </main>
     </div>
-    <link rel="stylesheet" href="css/jquery-ui.css">
     <script src="js/jquery-2.2.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.mousewheel.js"></script>
+    <script src="js/huebee.pkgd.min.js"></script>
     <script src="js/jquery.jscrollpane.min.js"></script>
     <script src="js/jquery.dotdotdot.min.js"></script>
     <script src="js/jquery.sameheight.js"></script>
+    <script src="js/jquery.simple-color.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 

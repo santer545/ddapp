@@ -1076,6 +1076,13 @@ div.ui-selected {
  */
 
 .load {
+    &__holder {
+        position: absolute;
+        top: 50%;
+        width: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
     &__img {
         position: relative;
         width: 222px;
@@ -1092,8 +1099,11 @@ div.ui-selected {
         }
         span {
             display: block;
-            font-size: 21px;
+            font-size: 16px;
             color: $gray-middle;
+        }
+        .inputfile {
+            display: none;
         }
     }
     &__small {
@@ -1126,12 +1136,16 @@ div.ui-selected {
 .color-box {
     position: absolute;
     left: 0;
+    right: 0;
     top: 20px;
     @include translate(-230px, 0);
     opacity: 0;
+    z-index: -1;
     @include transition(transform 0.3s, opacity 0.3s);
     &.active {
         opacity: 1;
+        display: inline-block;
+        z-index: 0;
         @include translate(0, 0);
     }
 }
@@ -1139,10 +1153,18 @@ div.ui-selected {
 .color-holder {
     position: relative;
     display: inline-block;
-    width: 230px;
+    vertical-align: top;
+    width: 150px;
     height: 250px;
     margin-left: 60px;
     margin-top: 30px;
+}
+
+.color-or {
+    color: #9f9f9f;
+    font-size: 13px;
+    text-align: center;
+    display: block;
 }
 
 .content-padding {
@@ -1157,12 +1179,26 @@ div.ui-selected {
         border: 1px solid #eaeaea;
     }
     &__product {
-        padding-top: 25px;
+        position: relative;
+        margin-bottom: 50px;
         &_wrapper {
             padding-left: 30px;
         }
         &--pattern {
+            position: relative;
             padding-top: 25px;
+        }
+    }
+    &__product-delete {
+        position: absolute;
+        top: -10px;
+        right: 0;
+        display: inline-block;
+        cursor: pointer;
+        z-index: 20;
+        svg {
+            width: 20px;
+            height: 20px;
         }
     }
     &__heading {
@@ -1212,7 +1248,7 @@ div.ui-selected {
     &__info {
         border: 1px solid #eaeaea;
         border-top: none;
-        padding-bottom: 30px;
+        padding-bottom: 15px;
         &--view {
             border: 1px solid #eaeaea;
             padding-bottom: 20px;
@@ -1585,16 +1621,16 @@ div.ui-selected {
     }
     &__row {
         @include clearfix;
-        min-height: 1000px;
     }
     &__left {
         width: 230px;
         float: left;
         padding-left: 30px;
         padding-right: 11px;
-        background-color: #fafafa;
+        background-color: #000;
     }
     &__right {
+        background-color: #f00;
         padding-left: 11px;
         overflow: hidden;
         &--scrollable {
