@@ -457,6 +457,9 @@ http://huebee.buzz
 }
 
 .huebee.is-static-open {
+    & + .huebee.is-static-open {
+        display: none;
+    }
   position: relative;
   z-index: auto;
 }
@@ -471,6 +474,8 @@ http://huebee.buzz
   border-radius: 5px;
   box-shadow: 0 5px 10px hsla(0, 0%, 0%, 0.3);
 }
+
+
 
 .huebee.is-static-open .huebee__container {
   position: relative;

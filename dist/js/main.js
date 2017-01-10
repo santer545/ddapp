@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     // Tooltips
     $(function() {
-        $('[data-toggle="tooltip"]').tooltip('show');
+        $('[data-toggle="tooltip"]').tooltip();
     })
 
     $('.tools__delete').click(function() {
@@ -75,7 +75,9 @@ $(document).ready(function() {
     });
 
 
+
     $('.color-input').each(function(i, elem) {
+        console.log(elem);
         var hueb = new Huebee(elem, {
             // options
             staticOpen: true,
@@ -83,6 +85,14 @@ $(document).ready(function() {
             setText: '.asdasdasd'
         });
     });
+
+    /*var hueb = new Huebee('.color-input', {
+        // options
+        staticOpen: true,
+        setBGColor: '.js-color',
+        setText: '.asdasdasd'
+    });*/
+
 
     // Добавление брендлайна
     initAddBrandline();
@@ -172,9 +182,7 @@ function keyUpF1() {
         var number_size = $(this).closest('.add__info').index();
         var number_tr = $(this).closest('.add__product').closest('.add__tr--dynamic').index();
         var value = $(this).val();
-        console.log(number_tr);
-        console.log(value);
-        console.log($(this).closest('.add__product').find('.add__info--view').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f1'));
+
         $(this).closest('.add__product').find('.add__info--view').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f1').text(value);
     });
 }
@@ -184,9 +192,7 @@ function keyUpF2() {
         var number_size = $(this).closest('.add__info').index();
         var number_tr = $(this).closest('.add__product').closest('.add__tr--dynamic').index();
         var value = $(this).val();
-        console.log(number_tr);
-        console.log(value);
-        console.log($(this).closest('.add__product').find('.add__info--view').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f2'));
+
         $(this).closest('.add__product').find('.add__info--view').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f2').text(value);
     });
 }
@@ -276,15 +282,21 @@ function initAddBrandline() {
             $(this).siblings('label').attr('for', "file-image-" + i);
         });
 
-        $('.color-input').each(function(i, elem) {
-            var hueb = new Huebee(elem, {
-                // options
-                staticOpen: true,
-                setBGColor: '.js-color',
-                setText: '.asdasdasd'
-            });
-        });
+        var colorInput = $(this).closest('.add__product').next('.add__product').find('.color-input').get(0);
 
+        var colorOutput = $(this).closest('.add__product').next('.add__product').find('.js-color').get(0);
+
+
+        console.log(colorOutput);
+
+        var hueb = new Huebee(colorInput, {
+            // options
+            staticOpen: true,
+            setBGColor: colorOutput,
+            setText: '.asdasdasd'
+        }).on('change', function(color, hue, sat, lum) {
+            $(colorOutput).css('background', color);
+        });
     });
 }
 
@@ -312,7 +324,7 @@ function initDeleteSize() {
     $(document).on('click', '.js_delete_size', function() {
         var parent = $(this).closest('.add__product');
         var number_size = $(this).find('.add__info').index();
-        console.log(number_size);
+
         $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').remove();
 
         if (parent.find('.add__info').length > 1) {
@@ -339,7 +351,7 @@ function togglePrice() {
         // add class to the one we clicked
         $(this).addClass("active");
         var parent = $(this).closest('.add__product');
-        if ($(this).is('#id_f2')) {
+        if ($(this).closest('ul').find('.f__item:eq(1)').is('.active')) {
             parent.find('.add__price_view--f1').hide();
             parent.find('.add__price_view--f2').css('display', 'inline-block');
         } else {
@@ -484,7 +496,7 @@ function initCheckedPortlets() {
 
 function initModalOnPortlets() {
     $('.copy').click(function() {
-        console.log('Click!!');
+
         $('#editModal').modal('show');
     });
 }
@@ -494,7 +506,7 @@ function initModalForm() {
     $('#form__unchecked').hide();
     $('#modal-checked').change(function() {
         var bool = $(this).prop('checked');
-        console.log(bool);
+
         if (!bool) {
             $('#form__checked').show();
             $('#form__unchecked').hide();
@@ -510,24 +522,15 @@ function initColor() {
     $(document).on('click', '.load__small', function() {
         $(this).toggleClass("active");
         $(this).closest('.color-holder').find('.color-box').toggleClass('active');
-        var elem;
-        var hueb = new Huebee(elem, {
-            // options
-            staticOpen: true,
-            setBGColor: '.js-color',
-            setText: '.asdasdasd',
-
-        });
-        $('.color-input').each(function(i, elem) {
-            hueb.close();
-        });
-
-        if ($(this).closest('.color-holder').find('.color-box').hasClass('active')) {
-            $('.color-input').each(function(i, elem) {
-                hueb.open();
-            });
-        }
     });
+    /*var hueb = new Huebee('.add__product:first-child .color-input', {
+        // options
+        staticOpen: true,
+        setBGColor: '.js-color',
+        setText: '.asdasdasd'
+    });*/
+
+
 }
 
 
@@ -535,15 +538,20 @@ function initColor() {
 
 
 function initImagesUpload() {
-    $('.input-file').each(function() {
+    var i = 0;
+    $('.inputfile').each(function() {
         var $input = $(this),
             $label = $input.next('.js-labelFile'),
             labelVal = $label.html();
         $input.on('change', function(element) {
             var tmppath = URL.createObjectURL(event.target.files[0]);
             $(this).closest('.add__product').find('.add__view').find('img').fadeIn("fast").attr('src', URL.createObjectURL(event.target.files[0]));
-            console.log($(this).closest('.add__product'));
-            console.log(URL.createObjectURL(event.target.files[0]));
+
         });
+
+        i++;
+        $(this).attr("id", "file-" + i);
+        $(this).closest('.js-labelFile').attr("for", "file-" + i);
     });
+
 }

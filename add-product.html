@@ -474,7 +474,7 @@
                                         <img src="assets/images/user.jpg" class="img-circle" alt="">
                                     </div>
                                     <div class="user__info">
-                                        <svg class="icon icon-info">
+                                        <svg class="icon icon-info" data-toggle="tooltip" data-placement="bottom" title="Информация">
                                             <use xlink:href="#icon-info"></use>
                                         </svg>
                                     </div>
@@ -553,17 +553,17 @@
                         </div>
                         <div class="add__product_wrapper">
                             <div class="add__product--pattern" style="display:none;">
+                                <div class="js-product-delete add__product-delete">
+                                    <svg class="icon icon-ico33 icon__gray">
+                                        <use xlink:href="#icon-ico33"></use>
+                                    </svg>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-8 col-xs-8">
                                         <p class="add__heading">Заполните данные</p>
                                         <div class="add__item">
-                                            <input type="file" name="file" id="file" class="inputfile" />
-                                            <div class="load__small js-color">
-                                                <svg class="icon icon-plus icon__gray">
-                                                    <use xlink:href="#icon-plus"></use>
-                                                </svg>
-                                            </div>
-                                            <label for="file" class="load__img">
+                                            <label for="file" class="load__img js-labelFile">
+                                                <input type="file" name="file" id="file" class="inputfile" />
                                                 <div class="load__holder">
                                                     <svg class="icon icon-plus icon__gray">
                                                         <use xlink:href="#icon-plus"></use>
@@ -571,6 +571,16 @@
                                                     <span>Загрузить фото</span>
                                                 </div>
                                             </label>
+                                            <div class="color-holder">
+                                                <div class="color-box">
+                                                    <span class="color-input"></span>
+                                                </div>
+                                                <div class="load__small">
+                                                    <svg class="icon icon-plus icon__gray">
+                                                        <use xlink:href="#icon-plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="add__brand">
                                             <div class="row">
@@ -647,8 +657,8 @@
                                         <p class="add__heading">Предпросмотр</p>
                                         <div class="add__view">
                                             <ul class="f__list">
-                                                <li id="id_f1" class="f__item active">Ф1</li>
-                                                <li id="id_f2" class="f__item">Ф2</li>
+                                                <li class="f__item active">Ф1</li>
+                                                <li class="f__item">Ф2</li>
                                             </ul>
                                             <ul class="color__list">
                                                 <li class="color__item active js-color"></li>
@@ -678,17 +688,17 @@
                                 </div>
                             </div>
                             <div class="add__product">
+                                <div class="js-product-delete add__product-delete">
+                                    <svg class="icon icon-ico33 icon__gray">
+                                        <use xlink:href="#icon-ico33"></use>
+                                    </svg>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-8 col-sm-8 col-xs-8">
                                         <p class="add__heading">Заполните данные</p>
                                         <div class="add__item">
-                                            <input type="file" name="file" id="file" class="inputfile" />
-                                            <div class="load__small js-color">
-                                                <svg class="icon icon-plus icon__gray">
-                                                    <use xlink:href="#icon-plus"></use>
-                                                </svg>
-                                            </div>
-                                            <label for="file" class="load__img">
+                                            <label for="file-1" class="load__img js-labelFile">
+                                                <input type="file" name="file" id="file-1" class="inputfile" />
                                                 <div class="load__holder">
                                                     <svg class="icon icon-plus icon__gray">
                                                         <use xlink:href="#icon-plus"></use>
@@ -696,6 +706,16 @@
                                                     <span>Загрузить фото</span>
                                                 </div>
                                             </label>
+                                            <div class="color-holder">
+                                                <div class="color-box">
+                                                    <span class="color-input"></span>
+                                                </div>
+                                                <div class="load__small">
+                                                    <svg class="icon icon-plus icon__gray">
+                                                        <use xlink:href="#icon-plus"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="add__brand">
                                             <div class="row">
@@ -772,8 +792,8 @@
                                         <p class="add__heading">Предпросмотр</p>
                                         <div class="add__view">
                                             <ul class="f__list">
-                                                <li id="id_f1" class="f__item active">Ф1</li>
-                                                <li id="id_f2" class="f__item">Ф2</li>
+                                                <li class="f__item active">Ф1</li>
+                                                <li class="f__item">Ф2</li>
                                             </ul>
                                             <ul class="color__list">
                                                 <li class="color__item active js-color"></li>
@@ -799,7 +819,6 @@
                                                     <div class="preview__table_td add__price_view add__price_view--f2">1231</div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -818,13 +837,12 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.custom-file-input.js"></script>
-    <script src="js/custom-file-input.js"></script>
     <script src="js/jquery.mousewheel.js"></script>
     <script src="js/huebee.pkgd.min.js"></script>
     <script src="js/jquery.jscrollpane.min.js"></script>
     <script src="js/jquery.dotdotdot.min.js"></script>
     <script src="js/jquery.sameheight.js"></script>
+    <script src="js/jquery.simple-color.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 

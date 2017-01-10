@@ -8,7 +8,7 @@ jQuery(function() {
 
 function initSameHeight() {
     jQuery('.column__row').sameHeight({
-        elements: '.column__left, .column__right',
+        elements: '.column__left, .column__right, .owl__wr',
         flexible: true,
         multiLine: true,
         biggestHeight: true

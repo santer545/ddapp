@@ -1079,6 +1079,7 @@ div.ui-selected {
     &__holder {
         position: absolute;
         top: 50%;
+        width: 80%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
@@ -1098,8 +1099,11 @@ div.ui-selected {
         }
         span {
             display: block;
-            font-size: 21px;
+            font-size: 16px;
             color: $gray-middle;
+        }
+        .inputfile {
+            display: none;
         }
     }
     &__small {
@@ -1617,16 +1621,16 @@ div.ui-selected {
     }
     &__row {
         @include clearfix;
-        min-height: 1000px;
     }
     &__left {
         width: 230px;
         float: left;
         padding-left: 30px;
         padding-right: 11px;
-        background-color: #fafafa;
+        background-color: #000;
     }
     &__right {
+        background-color: #f00;
         padding-left: 11px;
         overflow: hidden;
         &--scrollable {
