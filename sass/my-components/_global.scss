@@ -1829,6 +1829,8 @@ div.ui-selected {
     img {
         width: 23px;
         height: 26px;
+        position: relative;
+        z-index: 3;
     }
     a {
         display: block;
