@@ -524,6 +524,17 @@ function initSortable() {
             $('#check-2').prop('checked', false);
             initCheckedPortlets();
 
+            var countClick = 0;
+            $('.portlet').on('mouseover', function() {
+                if (!(window.event.ctrlKey) && !(window.event.shiftKey)) {
+                    $('.handle').css('z-index', '2').focus();
+                    $('.handle').trigger('mousedown');
+                } else {
+                    $('.handle').css('z-index', '0');
+                    $('.portlet').focus();
+                }
+            });
+
 
         },
 
