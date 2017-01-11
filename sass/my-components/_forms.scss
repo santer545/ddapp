@@ -1,4 +1,8 @@
 .form {
+    &-language,
+    &-info {
+        margin-left: -15px; 
+    }
     &-control {
         border: none;
         box-shadow: none;

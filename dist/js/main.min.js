@@ -1,3 +1,11 @@
+$(document).resize(function() {
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    // Вызов кастомного скролла
+    $('.scroll-pane').jScrollPane();
+
+});
 $(document).ready(function() {
 
     // Раскрытие левого меню
@@ -5,12 +13,6 @@ $(document).ready(function() {
         $(".sidebar").toggleClass("active");
         $(this).toggleClass("active");
     });
-
-
-
-
-
-
 
     var a = $('.js-detail').attr('aria-expanded');
     if (a == 'true') {
@@ -66,18 +68,21 @@ $(document).ready(function() {
     $('#collapseExample').on('hidden.bs.collapse', function() {
         initSameHeight();
     });
+
     $('#collapseExample').on('shown.bs.collapse', function() {
         initSameHeight();
     });
+
+
+
     // Bootstrap select
     $('.selectpicker').selectpicker({
         dropupAuto: false
     });
 
 
-
     $('.color-input').each(function(i, elem) {
-        console.log(elem);
+
         var hueb = new Huebee(elem, {
             // options
             staticOpen: true,
@@ -86,12 +91,6 @@ $(document).ready(function() {
         });
     });
 
-    /*var hueb = new Huebee('.color-input', {
-        // options
-        staticOpen: true,
-        setBGColor: '.js-color',
-        setText: '.asdasdasd'
-    });*/
 
 
     // Добавление брендлайна
@@ -130,24 +129,25 @@ $(document).ready(function() {
     // выбор цвета
     initColor();
 
+
+    // Удаление брендлайна
     initRemoveBrandline();
 
+
+    // загрузка изображения для предпросмотра
     initImagesUpload();
 
+
+    // ввод размера
     keyUpSize();
 
+
+    // ввод первой ценовой категории
     keyUpF1();
 
+    // ввод второй ценовой категории
     keyUpF2();
 
-
-    /* // initialize on multiple elements with jQuery
-     $('.color-input').each(function(i, elem) {
-         var hueb = new Huebee(elem, {
-             // options
-             staticOpen: true
-         });
-     });*/
 
 
 
@@ -167,7 +167,7 @@ $(document).ready(function() {
 
 });
 
-
+// Функция ввода размера
 function keyUpSize() {
     $(document).on('keyup', '.add__size_block input', function() {
         var number_size = $(this).closest('.add__info').index();
@@ -177,6 +177,8 @@ function keyUpSize() {
     });
 }
 
+
+// Функция ввода ценовой категории
 function keyUpF1() {
     $(document).on('keyup', '.add__price_td_f1 input', function() {
         var number_size = $(this).closest('.add__info').index();
@@ -187,6 +189,7 @@ function keyUpF1() {
     });
 }
 
+// Функция ввода ценовой категории
 function keyUpF2() {
     $(document).on('keyup', '.add__price_td_f2 input', function() {
         var number_size = $(this).closest('.add__info').index();
@@ -224,9 +227,9 @@ function initAddRow() {
 
         var f2 = $(this).closest('.add__tr').find('.add__price_td_f2 input').val();
 
-        var a = $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f1').text(f1);
+        $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f1').text(f1);
 
-        var a = $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f2').text(f2);
+        $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').find('.add__price_view--f2').text(f2);
     });
 
 
@@ -258,6 +261,8 @@ function initAddSize() {
 
         $(this).closest('.add__product').find('.preview__table:eq(' + number_tr + ')').find('.add__price_view--f2').text(f2);
 
+        $(this).closest('.add__product').find('.preview__table:eq(' + number_tr + ')').find('.add__table_td_size').text(sz);
+
     });
 
 }
@@ -287,7 +292,22 @@ function initAddBrandline() {
         var colorOutput = $(this).closest('.add__product').next('.add__product').find('.js-color').get(0);
 
 
-        console.log(colorOutput);
+        $('.add__brand select').on('changed.bs.select', function(e) {
+            var prod_name = $(this).closest('.add__product').find('.add__brand .filter-option').text();
+
+            $(this).closest('.add__product').find('.add__name').text(prod_name);
+        });
+
+        $(this).closest('.add__product').next('.add__product').find('.add__brand .selectpicker').selectpicker({
+            dropupAuto: false
+        });
+
+
+        $(this).closest('.add__product').next('.add__product').find('.add__brand > .bootstrap-select > button').remove();
+
+        console.log($(this).closest('.add__product').next('.add__product').find('.add__brand > .bootstrap-select'));
+        
+
 
         var hueb = new Huebee(colorInput, {
             // options
@@ -306,11 +326,18 @@ function initDeleteTr() {
 
         var parent = $(this).closest('.add__info');
 
+        var parent_view = $(this).closest('.add__product').find('.add__info--view');
+
         var number_size = $(this).closest('.add__info').index();
 
         var number_tr = $(this).closest('.add__info').find('.add__tr--dynamic').index();
 
-        $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').remove();
+
+
+        if (parent_view.find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr').length > 1) {
+            $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').find('.preview__table_tr:eq(' + number_tr + ')').remove();
+        }
+
 
         if (parent.find('.add__tr--dynamic').length > 1) {
             $(this).closest('.add__tr--dynamic').remove();
@@ -325,8 +352,10 @@ function initDeleteSize() {
         var parent = $(this).closest('.add__product');
         var number_size = $(this).find('.add__info').index();
 
-        $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').remove();
 
+        if (parent.find('.preview__table').length > 1) {
+            $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').remove();
+        }
         if (parent.find('.add__info').length > 1) {
             $(this).closest('.add__info').remove();
         }
@@ -347,7 +376,7 @@ function initRemoveBrandline() {
 function togglePrice() {
     $(document).on('click', '.f__item', function() {
         // remove classes from all
-        $(".f__item").removeClass("active");
+        $(this).closest('ul').find('.f__item').removeClass("active");
         // add class to the one we clicked
         $(this).addClass("active");
         var parent = $(this).closest('.add__product');
@@ -389,6 +418,7 @@ $('.portlet').on('mouseover', function() {
 });
 
 
+// Функция выделения маршрута
 function initSelectable() {
 
     $('.column').selectable({
@@ -408,7 +438,7 @@ function initSelectable() {
     });
 }
 
-
+// Функция перетаскивания маршрутов
 function initSortable() {
 
     $('.column').sortable({
@@ -440,11 +470,13 @@ function initSortable() {
                 $(this).closest('.column').find('.portlet__number_item').text(lg_del - 1);
                 var start = $(this).closest('.column .portlet').remove();
                 $('.start-column').append(start);
+                initCheckedPortlets();
 
             });
 
 
             $('#check-2').prop('checked', false);
+            initCheckedPortlets();
 
 
         },
@@ -471,6 +503,7 @@ function initSortable() {
 
 }
 
+// Функция подсчета маршрутов
 function initCheckedPortlets() {
 
     var lg = $('.column__left .portlet').length;
@@ -494,6 +527,7 @@ function initCheckedPortlets() {
     });
 }
 
+// Функция вызова модального окна в маршруте
 function initModalOnPortlets() {
     $('.copy').click(function() {
 
@@ -501,7 +535,7 @@ function initModalOnPortlets() {
     });
 }
 
-
+// Функция для форм в модальных окнах
 function initModalForm() {
     $('#form__unchecked').hide();
     $('#modal-checked').change(function() {
@@ -518,25 +552,18 @@ function initModalForm() {
 }
 
 
+// Функция вывода цветовой гаммы
 function initColor() {
     $(document).on('click', '.load__small', function() {
         $(this).toggleClass("active");
         $(this).closest('.color-holder').find('.color-box').toggleClass('active');
     });
-    /*var hueb = new Huebee('.add__product:first-child .color-input', {
-        // options
-        staticOpen: true,
-        setBGColor: '.js-color',
-        setText: '.asdasdasd'
-    });*/
-
-
 }
 
 
 
 
-
+// Функция загрузки изображений
 function initImagesUpload() {
     var i = 0;
     $('.inputfile').each(function() {
