@@ -1,9 +1,14 @@
-$(document).resize(function() {
+$(window).resize(function() {
     $(function() {
         $('[data-toggle="tooltip"]').tooltip();
     });
     // Вызов кастомного скролла
     $('.scroll-pane').jScrollPane();
+
+    setTimeout(function() {
+        initMicroColumnWidth();
+    }, 500);
+
 
 });
 $(document).ready(function() {
@@ -172,8 +177,30 @@ $(document).ready(function() {
     $('.add__price_view--f1').text(val_price_first);
     $('.add__price_view--f2').text(val_price_second);
 
+    initMicroColumnWidth();
 
 });
+
+
+
+function initMicroColumnWidth() {
+    var micro__wr = $('.micro__wr').outerWidth();
+
+    var width = $('.nav-micro').find('li:eq(0)').outerWidth() + $('.nav-micro').find('li:eq(1)').outerWidth() + $('.nav-micro').find('li:eq(2)').outerWidth() + $('.nav-micro').find('li:eq(3)').outerWidth();
+    console.log(width);
+
+    var micro__right = micro__wr - width;
+
+    $('.micro__left').css('width', width);
+
+    $('.micro__right').css('width', micro__right);
+}
+
+
+
+
+
+
 
 // Функция ввода размера
 function keyUpSize() {

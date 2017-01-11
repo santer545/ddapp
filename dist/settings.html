@@ -303,7 +303,7 @@
             </div>
             <ul class="sidebar__list">
                 <li class="sidebar__item">
-                    <a href="" class="sidebar__link">
+                    <a href="route.html" class="sidebar__link">
                         <svg class="icon icon-markers">
                             <use xlink:href="#icon-markers"></use>
                         </svg>
@@ -311,7 +311,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="" class="sidebar__link">
+                    <a href="order.html" class="sidebar__link">
                         <svg class="icon icon-basket">
                             <use xlink:href="#icon-basket"></use>
                         </svg>
@@ -343,7 +343,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item active">
-                    <a href="" class="sidebar__link">
+                    <a href="catalog.html" class="sidebar__link">
                         <svg class="icon icon-boook">
                             <use xlink:href="#icon-boook"></use>
                         </svg>
@@ -351,7 +351,7 @@
                     </a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="" class="sidebar__link">
+                    <a href="settings.html" class="sidebar__link">
                         <svg class="icon icon-cogwheel">
                             <use xlink:href="#icon-cogwheel"></use>
                         </svg>
@@ -413,11 +413,34 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="container-fluid tab-settings tab-pane active fade in" id="settings">
                                 <div class="row">
-                                    <div class="col-md-7 col-sm-7 col-xs-7">
+                                    <div class="col-md-8 col-sm-8 col-xs-8">
                                         <form action="" class="form form-language">
                                             <div class="form-group">
-                                                <label class="form-label form-label--auto" for="">Языки</label>
-                                                <select name="" id="" class="selectpicker" data-width="60%">
+                                                <div class="language__wrapper">
+                                                    <label class="form-label form-label--full" for="">Языки</label>
+                                                    <svg class="icon icon-info">
+                                                        <use xlink:href="#icon-info"></use>
+                                                    </svg>
+                                                    <div class="language__tooltip">
+                                                        Вы можете вырать несколько языков, но информацию в справочниках необходимо дублировать на всех языках, которые вы добавите
+                                                    </div>
+                                                </div>
+                                                <label for="check-rus" class="admin__checkbox label__language">
+                                                    <input type="checkbox" id="check-rus" name="check-rus">
+                                                    <span class="admin__checkbox_emulator"></span>
+                                                    <span class="check__language">Русский</span>
+                                                </label>
+                                                <label for="check-ukr" class="admin__checkbox label__language">
+                                                    <input type="checkbox" id="check-ukr" name="check-ukr">
+                                                    <span class="admin__checkbox_emulator"></span>
+                                                    <span class="check__language">Украинский</span>
+                                                </label>
+                                                <label for="check-eng" class="admin__checkbox label__language">
+                                                    <input type="checkbox" id="check-eng" name="check-eng">
+                                                    <span class="admin__checkbox_emulator"></span>
+                                                    <span class="check__language">Английский</span>
+                                                </label>
+                                                <!-- <select name="" id="" class="selectpicker" data-width="60%">
                                                     <option data-content="<img class='custom__option_img' src='assets/svg/russia.svg' width='30' height='30'> <span class='custom__option'>Русский</span>" value="">Русский</option>
                                                     <option value="">Русский</option>
                                                     <option value="">Русский</option>
@@ -427,7 +450,7 @@
                                                     <svg class="icon icon-plus">
                                                         <use xlink:href="#icon-plus"></use>
                                                     </svg>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="form-group">
                                                 <label for="" class="form-label form-label--auto">Min расстояние до check-in</label>
