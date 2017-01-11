@@ -496,6 +496,7 @@ function initSortable() {
             ui.item.after(selected);
             ui.item.remove();
 
+            initModalOnPortlets();
 
             $('.column__right .column').each(function() {
                 if (($(this).find('.portlet').length) == 0) {
