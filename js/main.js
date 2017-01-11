@@ -80,6 +80,14 @@ $(document).ready(function() {
         dropupAuto: false
     });
 
+    /*$('#select-pattern').selectpicker({
+        dropupAuto: false
+    });*/
+
+    $('#select-default').selectpicker({
+        dropupAuto: false
+    });
+
 
     $('.color-input').each(function(i, elem) {
 
@@ -286,6 +294,16 @@ function initAddBrandline() {
             $(this).attr("id", "file-image-" + i);
             $(this).siblings('label').attr('for', "file-image-" + i);
         });
+        y = 0;
+        $(this).closest('.add__product_wrapper').find('.add__brand select').each(function() {
+            y++;
+            $(this).attr("id", "select-" + y);
+            var id = "select-" + y;
+            console.log("select-" + y);
+            $("#select-" + y).selectpicker({
+                dropupAuto: false
+            });
+        });
 
         var colorInput = $(this).closest('.add__product').next('.add__product').find('.color-input').get(0);
 
@@ -306,7 +324,7 @@ function initAddBrandline() {
         $(this).closest('.add__product').next('.add__product').find('.add__brand > .bootstrap-select > button').remove();
 
         console.log($(this).closest('.add__product').next('.add__product').find('.add__brand > .bootstrap-select'));
-        
+
 
 
         var hueb = new Huebee(colorInput, {
