@@ -1,14 +1,14 @@
 .form {
     &-language,
     &-info {
-        margin-left: -15px; 
+        margin-left: -15px;
     }
     &-control {
         border: none;
         box-shadow: none;
         border-bottom: 1px solid #333;
         height: 40px;
-        padding: 5px 35px 5px 10px;
+        padding: 5px 10px;
         font-size: 16px;
         border-radius: 0;
         color: $text-color;
@@ -16,6 +16,9 @@
             box-shadow: none;
             outline: none;
             border-color: inherit;
+        }
+        &--lang {
+            padding-right: 35px;
         }
         &--search {
             padding: 7px 0 7px 40px;

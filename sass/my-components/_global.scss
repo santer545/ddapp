@@ -1305,13 +1305,13 @@ div.ui-selected {
         border-top: none;
         padding: 13px 36px 20px 5px;
         @media (max-width: 1700px) {
-            padding-right: 12px;
+            padding-right: 23px;
         }
         @media (max-width: 1500px) {
             padding-right: 5px;
         }
         @media (max-width: 1300px) {
-            padding-right: 8px;
+            padding-right: 11px;
         }
         .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
             width: 100%;
@@ -1422,20 +1422,26 @@ div.ui-selected {
     &__size_block {
         width: 13%;
     }
+    &__plus {
+        text-align: center;
+    }
     &__plus,
     &__delete {
-        width: 12.5%;
+        width: 14%;
         margin: 0;
         @media (max-width: 1400px) {
-            width: 11.5%;
-        }
-        @media (max-width: 1300px) {
-            width: 10.5%;
+            width: 12.5%;
         }
     }
     &__delete {
         .icon {
             cursor: pointer;
+        }
+    }
+    &__tr {
+        font-size: 0;
+        .add__holder {
+            margin: 0;
         }
     }
     &__tr:not(:last-child) {
