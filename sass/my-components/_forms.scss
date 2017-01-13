@@ -219,6 +219,12 @@
     text-overflow: ellipsis;
 }
 
+.full__width {
+    .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+        width: 100%;
+        display: block;
+    }
+}
 .wide-select {
     width: 215px;
     display: inline-block;

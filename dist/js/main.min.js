@@ -86,7 +86,7 @@ $(document).ready(function() {
 
     // Bootstrap select
     $('.selectpicker').selectpicker({
-
+        dropupAuto: false
     });
 
     $('#select-default').selectpicker();
@@ -191,15 +191,18 @@ $(document).ready(function() {
 
 function initMicroColumnWidth() {
     var micro__wr = $('.micro__wr').outerWidth();
-
+    var diagramm = $('.diagramm').outerWidth();
     var width = $('.nav-micro').find('li:eq(0)').outerWidth() + $('.nav-micro').find('li:eq(1)').outerWidth() + $('.nav-micro').find('li:eq(2)').outerWidth() + $('.nav-micro').find('li:eq(3)').outerWidth();
-    console.log(width);
+
 
     var micro__right = micro__wr - width;
 
+    var grafik = diagramm - width;
     $('.micro__left').css('width', width);
+    $('.diagramm__left').css('width', micro__right);
 
     $('.micro__right').css('width', micro__right);
+    $('.grafik').css('width', grafik);
 }
 
 
@@ -305,6 +308,8 @@ function initAddSize() {
 
         $(this).closest('.add__product').find('.preview__table:eq(' + number_tr + ')').find('.add__table_td_size').text(sz);
 
+        $(this).closest('.add__product').find('.js_delete_size').css('visibility', 'visible');
+
     });
 
 }
@@ -333,11 +338,11 @@ function initAddBrandline() {
             y++;
             $(this).attr("id", "select-" + y);
             var id = "select-" + y;
-            console.log("select-" + y);
+
             $("#select-" + y).selectpicker();
         });
 
-        console.log($(this).closest('.row').find('.add__info--wr').find('.add__info:first-child').find('select'));
+
         $(this).closest('.add__product').next('.add__product').find('.add__info--wr').find('.add__info:first-child').find('select').selectpicker();
 
         var colorInput = $(this).closest('.add__product').next('.add__product').find('.color-input').get(0);
@@ -356,7 +361,7 @@ function initAddBrandline() {
 
         $(this).closest('.add__product').next('.add__product').find('.add__brand > .bootstrap-select > button').remove();
 
-        console.log($(this).closest('.add__product').next('.add__product').find('.add__brand > .bootstrap-select'));
+
 
 
 
@@ -367,6 +372,17 @@ function initAddBrandline() {
             setText: '.asdasdasd'
         }).on('change', function(color, hue, sat, lum) {
             $(colorOutput).css('background', color);
+        });
+
+
+
+        $('.add__product').each(function(i) {
+            console.log(i);
+            if ($('.add__product:eq(' + i + ')').find('.add__info').length <= 1) {
+                $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'hidden');
+            } else {
+                $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'visible');
+            }
         });
     });
 }
@@ -397,19 +413,40 @@ function initDeleteTr() {
     });
 }
 
+$('.add__product').each(function(i) {
+    console.log(i);
+    if ($('.add__product:eq(' + i + ')').find('.add__info').length <= 1) {
+        $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'hidden');
+    } else {
+        $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'visible');
+    }
+});
+
 // удаление размера
 function initDeleteSize() {
     $(document).on('click', '.js_delete_size', function() {
         var parent = $(this).closest('.add__product');
         var number_size = $(this).closest('.add__info').index();
 
-        console.log(number_size);
+
         if (parent.find('.preview__table').length > 1) {
             $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').remove();
         }
         if (parent.find('.add__info').length > 1) {
+            $(this).css('visibility', 'visible');
             $(this).closest('.add__info').remove();
+        } else {
+            $(this).css('visibility', 'hidden');
         }
+
+        $('.add__product').each(function(i) {
+            console.log(i);
+            if ($('.add__product:eq(' + i + ')').find('.add__info').length <= 1) {
+                $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'hidden');
+            } else {
+                $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'visible');
+            }
+        });
     });
 }
 
