@@ -1,6 +1,8 @@
 $(window).resize(function() {
     $(function() {
-        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="tooltip"]').tooltip({
+            trigger: 'hover'
+        });
     });
     // Вызов кастомного скролла
     $('.scroll-pane').jScrollPane();
@@ -26,7 +28,9 @@ $(document).ready(function() {
 
     // Tooltips
     $(function() {
-        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="tooltip"]').tooltip({
+            trigger: 'hover'
+        });
     })
 
     $('.tools__delete').click(function() {
@@ -85,13 +89,7 @@ $(document).ready(function() {
         dropupAuto: false
     });
 
-    /*$('#select-pattern').selectpicker({
-        dropupAuto: false
-    });*/
-
-    $('#select-default').selectpicker({
-        dropupAuto: false
-    });
+    $('#select-default').selectpicker();
 
 
     $('.color-input').each(function(i, elem) {
@@ -161,7 +159,13 @@ $(document).ready(function() {
     // ввод второй ценовой категории
     keyUpF2();
 
-
+    /*$('[data-toggle="tooltip"]').mouseleave(function(){
+        $(this).siblings('.tooltip').removeClass('in');
+        alert('asasdasd')
+    });
+    $('[data-toggle="tooltip"]').mouseover(function(){
+        $(this).siblings('.tooltip').addClass('in');
+    });*/
 
 
 
@@ -174,8 +178,10 @@ $(document).ready(function() {
 
     var val_price_first = $('.add__price_td_f1 input').val();
     var val_price_second = $('.add__price_td_f2 input').val();
+    var val_size = $('.add__size_block input').val();
     $('.add__price_view--f1').text(val_price_first);
     $('.add__price_view--f2').text(val_price_second);
+    $('.add__table_td_size').text(val_size);
 
     initMicroColumnWidth();
 
@@ -185,15 +191,18 @@ $(document).ready(function() {
 
 function initMicroColumnWidth() {
     var micro__wr = $('.micro__wr').outerWidth();
-
+    var diagramm = $('.diagramm').outerWidth();
     var width = $('.nav-micro').find('li:eq(0)').outerWidth() + $('.nav-micro').find('li:eq(1)').outerWidth() + $('.nav-micro').find('li:eq(2)').outerWidth() + $('.nav-micro').find('li:eq(3)').outerWidth();
-    console.log(width);
+
 
     var micro__right = micro__wr - width;
 
+    var grafik = diagramm - width;
     $('.micro__left').css('width', width);
+    $('.diagramm__left').css('width', micro__right);
 
     $('.micro__right').css('width', micro__right);
+    $('.grafik').css('width', grafik);
 }
 
 
@@ -246,14 +255,15 @@ function initAddRow() {
         var number_size = $(this).closest('.add__info').index();
 
         var row = $(this).parents(".row").find('.js__add_row').closest('.add__tr--dynamic').clone().wrap('<div></div>').parent().html();
+        var row1 = '<div class="add__tr add__tr--dynamic"><div class="add__td add__size_block add__size_block--td"><input type="text" class="form-control form-control--size" value="21-23"></div><div class="add__td add__price_category add__price_category--td"><select name="" id="" class="selectpicker"><option value="">минимаркет</option><option value="">HoReca</option></select></div><div class="add__td add__price add__price--td add__price_td_f1"><input type="text" class="form-control--table form-control" value="6 112, 45"></div><div class="add__td add__price add__price--td add__price_td_f2"><input type="text" class="form-control--table form-control" value="6 500, 45"></div><div class="add__plus add__td"><div class="add__holder add__holder--big js__add_row"><svg class="icon icon-plus"><use xlink:href="#icon-plus"></use></svg></div></div><div class="add__td"><div class="add__delete js_delete_tr"><svg class="icon icon-ico33 icon__gray"><use xlink:href="#icon-ico33"></use></svg></div></div></div></div>';
 
-        $(this).closest('.add__tr').after(row);
+        $(this).closest('.add__tr').after(row1);
 
         $(this).closest('.add__tr').next('.add__tr').find('.add__size_block input').remove();
 
         $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').append('<div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div>');
 
-
+        $(this).closest('.add__tr--dynamic').next('.add__tr--dynamic').find('.selectpicker').selectpicker();
 
 
 
@@ -281,7 +291,7 @@ function initAddSize() {
 
         $(this).closest('.add__product').find('.add__info--view').append('<div class="preview__table"><div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div></div>');
 
-
+        $(this).closest('.add__info--wr').find('select').selectpicker();
 
         var number_tr = $(this).closest('.add__tr--dynamic').index();
         /*$(this).closest('.add__product').find('.preview__table').find('.preview__table_tr:eq(' + number_tr + ')');*/
@@ -297,6 +307,8 @@ function initAddSize() {
         $(this).closest('.add__product').find('.preview__table:eq(' + number_tr + ')').find('.add__price_view--f2').text(f2);
 
         $(this).closest('.add__product').find('.preview__table:eq(' + number_tr + ')').find('.add__table_td_size').text(sz);
+
+        $(this).closest('.add__product').find('.js_delete_size').css('visibility', 'visible');
 
     });
 
@@ -326,11 +338,12 @@ function initAddBrandline() {
             y++;
             $(this).attr("id", "select-" + y);
             var id = "select-" + y;
-            console.log("select-" + y);
-            $("#select-" + y).selectpicker({
-                dropupAuto: false
-            });
+
+            $("#select-" + y).selectpicker();
         });
+
+
+        $(this).closest('.add__product').next('.add__product').find('.add__info--wr').find('.add__info:first-child').find('select').selectpicker();
 
         var colorInput = $(this).closest('.add__product').next('.add__product').find('.color-input').get(0);
 
@@ -343,14 +356,12 @@ function initAddBrandline() {
             $(this).closest('.add__product').find('.add__name').text(prod_name);
         });
 
-        $(this).closest('.add__product').next('.add__product').find('.add__brand .selectpicker').selectpicker({
-            dropupAuto: false
-        });
+        $(this).closest('.add__product').next('.add__product').find('.add__brand .selectpicker').selectpicker();
 
 
         $(this).closest('.add__product').next('.add__product').find('.add__brand > .bootstrap-select > button').remove();
 
-        console.log($(this).closest('.add__product').next('.add__product').find('.add__brand > .bootstrap-select'));
+
 
 
 
@@ -361,6 +372,17 @@ function initAddBrandline() {
             setText: '.asdasdasd'
         }).on('change', function(color, hue, sat, lum) {
             $(colorOutput).css('background', color);
+        });
+
+
+
+        $('.add__product').each(function(i) {
+            console.log(i);
+            if ($('.add__product:eq(' + i + ')').find('.add__info').length <= 1) {
+                $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'hidden');
+            } else {
+                $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'visible');
+            }
         });
     });
 }
@@ -391,19 +413,40 @@ function initDeleteTr() {
     });
 }
 
+$('.add__product').each(function(i) {
+    console.log(i);
+    if ($('.add__product:eq(' + i + ')').find('.add__info').length <= 1) {
+        $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'hidden');
+    } else {
+        $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'visible');
+    }
+});
+
 // удаление размера
 function initDeleteSize() {
     $(document).on('click', '.js_delete_size', function() {
         var parent = $(this).closest('.add__product');
-        var number_size = $(this).find('.add__info').index();
+        var number_size = $(this).closest('.add__info').index();
 
 
         if (parent.find('.preview__table').length > 1) {
             $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').remove();
         }
         if (parent.find('.add__info').length > 1) {
+            $(this).css('visibility', 'visible');
             $(this).closest('.add__info').remove();
+        } else {
+            $(this).css('visibility', 'hidden');
         }
+
+        $('.add__product').each(function(i) {
+            console.log(i);
+            if ($('.add__product:eq(' + i + ')').find('.add__info').length <= 1) {
+                $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'hidden');
+            } else {
+                $('.add__product:eq(' + i + ')').find('.js_delete_size').css('visibility', 'visible');
+            }
+        });
     });
 }
 
@@ -555,6 +598,7 @@ function initSortable() {
         },
         start: function(e, ui) {
             $('.portlet').removeClass('ui-selected');
+
         }
     }).disableSelection();
 
