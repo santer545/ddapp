@@ -154,7 +154,7 @@
         margin: 0;
         color: $gray-middle;
         &--big {
-            padding-top: 8px;
+            padding-top: 12px;
         }
     }
 
@@ -173,7 +173,7 @@
         background-size: 100%;
     }
     .dropdown-toggle {
-        padding: 8px;
+        padding: 12px 8px 8px;
         &:focus {
             outline: none;
             outline: 0 dotted #333!important;

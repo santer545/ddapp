@@ -13,6 +13,12 @@ function initSameHeight() {
         multiLine: true,
         biggestHeight: true
     });
+    jQuery('.add__product').sameHeight({
+        elements: '.add__item, .add__view',
+        flexible: true,
+        multiLine: true,
+        biggestHeight: true
+    });
 };
 (function($) {
     $.fn.sameHeight = function(opt) {
