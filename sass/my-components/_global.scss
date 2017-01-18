@@ -1270,7 +1270,11 @@ div.ui-selected {
         position: relative;
         margin-bottom: 50px;
         padding: 0 15px;
-
+        &:not(:last-child) {
+            .add__brandline {
+                display: none;
+            }
+        }
         &_wrapper {
             padding-left: 15px;
             padding-bottom: 90px;
@@ -1523,6 +1527,8 @@ div.ui-selected {
         position: absolute;
         right: 10px;
         top: 10px;
+        max-height: 175px;
+        overflow: hidden;
     }
     &__item {
         height: 45px;
