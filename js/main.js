@@ -394,8 +394,19 @@ function initAddBrandline() {
 
         /*$(this).closest('.add__product').find('.color__list').find('.color__item').after('<li class="color__item js-color"></li>');*/
         /*$(this).closest('.add__product').prev('.add__product').find('.color__list').find('.color__item').after('<li class="color__item js-color"></li>');*/
-        console.log('Add!');
+
         var li_prev = $(this).closest('.add__product').prev('.add__product').find('.color__item').clone();
+
+        var current_color = $(this).closest('.add__product').find('.color__list').append('<li class="color__item js-color"></li>');
+
+        console.log(current_color);
+
+        $(this).closest('.add__product').prev('.add__product').find('.color__item').after(current_color);
+
+
+
+        $(this).closest('.add__product').next('.add__product').find('.color__item').after(current_color);
+
         $(this).closest('.add__product').next('.add__product').find('.color__list').find('.color__item').after('<li class="color__item js-color"></li>').before(li_prev);
 
         var colorOutput = $('.add__product:eq(' + number_br + ')').find('.color__list').find('.js-color').get(number_br);
