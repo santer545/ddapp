@@ -12,7 +12,7 @@ $(window).resize(function() {
         initMicroColumnWidth();
     }, 500);
 
-    brandlineButtonWidth ();
+    brandlineButtonWidth();
 
 
 });
@@ -95,7 +95,7 @@ $(document).ready(function() {
     $('#select-default').selectpicker();
 
 
-    $('.color__list').append('<li class="color__item js-color"></li>');
+    $('.add__product:eq(0)').find('.color__list').append('<li class="color__item js-color"></li>');
     $('.color-input').each(function(i, elem) {
 
         var hueb = new Huebee(elem, {
@@ -103,10 +103,23 @@ $(document).ready(function() {
             staticOpen: true,
             setBGColor: '.js-color',
             setText: '.asdasdasd'
+        }).on('change', function(color, hue, sat, lum) {
+            /*$('.js-color').css('background', color);*/
+            $('.add__product').find('.color__list').find('.js-color:eq(0)').css('background', color);
+            colorGlobal = color;
         });
     });
 
 
+    $(document).ready(function() {
+        $('.color__list').bxSlider({
+            mode: 'vertical',
+            minSlides: 3,
+            minSlides: 3,
+        });
+    });
+
+    colorGlobal = '';
 
     // Добавление брендлайна
     initAddBrandline();
@@ -165,13 +178,7 @@ $(document).ready(function() {
 
     brandlineButtonWidth();
 
-    /*$('[data-toggle="tooltip"]').mouseleave(function(){
-        $(this).siblings('.tooltip').removeClass('in');
-        alert('asasdasd')
-    });
-    $('[data-toggle="tooltip"]').mouseover(function(){
-        $(this).siblings('.tooltip').addClass('in');
-    });*/
+
 
 
 
@@ -251,6 +258,7 @@ function keyUpF2() {
 }
 
 
+$('.js_delete_tr').hide();
 
 
 // Добавление строки с ценой
@@ -270,6 +278,9 @@ function initAddRow() {
         /*$(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').append('<div class="preview__table_tr"><div class="add__table_td_size preview__table_td"></div><div class="preview__table_td"></div><div class="preview__table_td add__price_view add__price_view--f1"></div><div class="preview__table_td add__price_view add__price_view--f2"></div></div>');*/
 
         $(this).closest('.add__tr--dynamic').next('.add__tr--dynamic').find('.selectpicker').selectpicker();
+
+
+        $(this).closest('.add__tr--dynamic').next('.add__tr--dynamic').find('.js_delete_tr').show();
 
 
 
@@ -321,7 +332,7 @@ function initAddSize() {
 }
 
 // ширина кнопки добавления брендлайна
-function brandlineButtonWidth () {
+function brandlineButtonWidth() {
     var width = $('.add__product .add__item').outerWidth();
     $('.js_add_block').outerWidth(width);
 
@@ -330,8 +341,12 @@ function brandlineButtonWidth () {
 // добавление брендлайна
 function initAddBrandline() {
     var pattern = $('.add__product_wrapper').find('.add__product--pattern').clone();
-
+    $('.js-product-delete').hide();
     $(document).on('click', '.js_add_block', function() {
+
+        if ($('.add__product_wrapper').find('.add__product').length > 0) {
+            $('.add__product_wrapper').find('.add__product').find('.js-product-delete').show();
+        }
 
         var number_br = $(this).closest('.add__product').index();
 
@@ -392,35 +407,49 @@ function initAddBrandline() {
 
 
 
-        /*$(this).closest('.add__product').find('.color__list').find('.color__item').after('<li class="color__item js-color"></li>');*/
-        /*$(this).closest('.add__product').prev('.add__product').find('.color__list').find('.color__item').after('<li class="color__item js-color"></li>');*/
-
-        var li_prev = $(this).closest('.add__product').prev('.add__product').find('.color__item').clone();
-
-        var current_color = $(this).closest('.add__product').find('.color__list').append('<li class="color__item js-color"></li>');
-
-        console.log(current_color);
-
-        $(this).closest('.add__product').prev('.add__product').find('.color__item').after(current_color);
 
 
 
-        $(this).closest('.add__product').next('.add__product').find('.color__item').after(current_color);
 
-        $(this).closest('.add__product').next('.add__product').find('.color__list').find('.color__item').after('<li class="color__item js-color"></li>').before(li_prev);
+        // Добавление цВета
 
-        var colorOutput = $('.add__product:eq(' + number_br + ')').find('.color__list').find('.js-color').get(number_br);
-        console.log(colorOutput);
-        // Вызов цветовой гаммы
 
-        var hueb = new Huebee(colorInput, {
-            // options
-            staticOpen: true,
-            setBGColor: colorOutput,
-            setText: '.asdasdasd'
-        }).on('change', function(color, hue, sat, lum) {
-            $(colorOutput).css('background', color);
+
+
+        var li_prev = $(this).closest('.add__product').find('.color__list').html();
+
+
+
+
+
+
+        $(this).closest('.add__product').next('.add__product').find('.color__list').append(li_prev);
+
+        $('.add__product').find('.color__list').append('<li class="color__item js-color"></li>');
+
+        $('.add__product').find('.color__list').find('.js-color:eq(' + number_br + ')').each(function(i, elem) {
+
+
+            var colorOutput = elem;
+            var color = '#f00';
+            $(colorOutput).css('background', colorGlobal);
+
+            // Вызов цветовой гаммы
+
+            var hueb = new Huebee(colorInput, {
+                // options
+                staticOpen: true,
+                setBGColor: colorOutput,
+                setText: '.asdasdasd'
+            }).on('change', function(color, hue, sat, lum) {
+                $(colorOutput).css('background', color);
+                $('.add__product').find('.color__list').find('.js-color:eq(' + number_br + ')').css('background', color);
+                colorGlobal = color;
+            });
         });
+
+
+
 
 
 
@@ -502,12 +531,19 @@ function initDeleteSize() {
 // удаление продукта
 function initRemoveBrandline() {
     $(document).on('click', '.js-product-delete', function() {
-        $(this).closest('.add__product').prev('.add__product').find('.js_add_block').show();
-        console.log($(this).closest('.add__product').prev('.add__product').find('.js-product-delete'));
+        /*$(this).closest('.add__product').prev('.add__product').find('.js_add_block').show();*/
+
         var lg = $(this).closest('.add__product_wrapper').find('.add__product').length;
+        console.log(lg);
         if (lg > 1) {
             $(this).closest('.add__product').remove();
         }
+        if (lg == 2) {
+            $('.add__product_wrapper').find('.add__product').find('.js-product-delete').hide();
+        }
+
+
+
     });
 }
 
@@ -734,4 +770,3 @@ function initImagesUpload() {
     });
 
 }
-
