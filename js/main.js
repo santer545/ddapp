@@ -111,14 +111,6 @@ $(document).ready(function() {
     });
 
 
-    $(document).ready(function() {
-        $('.color__list').bxSlider({
-            mode: 'vertical',
-            minSlides: 3,
-            minSlides: 3,
-        });
-    });
-
     colorGlobal = '';
 
     // Добавление брендлайна
@@ -412,6 +404,15 @@ function initAddBrandline() {
 
 
         // Добавление цВета
+
+        if ($(this).closest('.add__product').find('.color__item').length > 3) {
+            $('.color__list').bxSlider({
+                mode: 'vertical',
+                minSlides: 3,
+                minSlides: 3,
+            });
+        }
+
 
 
 
