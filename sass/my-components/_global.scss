@@ -1519,6 +1519,7 @@ div.ui-selected {
     padding: 0 20px;
 }
 
+
 .color {
     &__list {
         padding: 0;
@@ -1528,6 +1529,8 @@ div.ui-selected {
         right: 10px;
         top: 10px;
         max-height: 175px;
+        
+        
         overflow: hidden;
     }
     &__item {
