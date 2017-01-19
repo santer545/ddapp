@@ -1527,18 +1527,22 @@ div.ui-selected {
         position: absolute;
         right: 10px;
         top: 10px;
-        max-height: 175px;
+        padding: 20px 0;
+        height: 175px;
         overflow: hidden;
+        &.slick-slider {
+            height: 225px;
+        }
     }
     &__item {
         height: 45px;
-        width: 45px;
+        width: 45px!important;
         border-radius: 50%;
         cursor: pointer;
 
         border: none;
         &:not(:last-child) {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         &.active {
             border: 3px solid #fff;
