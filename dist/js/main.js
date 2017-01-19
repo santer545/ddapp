@@ -174,6 +174,7 @@ $(document).ready(function() {
 
 
 
+
     // установка начальных значений в предпросмотре
     var val_first = $('.add__size_block input').val();
     $('.add__table_td_size').text(val_first);
@@ -190,7 +191,10 @@ $(document).ready(function() {
 
     initMicroColumnWidth();
 
+
 });
+
+
 
 
 
@@ -406,8 +410,6 @@ function initAddBrandline() {
         // Добавление цВета
 
 
-       
-
 
 
 
@@ -443,6 +445,53 @@ function initAddBrandline() {
                 colorGlobal = color;
             });
         });
+
+
+
+
+
+
+
+
+        $(this).closest('.add__product').find('.color__list').slick({
+            infinite: false,
+            vertical: true,
+            verticalSwiping: false,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            prevArrow: '<button type="button" class="slick-prev"></button>',
+            nextArrow: '<button type="button" class="slick-next"></button>'
+        });
+
+
+
+
+
+
+
+        $(this).closest('.add__product').prevAll('.add__product').find('.color__list').slick('unslick');
+
+
+        if (!($('.add__product').find('.color__list').hasClass('.slick-slider'))) {
+            $(this).closest('.add__product').prevAll('.add__product').find('.color__list').slick({
+                infinite: false,
+                vertical: true,
+                verticalSwiping: false,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                prevArrow: '<button type="button" class="slick-prev"></button>',
+                nextArrow: '<button type="button" class="slick-next"></button>'
+            });
+        }
+
+
+
+
+
+
+        /*$('.color__list').slick('slickAdd', '<li class="color__item js-color"></li>');*/
+
+
 
 
 

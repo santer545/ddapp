@@ -1528,9 +1528,14 @@ div.ui-selected {
         position: absolute;
         right: 10px;
         top: 10px;
+<<<<<<< HEAD
+        max-height: 175px;
+        
+        
+=======
         padding: 20px 0;
         height: 175px;
-        
+>>>>>>> b42c26f48727c8bd2be927f8a68a727bf6253259
         overflow: hidden;
         &.slick-slider {
             height: 225px;
