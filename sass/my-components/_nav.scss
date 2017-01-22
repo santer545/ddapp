@@ -36,7 +36,6 @@
     }
     &__item {
         position: relative;
-
         line-height: 60px;
         z-index: 1;
         white-space: nowrap;
@@ -47,7 +46,7 @@
         }
         &:hover,
         &.active {
-            .sidebar__link{
+            .sidebar__link {
                 background-color: #58BFE8;
             }
         }
@@ -115,9 +114,11 @@
  * Tabs
  */
 
- .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
     border-bottom: 1px solid #fff;
- }
+}
 
 .nav-tabs {
     border-bottom: 1px solid #9f9f9f;
@@ -126,7 +127,6 @@
             margin-left: 30px;
         }
         &.active {
-
             a {
                 border-top: 2px solid $brand-primary;
                 &:focus {
@@ -138,7 +138,7 @@
                     border-top: 2px solid $brand-primary;
                 }
             }
-                    }
+        }
         >a {
             font-size: 22px;
             font-weight: 300;
@@ -160,7 +160,6 @@
 /**
  * Tools pagination
  */
-
 
 .pagination {
     &__list,
@@ -191,7 +190,8 @@
             margin-right: 20px;
         }
     }
-    &__link, &__arrow {
+    &__link,
+    &__arrow {
         padding: 5px 20px;
         display: block;
         color: $second-color;
@@ -199,17 +199,15 @@
     &__link {
         font-size: 20px;
     }
-
     &__list {
         padding: 0;
         margin: 0;
         list-style-type: none;
     }
-
 }
 
-.ui-carousel {
 .slick-arrow {
+    position: relative;
     width: 20px;
     height: 10px;
     background-color: transparent;
@@ -227,6 +225,8 @@
         border-right: none;
         border-bottom: none;
     }
+}
+
 .slick-next {
     &:before {
         position: absolute;
@@ -242,102 +242,116 @@
         border-top: none;
         border-left: none;
     }
+}
+
 .slick-track {
     height: 100%!important;
+}
+
+
 /* Slider */
-.slick-slider
-{
+
+.slick-slider {
     position: absolute;
     top: 10px;
     right: 10px;
     width: 45px;
     box-sizing: border-box;
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     -webkit-touch-callout: none;
     -khtml-user-select: none;
     -ms-touch-action: pan-y;
-        touch-action: pan-y;
+    touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
-.slick-list
-{
+}
+
+.slick-list {
     position: relative;
     display: block;
     overflow: hidden;
     margin: 0 0 -15px;
     padding: 0;
-.slick-list:focus
-{
+}
+
+.slick-list:focus {
     outline: none;
-.slick-list.dragging
-{
+}
+
+.slick-list.dragging {
     cursor: pointer;
     cursor: hand;
+}
+
 .slick-slider .slick-track,
-.slick-slider .slick-list
-{
+.slick-slider .slick-list {
     -webkit-transform: translate3d(0, 0, 0);
-       -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-         -o-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-.slick-track
-{
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
     position: relative;
     top: 0;
     left: 0;
+}
 
 .slick-track:before,
-.slick-track:after
-{
+.slick-track:after {
     display: table;
     content: '';
-.slick-track:after
-{
+}
+
+.slick-track:after {
     clear: both;
-.slick-loading .slick-track
-{
+}
+
+.slick-loading .slick-track {
     visibility: hidden;
-.slick-slide
-{
+}
+
+.slick-slide {
     display: none;
     float: left;
     height: 100%;
     min-height: 1px;
-[dir='rtl'] .slick-slide
-{
+}
+
+[dir='rtl'] .slick-slide {
     float: right;
 }
-.slick-slide img
-{
+
+.slick-slide img {
     display: block;
 }
-.slick-slide.slick-loading img
-{
+
+.slick-slide.slick-loading img {
     display: none;
 }
-.slick-slide.dragging img
-{
+
+.slick-slide.dragging img {
     pointer-events: none;
 }
-.slick-initialized .slick-slide
-{
+
+.slick-initialized .slick-slide {
     display: block;
 }
-.slick-loading .slick-slide
-{
+
+.slick-loading .slick-slide {
     visibility: hidden;
 }
-.slick-vertical .slick-slide
-{
+
+.slick-vertical .slick-slide {
     display: block;
     float: none;
     height: 45px;
-
     border: 1px solid transparent;
 }
+
 .slick-arrow.slick-hidden {
     display: none;
 }

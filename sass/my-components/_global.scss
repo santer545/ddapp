@@ -1530,7 +1530,7 @@ div.ui-selected {
         top: 10px;
         padding: 20px 0;
         height: 175px;
-        
+        text-align: center;
         overflow: hidden;
         &.slick-slider {
             height: 225px;
@@ -1636,6 +1636,7 @@ div.ui-selected {
     .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
         margin: 0;
         width: 195px;
+        line-height: 1.42857;
         &.btn-group .dropdown-toggle .filter-option {
             text-overflow: ellipsis;
             width: 80%;

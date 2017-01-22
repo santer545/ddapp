@@ -353,7 +353,7 @@ function initAddBrandline() {
 
         $(parent).append(pattern.clone().show());
         initImagesUpload();
-        $(this).hide();
+
 
         // проставляем айди для input file
 
@@ -551,7 +551,7 @@ function initDeleteSize() {
         var parent = $(this).closest('.add__product');
         var number_size = $(this).closest('.add__info').index();
 
-
+        console.log(number_size);
         if (parent.find('.preview__table').length > 1) {
             $(this).closest('.add__product').find('.preview__table:eq(' + number_size + ')').remove();
         }
@@ -578,14 +578,31 @@ function initRemoveBrandline() {
     $(document).on('click', '.js-product-delete', function() {
         /*$(this).closest('.add__product').prev('.add__product').find('.js_add_block').show();*/
 
+        var number_br = $('.add__product').index();
+
+
         var lg = $(this).closest('.add__product_wrapper').find('.add__product').length;
-        console.log(lg);
+
         if (lg > 1) {
             $(this).closest('.add__product').remove();
+            console.log('yo');
+            $(this).closest('.add__product').find('.color__list').slick({
+                infinite: false,
+                vertical: true,
+                verticalSwiping: false,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                prevArrow: '<button type="button" class="slick-prev"></button>',
+                nextArrow: '<button type="button" class="slick-next"></button>'
+            });
+            $('.add__product').find('.color__list').slick('unslick');
+            $('.add__product').find('.color__list').find('.color__item:eq(' + number_br + ')').remove();
         }
-        if (lg == 2) {
-            $('.add__product_wrapper').find('.add__product').find('.js-product-delete').hide();
-        }
+
+
+
+
+
 
 
 
@@ -657,6 +674,23 @@ function initSelectable() {
         }
     });
 }
+console.log('456');
+
+var s = $('#routes__list').siblings('.dropdown-menu').find('.sort__all').text();
+var f = $('#routes__list').find('.filter-option').text();
+
+$('#routes__list').on('changed.bs.select', function(e) {
+    console.log('123');
+    var s1 = $(this).siblings('.dropdown-menu').find('.sort__all').text();
+    var f1 = $(this).find('.filter-option').text();
+    console.log(s1);
+    console.log(f1);
+    console.log('!!!');
+    if (s1 == f1) {
+        $('.column__left').find('.portlet').find('.portlet-remove').hide();
+    }
+});
+
 
 // Функция перетаскивания маршрутов
 function initSortable() {
@@ -692,6 +726,7 @@ function initSortable() {
                 var start = $(this).closest('.column .portlet').remove();
                 $('.start-column').append(start);
                 initCheckedPortlets();
+
 
             });
 
